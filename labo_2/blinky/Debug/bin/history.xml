@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=blinky.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\blinky -TC:\CooCox\CoIDE\configuration\ProgramData\blinky/arm-gcc-link.ld -g">
+      <target file="blinky.elf" lastModified="15776631519">
+         <source file="..\obj\main.o" lastModified="15776631321"/>
+         <source file="..\obj\sysctl.o" lastModified="15775f2c7a6"/>
+         <source file="..\obj\gpio.o" lastModified="15775f2c80a"/>
+         <source file="..\obj\interrupt.o" lastModified="15775f2c850"/>
+         <source file="..\obj\startup_lm3s.o" lastModified="15775f2c88c"/>
+         <source file="..\obj\cpu.o" lastModified="15775f2c8b4"/>
+      </target>
+   </processor>
+</history>
