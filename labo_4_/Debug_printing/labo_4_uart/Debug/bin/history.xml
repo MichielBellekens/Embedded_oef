@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=labo_4_uart.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\labo_4_uart -TC:\CooCox\CoIDE\configuration\ProgramData\labo_4_uart/arm-gcc-link.ld -g">
+      <target file="labo_4_uart.elf" lastModified="157be2594f8">
+         <source file="..\obj\semihosting.o" lastModified="157be259048"/>
+         <source file="..\obj\main.o" lastModified="157be25908e"/>
+         <source file="..\obj\sysctl.o" lastModified="157be259106"/>
+         <source file="..\obj\printf.o" lastModified="157be25916a"/>
+         <source file="..\obj\gpio.o" lastModified="157be2591d8"/>
+         <source file="..\obj\interrupt.o" lastModified="157be25921e"/>
+         <source file="..\obj\startup_lm3s.o" lastModified="157be25925a"/>
+         <source file="..\obj\sh_cmd.o" lastModified="157be25926e"/>
+         <source file="..\obj\syscalls.o" lastModified="157be2592c8"/>
+         <source file="..\obj\cpu.o" lastModified="157be2592fa"/>
+      </target>
+   </processor>
+</history>

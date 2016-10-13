@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc 4.9.3 mingw32 -mcpu=cortex-m3 -mthumb -Wall -ffunction-sections -g -O0 -c -DLM3S6965 -I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4\lm3slib\driverlib -I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4\lm3slib\inc -I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4\semihosting -I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4\lm3slib -I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems -I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4 -I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4\cmsis">
+      <target file="syscalls.o" lastModified="157bddb43e9">
+         <source file="..\..\..\syscalls\syscalls.c" lastModified="157bdd3d283"/>
+      </target>
+      <target file="printf.o" lastModified="157bddd7b18">
+         <source file="..\..\..\stdio\printf.c" lastModified="157bddd7294"/>
+      </target>
+      <target file="startup_lm3s.o" lastModified="157bddb438f">
+         <source file="..\..\..\startup\startup_lm3s.c" lastModified="157bdd3e29b"/>
+      </target>
+      <target file="main.o" lastModified="157be0a9b38">
+         <source file="..\..\..\main.c" lastModified="157be0a79f0"/>
+      </target>
+      <target file="interrupt.o" lastModified="157bddb4353">
+         <source file="..\..\..\lm3slib\driverlib\interrupt.c" lastModified="157bdd40f4b"/>
+      </target>
+      <target file="sh_cmd.o" lastModified="157bddb4399">
+         <source file="..\..\..\semihosting\sh_cmd.s" lastModified="157bdd3d297"/>
+      </target>
+      <target file="gpio.o" lastModified="157bddb42f9">
+         <source file="..\..\..\lm3slib\driverlib\gpio.c" lastModified="157bdd43ff4"/>
+      </target>
+      <target file="semihosting.o" lastModified="157bddb415f">
+         <source file="..\..\..\semihosting\semihosting.c" lastModified="157bdd3d297"/>
+      </target>
+      <target file="cpu.o" lastModified="157bddb4411">
+         <source file="..\..\..\lm3slib\driverlib\cpu.c" lastModified="157bdd3efbb"/>
+      </target>
+      <target file="sysctl.o" lastModified="157bddb4209">
+         <source file="..\..\..\lm3slib\driverlib\sysctl.c" lastModified="157bdd42834"/>
+      </target>
+   </processor>
+</history>

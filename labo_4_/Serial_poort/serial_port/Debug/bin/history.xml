@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=serial_port.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\serial_port -TC:\CooCox\CoIDE\configuration\ProgramData\serial_port/arm-gcc-link.ld -g">
+      <target file="serial_port.elf" lastModified="157be79b071">
+         <source file="..\obj\semihosting.o" lastModified="157be79aa68"/>
+         <source file="..\obj\uart.o" lastModified="157be79aacc"/>
+         <source file="..\obj\main.o" lastModified="157be79ab30"/>
+         <source file="..\obj\sysctl.o" lastModified="157be79abab"/>
+         <source file="..\obj\printf.o" lastModified="157be79ac11"/>
+         <source file="..\obj\gpio.o" lastModified="157be79ac75"/>
+         <source file="..\obj\interrupt.o" lastModified="157be79ad01"/>
+         <source file="..\obj\startup_lm3s.o" lastModified="157be79ad47"/>
+         <source file="..\obj\sh_cmd.o" lastModified="157be79ad5b"/>
+         <source file="..\obj\syscalls.o" lastModified="157be79adab"/>
+         <source file="..\obj\cpu.o" lastModified="157be79addd"/>
+      </target>
+   </processor>
+</history>
