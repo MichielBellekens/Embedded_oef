@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -mcpu=cortex-m3 -mthumb -g -nostartfiles -Map=Stellarisgraphics.map -O0 --gc-sections -LC:\CooCox\CoIDE\configuration\ProgramData\Stellarisgraphics -TC:\CooCox\CoIDE\configuration\ProgramData\Stellarisgraphics/arm-gcc-link.ld -g -L..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3 -ldriver-cm3">
+      <target file="Stellarisgraphics.elf" lastModified="157e2622b22">
+         <source file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a" lastModified="157e239a054"/>
+         <source file="..\obj\main.o" lastModified="157e2622945"/>
+         <source file="..\obj\rit128x96x4.o" lastModified="157e2610ee0"/>
+         <source file="..\obj\startup_lm3s.o" lastModified="157e2610f1b"/>
+      </target>
+   </processor>
+</history>

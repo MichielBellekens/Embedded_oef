@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dependencies>
+   <includePath signature="/I..\..\..\..\..\StellarisWare\boards\ek-lm3s6965 /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_5 /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems /I..\..\..\..\..\StellarisWare /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_5\lisa">
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\inc\hw_types.h" lastModified="157e239c103">
+      </source>
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\debug.h" lastModified="157e2399d3b">
+      </source>
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\boards\ek-lm3s6965\drivers\rit128x96x4.h" lastModified="157e237104b">
+      </source>
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\inc\hw_sysctl.h" lastModified="157e239c0f6">
+      </source>
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\boards\ek-lm3s6965\drivers\rit128x96x4.c" lastModified="157e2371047">
+         <include file="..\..\..\..\..\..\..\..\StellarisWare\inc\hw_ssi.h"/>
+         <include file="..\..\..\..\..\..\..\..\StellarisWare\inc\hw_memmap.h"/>
+         <include file="..\..\..\..\..\..\..\..\StellarisWare\inc\hw_sysctl.h"/>
+         <include file="..\..\..\..\..\..\..\..\StellarisWare\inc\hw_types.h"/>
+         <include file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\debug.h"/>
+         <include file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\gpio.h"/>
+         <include file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\ssi.h"/>
+         <include file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\sysctl.h"/>
+         <include file="..\..\..\..\..\..\..\..\StellarisWare\boards\ek-lm3s6965\drivers\rit128x96x4.h"/>
+      </source>
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\inc\hw_memmap.h" lastModified="157e239c0d7">
+      </source>
+      <source file="..\..\..\startup\startup_lm3s.c" lastModified="157e249f5b9">
+      </source>
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\sysctl.h" lastModified="157e2399f07">
+      </source>
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\gpio.h" lastModified="157e2399e01">
+         <include file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\pin_map.h"/>
+      </source>
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\inc\hw_ssi.h" lastModified="157e239c0f1">
+      </source>
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\ssi.h" lastModified="157e2399eff">
+         <include file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\sysctl.h"/>
+      </source>
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\pin_map.h" lastModified="157e2399ec8">
+      </source>
+   </includePath>
+</dependencies>
