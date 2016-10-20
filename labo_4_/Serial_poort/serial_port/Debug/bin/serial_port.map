@@ -3,24 +3,10 @@ Discarded input sections
 
  .text          0x00000000        0x0 ..\obj\semihosting.o
  .data          0x00000000        0x0 ..\obj\semihosting.o
- .bss           0x00000000       0x14 ..\obj\semihosting.o
- .text.SH_SendChar
-                0x00000000       0x64 ..\obj\semihosting.o
  .text.SH_SendString
                 0x00000000       0x24 ..\obj\semihosting.o
  .text.SH_GetChar
                 0x00000000       0x40 ..\obj\semihosting.o
- .debug_info    0x00000000      0x12b ..\obj\semihosting.o
- .debug_abbrev  0x00000000       0xab ..\obj\semihosting.o
- .debug_aranges
-                0x00000000       0x30 ..\obj\semihosting.o
- .debug_ranges  0x00000000       0x20 ..\obj\semihosting.o
- .debug_line    0x00000000       0xc4 ..\obj\semihosting.o
- .debug_str     0x00000000      0x1c2 ..\obj\semihosting.o
- .comment       0x00000000       0x71 ..\obj\semihosting.o
- .ARM.attributes
-                0x00000000       0x33 ..\obj\semihosting.o
- .debug_frame   0x00000000       0x70 ..\obj\semihosting.o
  .text          0x00000000        0x0 ..\obj\uart.o
  .data          0x00000000        0x0 ..\obj\uart.o
  .bss           0x00000000        0x0 ..\obj\uart.o
@@ -68,8 +54,6 @@ Discarded input sections
                 0x00000000       0x28 ..\obj\uart.o
  .text.UARTCharGetNonBlocking
                 0x00000000       0x2c ..\obj\uart.o
- .text.UARTCharGet
-                0x00000000       0x28 ..\obj\uart.o
  .text.UARTCharPutNonBlocking
                 0x00000000       0x34 ..\obj\uart.o
  .text.UARTBreakCtl
@@ -99,8 +83,6 @@ Discarded input sections
  .text          0x00000000        0x0 ..\obj\main.o
  .data          0x00000000        0x0 ..\obj\main.o
  .bss           0x00000000        0x0 ..\obj\main.o
- .text.leesNString
-                0x00000000       0x70 ..\obj\main.o
  .text          0x00000000        0x0 ..\obj\sysctl.o
  .data          0x00000000        0x0 ..\obj\sysctl.o
  .bss           0x00000000        0x0 ..\obj\sysctl.o
@@ -190,9 +172,10 @@ Discarded input sections
                 0x00000000      0x168 ..\obj\sysctl.o
  .text          0x00000000        0x0 ..\obj\printf.o
  .bss           0x00000000        0x0 ..\obj\printf.o
+ .text.PrintChar
+                0x00000000       0x20 ..\obj\printf.o
  .text.snprintf
                 0x00000000       0x30 ..\obj\printf.o
- .text.fprintf  0x00000000       0x2c ..\obj\printf.o
  .text.sprintf  0x00000000       0x2c ..\obj\printf.o
  .text.puts     0x00000000       0x24 ..\obj\printf.o
  .text          0x00000000        0x0 ..\obj\gpio.o
@@ -370,144 +353,152 @@ Linker script and memory map
 
                 0x20010000                _eram = 0x20010000
 
-.text           0x00000000     0x1208
+.text           0x00000000     0x1340
  *(.isr_vector)
  .isr_vector    0x00000000      0x100 ..\obj\startup_lm3s.o
                 0x00000000                g_pfnVectors
  *(.text*)
+ .text.SH_SendChar
+                0x00000100       0x64 ..\obj\semihosting.o
+                0x00000100                SH_SendChar
  .text.UARTConfigSetExpClk
-                0x00000100       0x88 ..\obj\uart.o
-                0x00000100                UARTConfigSetExpClk
+                0x00000164       0x88 ..\obj\uart.o
+                0x00000164                UARTConfigSetExpClk
  .text.UARTEnable
-                0x00000188       0x38 ..\obj\uart.o
-                0x00000188                UARTEnable
+                0x000001ec       0x38 ..\obj\uart.o
+                0x000001ec                UARTEnable
  .text.UARTDisable
-                0x000001c0       0x48 ..\obj\uart.o
-                0x000001c0                UARTDisable
+                0x00000224       0x48 ..\obj\uart.o
+                0x00000224                UARTDisable
+ .text.UARTCharGet
+                0x0000026c       0x28 ..\obj\uart.o
+                0x0000026c                UARTCharGet
  .text.UARTCharPut
-                0x00000208       0x2c ..\obj\uart.o
-                0x00000208                UARTCharPut
- .text.main     0x00000234       0x70 ..\obj\main.o
-                0x00000234                main
+                0x00000294       0x2c ..\obj\uart.o
+                0x00000294                UARTCharPut
+ .text.leesNString
+                0x000002c0       0x70 ..\obj\main.o
+                0x000002c0                leesNString
+ .text.main     0x00000330       0x98 ..\obj\main.o
+                0x00000330                main
  .text.SysCtlPeripheralEnable
-                0x000002a4       0x40 ..\obj\sysctl.o
-                0x000002a4                SysCtlPeripheralEnable
+                0x000003c8       0x40 ..\obj\sysctl.o
+                0x000003c8                SysCtlPeripheralEnable
  .text.SysCtlDelay
-                0x000002e4        0x8 ..\obj\sysctl.o
-                0x000002e4                SysCtlDelay
+                0x00000408        0x8 ..\obj\sysctl.o
+                0x00000408                SysCtlDelay
  .text.SysCtlClockSet
-                0x000002ec      0x210 ..\obj\sysctl.o
-                0x000002ec                SysCtlClockSet
+                0x00000410      0x210 ..\obj\sysctl.o
+                0x00000410                SysCtlClockSet
  .text.SysCtlClockGet
-                0x000004fc      0x298 ..\obj\sysctl.o
-                0x000004fc                SysCtlClockGet
- .text.PrintChar
-                0x00000794       0x20 ..\obj\printf.o
-                0x00000794                PrintChar
- .text.PutChar  0x000007b4       0x20 ..\obj\printf.o
-                0x000007b4                PutChar
+                0x00000620      0x298 ..\obj\sysctl.o
+                0x00000620                SysCtlClockGet
+ .text.PutChar  0x000008b8       0x20 ..\obj\printf.o
+                0x000008b8                PutChar
  .text.PutString
-                0x000007d4       0x3c ..\obj\printf.o
-                0x000007d4                PutString
+                0x000008d8       0x3c ..\obj\printf.o
+                0x000008d8                PutString
  .text.PutUnsignedInt
-                0x00000810       0xa0 ..\obj\printf.o
-                0x00000810                PutUnsignedInt
+                0x00000914       0xa0 ..\obj\printf.o
+                0x00000914                PutUnsignedInt
  .text.PutSignedInt
-                0x000008b0       0xfc ..\obj\printf.o
-                0x000008b0                PutSignedInt
- .text.PutHexa  0x000009ac       0xd4 ..\obj\printf.o
-                0x000009ac                PutHexa
+                0x000009b4       0xfc ..\obj\printf.o
+                0x000009b4                PutSignedInt
+ .text.PutHexa  0x00000ab0       0xd4 ..\obj\printf.o
+                0x00000ab0                PutHexa
  .text.vsnprintf
-                0x00000a80      0x254 ..\obj\printf.o
-                0x00000a80                vsnprintf
+                0x00000b84      0x254 ..\obj\printf.o
+                0x00000b84                vsnprintf
  .text.vsprintf
-                0x00000cd4       0x24 ..\obj\printf.o
-                0x00000cd4                vsprintf
+                0x00000dd8       0x24 ..\obj\printf.o
+                0x00000dd8                vsprintf
  .text.vfprintf
-                0x00000cf8       0x68 ..\obj\printf.o
-                0x00000cf8                vfprintf
- .text.vprintf  0x00000d60       0x28 ..\obj\printf.o
-                0x00000d60                vprintf
- .text.printf   0x00000d88       0x28 ..\obj\printf.o
-                0x00000d88                printf
- .text.fputc    0x00000db0       0x40 ..\obj\printf.o
-                0x00000db0                fputc
- .text.fputs    0x00000df0       0x48 ..\obj\printf.o
-                0x00000df0                fputs
+                0x00000dfc       0x68 ..\obj\printf.o
+                0x00000dfc                vfprintf
+ .text.vprintf  0x00000e64       0x28 ..\obj\printf.o
+                0x00000e64                vprintf
+ .text.fprintf  0x00000e8c       0x2c ..\obj\printf.o
+                0x00000e8c                fprintf
+ .text.printf   0x00000eb8       0x28 ..\obj\printf.o
+                0x00000eb8                printf
+ .text.fputc    0x00000ee0       0x4c ..\obj\printf.o
+                0x00000ee0                fputc
+ .text.fputs    0x00000f2c       0x48 ..\obj\printf.o
+                0x00000f2c                fputs
  .text.GPIODirModeSet
-                0x00000e38       0x78 ..\obj\gpio.o
-                0x00000e38                GPIODirModeSet
+                0x00000f74       0x78 ..\obj\gpio.o
+                0x00000f74                GPIODirModeSet
  .text.GPIOPadConfigSet
-                0x00000eb0      0x1c8 ..\obj\gpio.o
-                0x00000eb0                GPIOPadConfigSet
+                0x00000fec      0x1c8 ..\obj\gpio.o
+                0x00000fec                GPIOPadConfigSet
  .text.GPIOPinTypeUART
-                0x00001078       0x2c ..\obj\gpio.o
-                0x00001078                GPIOPinTypeUART
+                0x000011b4       0x2c ..\obj\gpio.o
+                0x000011b4                GPIOPinTypeUART
  .text.Default_Reset_Handler
-                0x000010a4       0x5c ..\obj\startup_lm3s.o
-                0x000010a4                Default_Reset_Handler
-                0x000010a4                Reset_Handler
+                0x000011e0       0x5c ..\obj\startup_lm3s.o
+                0x000011e0                Default_Reset_Handler
+                0x000011e0                Reset_Handler
  .text.Default_Handler
-                0x00001100        0x8 ..\obj\startup_lm3s.o
-                0x00001100                DebugMon_Handler
-                0x00001100                FlashCtrl_IRQHandler
-                0x00001100                Timer0B_IRQHandler
-                0x00001100                I2C0_IRQHandler
-                0x00001100                SysTick_Handler
-                0x00001100                PendSV_Handler
-                0x00001100                NMI_Handler
-                0x00001100                I2C1_IRQHandler
-                0x00001100                PWMGen0_IRQHandler
-                0x00001100                UART1_IRQHandler
-                0x00001100                CAN1_IRQHandler
-                0x00001100                Timer1B_IRQHandler
-                0x00001100                Watchdog_IRQHandler
-                0x00001100                UART0_IRQHandler
-                0x00001100                SSI0_IRQHandler
-                0x00001100                UsageFault_Handler
-                0x00001100                ADCSeq1_IRQHandler
-                0x00001100                PWMFault_IRQHandler
-                0x00001100                PWMGen1_IRQHandler
-                0x00001100                SSI1_IRQHandler
-                0x00001100                uDMA_IRQHandler
-                0x00001100                GPIOPortC_IRQHandler
-                0x00001100                ADCSeq2_IRQHandler
-                0x00001100                PWMGen2_IRQHandler
-                0x00001100                UART2_IRQHandler
-                0x00001100                uDMAErr_IRQHandler
-                0x00001100                QEI1_IRQHandler
-                0x00001100                QEI0_IRQHandler
-                0x00001100                PWMGen3_IRQHandler
-                0x00001100                GPIOPortD_IRQHandler
-                0x00001100                USB0_IRQHandler
-                0x00001100                MemManage_Handler
-                0x00001100                Ethernet_IRQHandler
-                0x00001100                SVC_Handler
-                0x00001100                Timer3B_IRQHandler
-                0x00001100                Timer3A_IRQHandler
-                0x00001100                GPIOPortA_IRQHandler
-                0x00001100                Timer0A_IRQHandler
-                0x00001100                ADCSeq0_IRQHandler
-                0x00001100                Timer1A_IRQHandler
-                0x00001100                GPIOPortG_IRQHandler
-                0x00001100                ADCSeq3_IRQHandler
-                0x00001100                GPIOPortE_IRQHandler
-                0x00001100                CAN0_IRQHandler
-                0x00001100                Comp0_IRQHandler
-                0x00001100                Comp1_IRQHandler
-                0x00001100                Comp2_IRQHandler
-                0x00001100                GPIOPortF_IRQHandler
-                0x00001100                GPIOPortB_IRQHandler
-                0x00001100                CAN2_IRQHandler
-                0x00001100                GPIOPortH_IRQHandler
-                0x00001100                BusFault_Handler
-                0x00001100                Timer2A_IRQHandler
-                0x00001100                Timer2B_IRQHandler
-                0x00001100                SysCtrl_IRQHandler
-                0x00001100                Hibernate_IRQHandler
- .text          0x00001108       0x30 ..\obj\sh_cmd.o
-                0x00001108                SH_DoCommand
-                0x0000111e                HardFault_Handler
+                0x0000123c        0x8 ..\obj\startup_lm3s.o
+                0x0000123c                DebugMon_Handler
+                0x0000123c                FlashCtrl_IRQHandler
+                0x0000123c                Timer0B_IRQHandler
+                0x0000123c                I2C0_IRQHandler
+                0x0000123c                SysTick_Handler
+                0x0000123c                PendSV_Handler
+                0x0000123c                NMI_Handler
+                0x0000123c                I2C1_IRQHandler
+                0x0000123c                PWMGen0_IRQHandler
+                0x0000123c                UART1_IRQHandler
+                0x0000123c                CAN1_IRQHandler
+                0x0000123c                Timer1B_IRQHandler
+                0x0000123c                Watchdog_IRQHandler
+                0x0000123c                UART0_IRQHandler
+                0x0000123c                SSI0_IRQHandler
+                0x0000123c                UsageFault_Handler
+                0x0000123c                ADCSeq1_IRQHandler
+                0x0000123c                PWMFault_IRQHandler
+                0x0000123c                PWMGen1_IRQHandler
+                0x0000123c                SSI1_IRQHandler
+                0x0000123c                uDMA_IRQHandler
+                0x0000123c                GPIOPortC_IRQHandler
+                0x0000123c                ADCSeq2_IRQHandler
+                0x0000123c                PWMGen2_IRQHandler
+                0x0000123c                UART2_IRQHandler
+                0x0000123c                uDMAErr_IRQHandler
+                0x0000123c                QEI1_IRQHandler
+                0x0000123c                QEI0_IRQHandler
+                0x0000123c                PWMGen3_IRQHandler
+                0x0000123c                GPIOPortD_IRQHandler
+                0x0000123c                USB0_IRQHandler
+                0x0000123c                MemManage_Handler
+                0x0000123c                Ethernet_IRQHandler
+                0x0000123c                SVC_Handler
+                0x0000123c                Timer3B_IRQHandler
+                0x0000123c                Timer3A_IRQHandler
+                0x0000123c                GPIOPortA_IRQHandler
+                0x0000123c                Timer0A_IRQHandler
+                0x0000123c                ADCSeq0_IRQHandler
+                0x0000123c                Timer1A_IRQHandler
+                0x0000123c                GPIOPortG_IRQHandler
+                0x0000123c                ADCSeq3_IRQHandler
+                0x0000123c                GPIOPortE_IRQHandler
+                0x0000123c                CAN0_IRQHandler
+                0x0000123c                Comp0_IRQHandler
+                0x0000123c                Comp1_IRQHandler
+                0x0000123c                Comp2_IRQHandler
+                0x0000123c                GPIOPortF_IRQHandler
+                0x0000123c                GPIOPortB_IRQHandler
+                0x0000123c                CAN2_IRQHandler
+                0x0000123c                GPIOPortH_IRQHandler
+                0x0000123c                BusFault_Handler
+                0x0000123c                Timer2A_IRQHandler
+                0x0000123c                Timer2B_IRQHandler
+                0x0000123c                SysCtrl_IRQHandler
+                0x0000123c                Hibernate_IRQHandler
+ .text          0x00001244       0x30 ..\obj\sh_cmd.o
+                0x00001244                SH_DoCommand
+                0x0000125a                HardFault_Handler
  *(.init)
  *(.fini)
  *crtbegin.o(.ctors)
@@ -521,40 +512,40 @@ Linker script and memory map
  *(SORT(.dtors.*))
  *(.dtors)
  *(.rodata*)
- .rodata        0x00001138       0x10 ..\obj\main.o
- .rodata        0x00001148       0x9c ..\obj\sysctl.o
- .rodata        0x000011e4       0x24 ..\obj\printf.o
+ .rodata        0x00001274        0xc ..\obj\main.o
+ .rodata        0x00001280       0x9c ..\obj\sysctl.o
+ .rodata        0x0000131c       0x24 ..\obj\printf.o
  *(.eh_fram e*)
 
-.glue_7         0x00001208        0x0
+.glue_7         0x00001340        0x0
  .glue_7        0x00000000        0x0 linker stubs
 
-.glue_7t        0x00001208        0x0
+.glue_7t        0x00001340        0x0
  .glue_7t       0x00000000        0x0 linker stubs
 
-.vfp11_veneer   0x00001208        0x0
+.vfp11_veneer   0x00001340        0x0
  .vfp11_veneer  0x00000000        0x0 linker stubs
 
-.v4_bx          0x00001208        0x0
+.v4_bx          0x00001340        0x0
  .v4_bx         0x00000000        0x0 linker stubs
 
-.iplt           0x00001208        0x0
+.iplt           0x00001340        0x0
  .iplt          0x00000000        0x0 ..\obj\semihosting.o
 
-.rel.dyn        0x00001208        0x0
+.rel.dyn        0x00001340        0x0
  .rel.iplt      0x00000000        0x0 ..\obj\semihosting.o
 
 .ARM.extab
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x00001208                __exidx_start = .
+                0x00001340                __exidx_start = .
 
 .ARM.exidx
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00001208                __exidx_end = .
-                0x00001208                __etext = .
-                0x00001208                _sidata = __etext
+                0x00001340                __exidx_end = .
+                0x00001340                __etext = .
+                0x00001340                _sidata = __etext
 
-.data           0x20000000      0x430 load address 0x00001208
+.data           0x20000000      0x430 load address 0x00001340
                 0x20000000                __data_start__ = .
                 0x20000000                _sdata = __data_start__
  *(vtable)
@@ -581,33 +572,35 @@ Linker script and memory map
                 0x20000430                __data_end__ = .
                 0x20000430                _edata = __data_end__
 
-.igot.plt       0x20000430        0x0 load address 0x00001638
+.igot.plt       0x20000430        0x0 load address 0x00001770
  .igot.plt      0x00000000        0x0 ..\obj\semihosting.o
 
-.bss            0x20000430        0x0
+.bss            0x20000430       0x14 load address 0x00001770
                 0x20000430                . = ALIGN (0x4)
                 0x20000430                __bss_start__ = .
                 0x20000430                _sbss = __bss_start__
  *(.bss*)
+ .bss           0x20000430       0x14 ..\obj\semihosting.o
  *(COMMON)
-                0x20000430                . = ALIGN (0x4)
-                0x20000430                __bss_end__ = .
-                0x20000430                _ebss = __bss_end__
+                0x20000444                . = ALIGN (0x4)
+                0x20000444                __bss_end__ = .
+                0x20000444                _ebss = __bss_end__
 
-.heap           0x20000430        0x0
-                0x20000430                __end__ = .
-                0x20000430                _end = __end__
-                0x20000430                end = __end__
+.heap           0x20000444        0x0
+                0x20000444                __end__ = .
+                0x20000444                _end = __end__
+                0x20000444                end = __end__
  *(.heap*)
-                0x20000430                __HeapLimit = .
+                0x20000444                __HeapLimit = .
 
-.co_stack       0x20000430      0x400 load address 0x00001638
-                0x20000430                . = ALIGN (0x8)
+.co_stack       0x20000444      0x404 load address 0x00001784
+                0x20000448                . = ALIGN (0x8)
+ *fill*         0x20000444        0x4 
  *(.co_stack .co_stack.*)
- .co_stack      0x20000430      0x400 ..\obj\startup_lm3s.o
-                0x20000430                pulStack
+ .co_stack      0x20000448      0x400 ..\obj\startup_lm3s.o
+                0x20000448                pulStack
                 0x20010000                __StackTop = (ORIGIN (ram) + 0x10000)
-                0x2000fc00                __StackLimit = (__StackTop - SIZEOF (.co_stack))
+                0x2000fbfc                __StackLimit = (__StackTop - SIZEOF (.co_stack))
                 0x20010000                PROVIDE (__stack, __StackTop)
                 0x00000001                ASSERT ((__StackLimit >= __HeapLimit), region ram  overflowed with stack)
 LOAD ..\obj\semihosting.o
@@ -628,74 +621,83 @@ LOAD c:/program files (x86)/gnu tools arm embedded/4.8 2014q2/bin/../lib/gcc/arm
 END GROUP
 OUTPUT(serial_port.elf elf32-littlearm)
 
-.debug_info     0x00000000     0x2992
- .debug_info    0x00000000      0x86e ..\obj\uart.o
- .debug_info    0x0000086e      0x119 ..\obj\main.o
- .debug_info    0x00000987      0x7b3 ..\obj\sysctl.o
- .debug_info    0x0000113a      0xe45 ..\obj\printf.o
- .debug_info    0x00001f7f      0x855 ..\obj\gpio.o
- .debug_info    0x000027d4       0xe9 ..\obj\startup_lm3s.o
- .debug_info    0x000028bd       0xd5 ..\obj\sh_cmd.o
+.debug_info     0x00000000     0x32c6
+ .debug_info    0x00000000      0x12b ..\obj\semihosting.o
+ .debug_info    0x0000012b      0x86e ..\obj\uart.o
+ .debug_info    0x00000999      0x90b ..\obj\main.o
+ .debug_info    0x000012a4      0x7b3 ..\obj\sysctl.o
+ .debug_info    0x00001a57      0xe5c ..\obj\printf.o
+ .debug_info    0x000028b3      0x855 ..\obj\gpio.o
+ .debug_info    0x00003108       0xe9 ..\obj\startup_lm3s.o
+ .debug_info    0x000031f1       0xd5 ..\obj\sh_cmd.o
 
-.debug_abbrev   0x00000000      0x74e
- .debug_abbrev  0x00000000      0x114 ..\obj\uart.o
- .debug_abbrev  0x00000114       0xa2 ..\obj\main.o
- .debug_abbrev  0x000001b6      0x13b ..\obj\sysctl.o
- .debug_abbrev  0x000002f1      0x28f ..\obj\printf.o
- .debug_abbrev  0x00000580      0x113 ..\obj\gpio.o
- .debug_abbrev  0x00000693       0xa7 ..\obj\startup_lm3s.o
- .debug_abbrev  0x0000073a       0x14 ..\obj\sh_cmd.o
+.debug_abbrev   0x00000000      0x934
+ .debug_abbrev  0x00000000       0xab ..\obj\semihosting.o
+ .debug_abbrev  0x000000ab      0x114 ..\obj\uart.o
+ .debug_abbrev  0x000001bf      0x1d4 ..\obj\main.o
+ .debug_abbrev  0x00000393      0x13b ..\obj\sysctl.o
+ .debug_abbrev  0x000004ce      0x298 ..\obj\printf.o
+ .debug_abbrev  0x00000766      0x113 ..\obj\gpio.o
+ .debug_abbrev  0x00000879       0xa7 ..\obj\startup_lm3s.o
+ .debug_abbrev  0x00000920       0x14 ..\obj\sh_cmd.o
 
-.debug_aranges  0x00000000      0x510
+.debug_aranges  0x00000000      0x540
  .debug_aranges
-                0x00000000      0x158 ..\obj\uart.o
+                0x00000000       0x30 ..\obj\semihosting.o
  .debug_aranges
-                0x00000158       0x28 ..\obj\main.o
+                0x00000030      0x158 ..\obj\uart.o
  .debug_aranges
-                0x00000180      0x188 ..\obj\sysctl.o
+                0x00000188       0x28 ..\obj\main.o
  .debug_aranges
-                0x00000308       0xa0 ..\obj\printf.o
+                0x000001b0      0x188 ..\obj\sysctl.o
  .debug_aranges
-                0x000003a8      0x120 ..\obj\gpio.o
+                0x00000338       0xa0 ..\obj\printf.o
  .debug_aranges
-                0x000004c8       0x28 ..\obj\startup_lm3s.o
+                0x000003d8      0x120 ..\obj\gpio.o
  .debug_aranges
-                0x000004f0       0x20 ..\obj\sh_cmd.o
+                0x000004f8       0x28 ..\obj\startup_lm3s.o
+ .debug_aranges
+                0x00000520       0x20 ..\obj\sh_cmd.o
 
-.debug_ranges   0x00000000      0x490
- .debug_ranges  0x00000000      0x148 ..\obj\uart.o
- .debug_ranges  0x00000148       0x18 ..\obj\main.o
- .debug_ranges  0x00000160      0x178 ..\obj\sysctl.o
- .debug_ranges  0x000002d8       0x90 ..\obj\printf.o
- .debug_ranges  0x00000368      0x110 ..\obj\gpio.o
- .debug_ranges  0x00000478       0x18 ..\obj\startup_lm3s.o
+.debug_ranges   0x00000000      0x4b0
+ .debug_ranges  0x00000000       0x20 ..\obj\semihosting.o
+ .debug_ranges  0x00000020      0x148 ..\obj\uart.o
+ .debug_ranges  0x00000168       0x18 ..\obj\main.o
+ .debug_ranges  0x00000180      0x178 ..\obj\sysctl.o
+ .debug_ranges  0x000002f8       0x90 ..\obj\printf.o
+ .debug_ranges  0x00000388      0x110 ..\obj\gpio.o
+ .debug_ranges  0x00000498       0x18 ..\obj\startup_lm3s.o
 
-.debug_line     0x00000000     0x15a5
- .debug_line    0x00000000      0x496 ..\obj\uart.o
- .debug_line    0x00000496       0xaf ..\obj\main.o
- .debug_line    0x00000545      0x5ca ..\obj\sysctl.o
- .debug_line    0x00000b0f      0x3b2 ..\obj\printf.o
- .debug_line    0x00000ec1      0x59f ..\obj\gpio.o
- .debug_line    0x00001460       0xaa ..\obj\startup_lm3s.o
- .debug_line    0x0000150a       0x9b ..\obj\sh_cmd.o
+.debug_line     0x00000000     0x1742
+ .debug_line    0x00000000       0xc4 ..\obj\semihosting.o
+ .debug_line    0x000000c4      0x496 ..\obj\uart.o
+ .debug_line    0x0000055a      0x18c ..\obj\main.o
+ .debug_line    0x000006e6      0x5ca ..\obj\sysctl.o
+ .debug_line    0x00000cb0      0x3ae ..\obj\printf.o
+ .debug_line    0x0000105e      0x59f ..\obj\gpio.o
+ .debug_line    0x000015fd       0xaa ..\obj\startup_lm3s.o
+ .debug_line    0x000016a7       0x9b ..\obj\sh_cmd.o
 
-.debug_str      0x00000000     0x134b
- .debug_str     0x00000000      0x459 ..\obj\uart.o
+.debug_str      0x00000000     0x13e0
+ .debug_str     0x00000000      0x189 ..\obj\semihosting.o
+                                0x1c2 (size before relaxing)
+ .debug_str     0x00000189      0x3b0 ..\obj\uart.o
                                 0x498 (size before relaxing)
- .debug_str     0x00000459      0x11a ..\obj\main.o
-                                0x1fc (size before relaxing)
- .debug_str     0x00000573      0x4f2 ..\obj\sysctl.o
+ .debug_str     0x00000539      0x484 ..\obj\main.o
+                                0x5be (size before relaxing)
+ .debug_str     0x000009bd      0x4f2 ..\obj\sysctl.o
                                 0x5db (size before relaxing)
- .debug_str     0x00000a65      0x4e1 ..\obj\printf.o
+ .debug_str     0x00000eaf      0x12c ..\obj\printf.o
                                 0x6c2 (size before relaxing)
- .debug_str     0x00000f46      0x34c ..\obj\gpio.o
+ .debug_str     0x00000fdb      0x34c ..\obj\gpio.o
                                 0x459 (size before relaxing)
- .debug_str     0x00001292       0xb9 ..\obj\startup_lm3s.o
+ .debug_str     0x00001327       0xb9 ..\obj\startup_lm3s.o
                                 0x16f (size before relaxing)
 
 .comment        0x00000000       0x70
- .comment       0x00000000       0x70 ..\obj\uart.o
+ .comment       0x00000000       0x70 ..\obj\semihosting.o
                                  0x71 (size before relaxing)
+ .comment       0x00000000       0x71 ..\obj\uart.o
  .comment       0x00000000       0x71 ..\obj\main.o
  .comment       0x00000000       0x71 ..\obj\sysctl.o
  .comment       0x00000000       0x71 ..\obj\printf.o
@@ -705,24 +707,27 @@ OUTPUT(serial_port.elf elf32-littlearm)
 .ARM.attributes
                 0x00000000       0x31
  .ARM.attributes
-                0x00000000       0x33 ..\obj\uart.o
+                0x00000000       0x33 ..\obj\semihosting.o
  .ARM.attributes
-                0x00000033       0x33 ..\obj\main.o
+                0x00000033       0x33 ..\obj\uart.o
  .ARM.attributes
-                0x00000066       0x33 ..\obj\sysctl.o
+                0x00000066       0x33 ..\obj\main.o
  .ARM.attributes
-                0x00000099       0x33 ..\obj\printf.o
+                0x00000099       0x33 ..\obj\sysctl.o
  .ARM.attributes
-                0x000000cc       0x33 ..\obj\gpio.o
+                0x000000cc       0x33 ..\obj\printf.o
  .ARM.attributes
-                0x000000ff       0x33 ..\obj\startup_lm3s.o
+                0x000000ff       0x33 ..\obj\gpio.o
  .ARM.attributes
-                0x00000132       0x21 ..\obj\sh_cmd.o
+                0x00000132       0x33 ..\obj\startup_lm3s.o
+ .ARM.attributes
+                0x00000165       0x21 ..\obj\sh_cmd.o
 
-.debug_frame    0x00000000     0x1040
- .debug_frame   0x00000000      0x47c ..\obj\uart.o
- .debug_frame   0x0000047c       0x50 ..\obj\main.o
- .debug_frame   0x000004cc      0x4ec ..\obj\sysctl.o
- .debug_frame   0x000009b8      0x248 ..\obj\printf.o
- .debug_frame   0x00000c00      0x3f8 ..\obj\gpio.o
- .debug_frame   0x00000ff8       0x48 ..\obj\startup_lm3s.o
+.debug_frame    0x00000000     0x10b0
+ .debug_frame   0x00000000       0x70 ..\obj\semihosting.o
+ .debug_frame   0x00000070      0x47c ..\obj\uart.o
+ .debug_frame   0x000004ec       0x50 ..\obj\main.o
+ .debug_frame   0x0000053c      0x4ec ..\obj\sysctl.o
+ .debug_frame   0x00000a28      0x248 ..\obj\printf.o
+ .debug_frame   0x00000c70      0x3f8 ..\obj\gpio.o
+ .debug_frame   0x00001068       0x48 ..\obj\startup_lm3s.o

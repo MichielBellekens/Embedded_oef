@@ -1,5 +1,96 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <dependencies>
+   <includePath signature="/I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4_\Serial_poort\lm3slib\inc /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4_\Serial_poort\lm3slib /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4_\Serial_poort\cmsis /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4_\Serial_poort\lm3slib\driverlib /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4_\Serial_poort /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4_ /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4_\Serial_poort\semihosting">
+      <source file="..\..\..\lm3slib\inc\hw_memmap.h" lastModified="157be47b91e">
+      </source>
+      <source file="..\..\..\lm3slib\driverlib\uart.h" lastModified="157be47db4c">
+         <include file="..\..\..\lm3slib\driverlib\sysctl.h"/>
+      </source>
+      <source file="..\..\..\lm3slib\driverlib\debug.h" lastModified="157be47b8f6">
+      </source>
+      <source file="..\..\..\lm3slib\inc\hw_types.h" lastModified="157be47b928">
+      </source>
+      <source file="..\..\..\lm3slib\driverlib\cpu.h" lastModified="157be47b8ec">
+      </source>
+      <source file="..\..\..\lm3slib\driverlib\sysctl.h" lastModified="157be47d3e0">
+      </source>
+      <source file="..\..\..\lm3slib\driverlib\uart.c" lastModified="157be47db42">
+         <include file="..\..\..\lm3slib\inc\hw_ints.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_memmap.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_sysctl.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_types.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_uart.h"/>
+         <include file="..\..\..\lm3slib\driverlib\debug.h"/>
+         <include file="..\..\..\lm3slib\driverlib\interrupt.h"/>
+         <include file="..\..\..\lm3slib\driverlib\uart.h"/>
+      </source>
+      <source file="..\..\..\lm3slib\driverlib\cpu.c" lastModified="157be47b8ec">
+         <include file="..\..\..\lm3slib\driverlib\cpu.h"/>
+      </source>
+      <source file="..\..\..\lm3slib\driverlib\sysctl.c" lastModified="157be47d3e0">
+         <include file="..\..\..\lm3slib\inc\hw_ints.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_nvic.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_sysctl.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_types.h"/>
+         <include file="..\..\..\lm3slib\driverlib\cpu.h"/>
+         <include file="..\..\..\lm3slib\driverlib\debug.h"/>
+         <include file="..\..\..\lm3slib\driverlib\interrupt.h"/>
+         <include file="..\..\..\lm3slib\driverlib\sysctl.h"/>
+      </source>
+      <source file="..\..\..\lm3slib\inc\hw_uart.h" lastModified="157be47db4c">
+      </source>
+      <source file="..\..\..\stdio\printf.c" lastModified="157e208e31e">
+         <include file="..\..\..\semihosting\semihosting.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_memmap.h"/>
+      </source>
+      <source file="..\..\..\lm3slib\inc\hw_sysctl.h" lastModified="157be47d3ea">
+      </source>
+      <source file="..\..\..\lm3slib\driverlib\gpio.h" lastModified="157be47d390">
+      </source>
+      <source file="..\..\..\syscalls\syscalls.c" lastModified="157be47c06c">
+      </source>
+      <source file="..\..\..\lm3slib\driverlib\interrupt.h" lastModified="157be47d3b8">
+      </source>
+      <source file="..\..\..\lm3slib\driverlib\gpio.c" lastModified="157be47d386">
+         <include file="..\..\..\lm3slib\inc\hw_gpio.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_ints.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_memmap.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_sysctl.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_types.h"/>
+         <include file="..\..\..\lm3slib\driverlib\debug.h"/>
+         <include file="..\..\..\lm3slib\driverlib\gpio.h"/>
+         <include file="..\..\..\lm3slib\driverlib\interrupt.h"/>
+      </source>
+      <source file="..\..\..\semihosting\semihosting.h" lastModified="157be47c81e">
+      </source>
+      <source file="..\..\..\main.c" lastModified="157e210a156">
+         <include file="..\..\..\lm3slib\inc\hw_types.h"/>
+         <include file="..\..\..\lm3slib\driverlib\uart.h"/>
+         <include file="..\..\..\lm3slib\driverlib\gpio.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_memmap.h"/>
+      </source>
+      <source file="..\..\..\lm3slib\driverlib\interrupt.c" lastModified="157be47d3ae">
+         <include file="..\..\..\lm3slib\inc\hw_ints.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_nvic.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_types.h"/>
+         <include file="..\..\..\lm3slib\driverlib\cpu.h"/>
+         <include file="..\..\..\lm3slib\driverlib\debug.h"/>
+         <include file="..\..\..\lm3slib\driverlib\interrupt.h"/>
+      </source>
+      <source file="..\..\..\lm3slib\inc\hw_ints.h" lastModified="157be47d3b8">
+      </source>
+      <source file="..\..\..\startup\startup_lm3s.c" lastModified="157be47b946">
+      </source>
+      <source file="..\..\..\semihosting\semihosting.c" lastModified="157be47cfee">
+         <include file="..\..\..\semihosting\semihosting.h"/>
+      </source>
+      <source file="..\..\..\lm3slib\inc\hw_nvic.h" lastModified="157be47d3d6">
+      </source>
+      <source file="..\..\..\semihosting\sh_cmd.s" lastModified="157be47c81e">
+      </source>
+      <source file="..\..\..\lm3slib\inc\hw_gpio.h" lastModified="157be47d3a4">
+      </source>
+   </includePath>
    <includePath signature="/I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4_\Seriële_poort\cmsis /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4_\Seriële_poort\lm3slib /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4_\Seriële_poort\lm3slib\inc /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4_\Seriële_poort\lm3slib\driverlib /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4_\Seriële_poort\semihosting /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4_ /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_4_\Seriële_poort">
       <source file="..\..\..\lm3slib\inc\hw_memmap.h" lastModified="157be47b91e">
       </source>
@@ -39,14 +130,9 @@
       </source>
       <source file="..\..\..\lm3slib\inc\hw_uart.h" lastModified="157be47db4c">
       </source>
-      <source file="..\..\..\stdio\printf.c" lastModified="157be58c443">
-         <include file="..\..\..\lm3slib\inc\hw_memmap.h"/>
-      </source>
       <source file="..\..\..\lm3slib\inc\hw_sysctl.h" lastModified="157be47d3ea">
       </source>
       <source file="..\..\..\lm3slib\driverlib\gpio.h" lastModified="157be47d390">
-      </source>
-      <source file="..\..\..\syscalls\syscalls.c" lastModified="157be47c06c">
       </source>
       <source file="..\..\..\lm3slib\driverlib\interrupt.h" lastModified="157be47d3b8">
       </source>
@@ -62,12 +148,6 @@
       </source>
       <source file="..\..\..\semihosting\semihosting.h" lastModified="157be47c81e">
       </source>
-      <source file="..\..\..\main.c" lastModified="157be6eeeb2">
-         <include file="..\..\..\lm3slib\inc\hw_types.h"/>
-         <include file="..\..\..\lm3slib\driverlib\uart.h"/>
-         <include file="..\..\..\lm3slib\driverlib\gpio.h"/>
-         <include file="..\..\..\lm3slib\inc\hw_memmap.h"/>
-      </source>
       <source file="..\..\..\lm3slib\driverlib\interrupt.c" lastModified="157be47d3ae">
          <include file="..\..\..\lm3slib\inc\hw_ints.h"/>
          <include file="..\..\..\lm3slib\inc\hw_nvic.h"/>
@@ -80,12 +160,9 @@
       </source>
       <source file="..\..\..\startup\startup_lm3s.c" lastModified="157be47b946">
       </source>
-      <source file="..\..\..\semihosting\semihosting.c" lastModified="157be47cfee">
-         <include file="..\..\..\semihosting\semihosting.h"/>
+      <source file="..\..\..\lm3slib\inc\hw_nvic.h" lastModified="157be47d3d6">
       </source>
       <source file="..\..\..\semihosting\sh_cmd.s" lastModified="157be47c81e">
-      </source>
-      <source file="..\..\..\lm3slib\inc\hw_nvic.h" lastModified="157be47d3d6">
       </source>
       <source file="..\..\..\lm3slib\inc\hw_gpio.h" lastModified="157be47d3a4">
       </source>

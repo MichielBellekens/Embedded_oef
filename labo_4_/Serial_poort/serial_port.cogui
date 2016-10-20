@@ -16,8 +16,6 @@
 <part id="3"/>
 <part id="4"/>
 <part id="5"/>
-<part id="6"/>
-<part id="7"/>
 </presentation>
 </folder>
 </info>
@@ -26,46 +24,38 @@
 <input factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory">&#x0A;<org.coocox.welcome.ui.WelcomePage/>
 </input>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Serial_poort/main.c" title="main.c" tooltip="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Serial_poort/main.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Serial_poort/main.c" title="main.c" tooltip="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Serial_poort/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/serial_port/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="593" selectionTopPixel="383"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1240" selectionTopPixel="443"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="printf.c" partName="printf.c" path="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Seriële_poort/stdio/printf.c" title="printf.c" tooltip="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Seriële_poort/stdio/printf.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/serial_port/stdio/printf.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="741" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="hw_memmap.h" partName="hw_memmap.h" path="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Seriële_poort/lm3slib/inc/hw_memmap.h" title="hw_memmap.h" tooltip="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Seriële_poort/lm3slib/inc/hw_memmap.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/serial_port/lm3slib/inc/hw_memmap.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="10" selectionOffset="2077" selectionTopPixel="680"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="uart.c" partName="uart.c" path="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Seriële_poort/lm3slib/driverlib/uart.c" title="uart.c" tooltip="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Seriële_poort/lm3slib/driverlib/uart.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/serial_port/lm3slib/driverlib/uart.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="11" selectionOffset="36955" selectionTopPixel="21380"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="uart.h" partName="uart.h" path="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Seriële_poort/lm3slib/driverlib/uart.h" title="uart.h" tooltip="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Seriële_poort/lm3slib/driverlib/uart.h" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/serial_port/lm3slib/driverlib/uart.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="18" selectionOffset="3213" selectionTopPixel="1140"/>
-</editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="hw_types.h" partName="hw_types.h" path="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Seriële_poort/lm3slib/inc/hw_types.h" title="hw_types.h" tooltip="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Seriële_poort/lm3slib/inc/hw_types.h" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="hw_types.h" partName="hw_types.h" path="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Serial_poort/lm3slib/inc/hw_types.h" title="hw_types.h" tooltip="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Serial_poort/lm3slib/inc/hw_types.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/serial_port/lm3slib/inc/hw_types.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="390"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="1380"/>
 </editor>
-<editor id="org.coocox.builder.ui.editors.ConfigEditor" name="" partName="Configuration" title="Configuration" tooltip="" workbook="DefaultEditorWorkbook">
-<input factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory">
-<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="5" verticalPosition="0"/>
-</input>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="semihosting.c" partName="semihosting.c" path="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Serial_poort/semihosting/semihosting.c" title="semihosting.c" tooltip="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Serial_poort/semihosting/semihosting.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/serial_port/semihosting/semihosting.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="startup_lm3s.c" partName="startup_lm3s.c" path="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Serial_poort/startup/startup_lm3s.c" title="startup_lm3s.c" tooltip="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Serial_poort/startup/startup_lm3s.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/serial_port/startup/startup_lm3s.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="printf.c" partName="printf.c" path="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Serial_poort/stdio/printf.c" title="printf.c" tooltip="C:/Users/Gebruiker/Desktop/Embedded_systems/labo_4_/Serial_poort/stdio/printf.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/serial_port/stdio/printf.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="12131" selectionTopPixel="10025"/>
 </editor>
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="2">
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="9">
 <expanded>
 <element path="/serial_port"/>
 <element path="/serial_port/lm3slib"/>
 <element path="/serial_port/lm3slib/driverlib"/>
+<element path="/serial_port/stdio"/>
 </expanded>
 <selection>
-<element path="/serial_port/main.c"/>
+<element path="/serial_port/stdio/printf.c"/>
 </selection>
 </viewState>
 </view>
@@ -219,8 +209,8 @@
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <hide_toolbar_item_id id="org.coocox.builder.ui.build"/>
 <hide_toolbar_item_id id="org.coocox.welcome.ui.action.welcome"/>
-<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
 <hide_toolbar_item_id id="org.coocox.component.ui.ShowRepositoryAction"/>
+<hide_toolbar_item_id id="org.coocox.codebugger.configuration.coideProgramDownloadAction"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.debug.ui.DebugView"/>
 <view id="org.coocox.codebugger.trace.ui.traceview"/>
@@ -270,22 +260,6 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/serial_port/main.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/serial_port/stdio/printf.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/serial_port/lm3slib/inc/hw_memmap.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/serial_port/stdio/printf.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/serial_port/lm3slib/driverlib/uart.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/serial_port/lm3slib/driverlib/uart.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/serial_port/lm3slib/inc/hw_types.h"/>
-<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
-<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="5" verticalPosition="0"/>
-</editor>
-<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.welcome.ui.WelcomePage">
-<org.coocox.welcome.ui.WelcomePage/>
-</editor>
-<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
-<org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="5" verticalPosition="0"/>
-</editor>
 <editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
 <org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="5" verticalPosition="0"/>
 </editor>
@@ -299,140 +273,156 @@
 <org.coocox.builder.ui.editors.ConfigEditor horizontalPosition="0" subTagIndex="5" verticalPosition="0"/>
 </editor>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/serial_port/main.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/serial_port/lm3slib/inc/hw_memmap.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/serial_port/lm3slib/driverlib/uart.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/serial_port/lm3slib/driverlib/uart.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/serial_port/semihosting/semihosting.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/serial_port/stdio/printf.c"/>
+<editor factoryID="org.coocox.builder.ui.persistent.PersistentElementFactory" id="org.coocox.builder.ui.editors.ConfigEditor">
+<org.coocox.builder.ui.editors.ConfigEditor/>
+</editor>
+<editor factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser">
+<subPage/>
+</editor>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/serial_port/startup/startup_lm3s.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/serial_port/stdio/printf.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/serial_port/lm3slib/inc/hw_types.h"/>
 </editors>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="40" y="0"/>
+<item historyLabel="Configuration" index="0"/>
+<item historyLabel="Configuration" index="1"/>
+<item historyLabel="Repository" index="2"/>
+<item historyLabel="Configuration" index="1"/>
+<item historyLabel="Configuration" index="3"/>
+<item historyLabel="main.c" index="4">
+<position info="not_deleted" x="593" y="0"/>
 </item>
-<item historyLabel="printf.c" index="1">
-<position info="not_deleted" x="767" y="0"/>
+<item historyLabel="hw_memmap.h" index="5">
+<position/>
 </item>
-<item historyLabel="hw_memmap.h" index="2">
-<position info="not_deleted" x="2077" y="10"/>
+<item historyLabel="main.c" index="4">
+<position info="not_deleted" x="1103" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="40" y="0"/>
+<item historyLabel="uart.c" index="6">
+<position/>
 </item>
-<item historyLabel="printf.c" index="1">
-<position info="not_deleted" x="468" y="0"/>
+<item historyLabel="main.c" index="4">
+<position info="not_deleted" x="1103" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="40" y="0"/>
-</item>
-<item historyLabel="hw_memmap.h" index="2">
-<position info="not_deleted" x="2077" y="10"/>
-</item>
-<item historyLabel="printf.c" index="1">
-<position info="not_deleted" x="470" y="22"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="40" y="0"/>
-</item>
-<item historyLabel="printf.c" index="3">
-<position info="not_deleted" x="470" y="22"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="748" y="0"/>
-</item>
-<item historyLabel="uart.c" index="4">
-<position info="not_deleted" x="8925" y="20"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="807" y="0"/>
-</item>
-<item historyLabel="uart.c" index="4">
-<position info="not_deleted" x="9027" y="20"/>
-</item>
-<item historyLabel="printf.c" index="3">
-<position info="not_deleted" x="470" y="22"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="748" y="0"/>
-</item>
-<item historyLabel="uart.c" index="4">
-<position info="not_deleted" x="9895" y="19"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="802" y="0"/>
-</item>
-<item historyLabel="uart.h" index="5">
+<item historyLabel="uart.h" index="7">
 <position info="not_deleted" x="3213" y="18"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="34" y="0"/>
+<item historyLabel="main.c" index="4">
+<position info="not_deleted" x="1103" y="0"/>
 </item>
-<item historyLabel="hw_types.h" index="6">
+<item historyLabel="uart.c" index="6">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="291" y="0"/>
+<item historyLabel="main.c" index="4">
+<position info="not_deleted" x="1103" y="0"/>
 </item>
-<item historyLabel="printf.c" index="3">
-<position info="not_deleted" x="714" y="11"/>
+<item historyLabel="semihosting.c" index="8">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="290" y="0"/>
+<item historyLabel="printf.c" index="9">
+<position info="not_deleted" x="764" y="0"/>
 </item>
-<item historyLabel="printf.c" index="3">
-<position info="not_deleted" x="726" y="10"/>
+<item historyLabel="main.c" index="4">
+<position info="not_deleted" x="1186" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="273" y="0"/>
+<item historyLabel="printf.c" index="9">
+<position info="not_deleted" x="764" y="0"/>
 </item>
-<item historyLabel="uart.c" index="4">
-<position info="not_deleted" x="36955" y="11"/>
+<item historyLabel="main.c" index="4">
+<position info="not_deleted" x="1140" y="0"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="273" y="0"/>
+<item historyLabel="printf.c" index="9">
+<position info="not_deleted" x="10737" y="6"/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="595" y="0"/>
+<item historyLabel="main.c" index="4">
+<position info="not_deleted" x="77" y="0"/>
 </item>
-<item historyLabel="Configuration" index="7"/>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1004" y="0"/>
+<item historyLabel="printf.c" index="9">
+<position info="not_deleted" x="10737" y="6"/>
 </item>
-<item historyLabel="welcome" index="8"/>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="1004" y="0"/>
+<item historyLabel="printf.c" index="9">
+<position info="not_deleted" x="10897" y="0"/>
 </item>
-<item historyLabel="Configuration" index="9"/>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="860" y="0"/>
+<item historyLabel="printf.c" index="9">
+<position info="not_deleted" x="11852" y="5"/>
 </item>
-<item historyLabel="printf.c" index="3">
-<position info="not_deleted" x="741" y="0"/>
+<item historyLabel="main.c" index="4">
+<position/>
 </item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="860" y="0"/>
-</item>
-<item historyLabel="printf.c" index="3">
-<position info="not_deleted" x="741" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="860" y="0"/>
-</item>
-<item historyLabel="printf.c" index="3">
-<position info="not_deleted" x="741" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="919" y="0"/>
-</item>
-<item historyLabel="printf.c" index="3">
-<position info="not_deleted" x="741" y="0"/>
-</item>
-<item historyLabel="main.c" index="0">
-<position info="not_deleted" x="593" y="0"/>
-</item>
-<item historyLabel="printf.c" index="3">
-<position info="not_deleted" x="741" y="0"/>
+<item historyLabel="printf.c" index="9">
+<position info="not_deleted" x="11852" y="5"/>
 </item>
 <item historyLabel="Configuration" index="10"/>
-<item historyLabel="Configuration" index="11"/>
-<item historyLabel="Repository" index="12"/>
-<item historyLabel="Configuration" index="11"/>
-<item historyLabel="Configuration" index="13"/>
-<item active="true" historyLabel="main.c" index="14">
-<position info="not_deleted" x="593" y="0"/>
+<item historyLabel="main.c" index="4">
+<position info="not_deleted" x="548" y="0"/>
+</item>
+<item historyLabel="printf.c" index="9">
+<position info="not_deleted" x="11852" y="5"/>
+</item>
+<item historyLabel="printf.c" index="9">
+<position info="not_deleted" x="714" y="9"/>
+</item>
+<item historyLabel="printf.c" index="9">
+<position info="not_deleted" x="12261" y="0"/>
+</item>
+<item historyLabel="main.c" index="4">
+<position info="not_deleted" x="149" y="61"/>
+</item>
+<item historyLabel="printf.c" index="9">
+<position info="not_deleted" x="12261" y="0"/>
+</item>
+<item historyLabel="main.c" index="4">
+<position info="not_deleted" x="149" y="61"/>
+</item>
+<item historyLabel="main.c" index="4">
+<position info="not_deleted" x="1177" y="0"/>
+</item>
+<item historyLabel="main.c" index="4">
+<position info="not_deleted" x="571" y="0"/>
+</item>
+<item historyLabel="printf.c" index="9">
+<position info="not_deleted" x="12261" y="0"/>
+</item>
+<item historyLabel="main.c" index="4">
+<position info="not_deleted" x="456" y="0"/>
+</item>
+<item historyLabel="Repository" index="11"/>
+<item historyLabel="main.c" index="4">
+<position info="not_deleted" x="456" y="0"/>
+</item>
+<item historyLabel="startup_lm3s.c" index="12">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="4">
+<position info="not_deleted" x="571" y="0"/>
+</item>
+<item historyLabel="printf.c" index="9">
+<position info="not_deleted" x="755" y="0"/>
+</item>
+<item historyLabel="hw_memmap.h" index="5">
+<position info="not_deleted" x="2077" y="10"/>
+</item>
+<item historyLabel="printf.c" index="9">
+<position info="not_deleted" x="755" y="0"/>
+</item>
+<item historyLabel="main.c" index="4">
+<position info="not_deleted" x="571" y="0"/>
+</item>
+<item historyLabel="printf.c" index="13">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="main.c" index="4">
+<position info="not_deleted" x="1240" y="0"/>
+</item>
+<item historyLabel="hw_types.h" index="14">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item active="true" historyLabel="printf.c" index="13">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -441,9 +431,24 @@
 <actionBarAdvisor/>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="printf.c" tooltip="serial_port/stdio/printf.c">
+<persistable path="/serial_port/stdio/printf.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="hw_memmap.h" tooltip="serial_port/lm3slib/inc/hw_memmap.h">
+<persistable path="/serial_port/lm3slib/inc/hw_memmap.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="startup_lm3s.c" tooltip="serial_port/startup/startup_lm3s.c">
+<persistable path="/serial_port/startup/startup_lm3s.c"/>
+</file>
 <file factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory" id="org.coocox.builder.ui.editors.repository.RepositoryBrowser" name="Repository" tooltip="Repository">
 <persistable>&#x0A;<subPage/>
 </persistable>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="semihosting.c" tooltip="serial_port/semihosting/semihosting.c">
+<persistable path="/serial_port/semihosting/semihosting.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="uart.c" tooltip="serial_port/lm3slib/driverlib/uart.c">
+<persistable path="/serial_port/lm3slib/driverlib/uart.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="hw_types.h" tooltip="serial_port/lm3slib/inc/hw_types.h">
 <persistable path="/serial_port/lm3slib/inc/hw_types.h"/>
@@ -451,17 +456,8 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="uart.h" tooltip="serial_port/lm3slib/driverlib/uart.h">
 <persistable path="/serial_port/lm3slib/driverlib/uart.h"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="uart.c" tooltip="serial_port/lm3slib/driverlib/uart.c">
-<persistable path="/serial_port/lm3slib/driverlib/uart.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="hw_memmap.h" tooltip="serial_port/lm3slib/inc/hw_memmap.h">
-<persistable path="/serial_port/lm3slib/inc/hw_memmap.h"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="sysctl.h" tooltip="serial_port/lm3slib/driverlib/sysctl.h">
 <persistable path="/serial_port/lm3slib/driverlib/sysctl.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="printf.c" tooltip="serial_port/stdio/printf.c">
-<persistable path="/serial_port/stdio/printf.c"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="serial_port/main.c">
 <persistable path="/serial_port/main.c"/>
@@ -478,14 +474,8 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="Seri�le_poort/main.c">
 <persistable path="/Seri�le_poort/main.c"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="printf.c" tooltip="Seriële_poort/stdio/printf.c">
-<persistable path="/Seriële_poort/stdio/printf.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="hw_types.h" tooltip="serial_port/lm3slib/inc/hw_types.h">
-<persistable path="/serial_port/lm3slib/inc/hw_types.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="uart.h" tooltip="serial_port/lm3slib/driverlib/uart.h">
-<persistable path="/serial_port/lm3slib/driverlib/uart.h"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" tooltip="Seri�le_poort/main.c">
+<persistable path="/Seri�le_poort/main.c"/>
 </file>
 </mruList>
 </workbench>

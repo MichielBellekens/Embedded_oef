@@ -6,7 +6,7 @@
  ********************************************************************************/
 #include <stdio.h>
 #include <stdarg.h>
-
+#include<semihosting.h>
 #include <hw_memmap.h>
 
 
@@ -511,7 +511,7 @@ signed int puts(const char *pStr)
  * @param The character written if successful, or -1 if the output stream is
  *        not stdout or stderr.
  */
-signed int fputc(signed int c, FILE *pStream)
+/*signed int fputc(signed int c, FILE *pStream)
 {
     if ((pStream == stdout) || (pStream == stderr)) {
 
@@ -523,8 +523,26 @@ signed int fputc(signed int c, FILE *pStream)
 
         return EOF;
     }
-}
+}*/
 
+//Copied the function but replaced the putchar function depending off the outputstream
+signed int fputc(signed int c, FILE *pStream)
+{
+    if (pStream == stdout) {
+
+    	UARTCharPut(UART0_BASE, c);
+        return c;
+    }
+    else if (pStream == stderr)
+    {
+    	SH_SendChar(c);
+    	return c;
+    }
+    else {
+
+        return EOF;
+    }
+}
 
 /**
  * @brief  Implementation of fputs using the DBGU as the standard output. Required

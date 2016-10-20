@@ -7,17 +7,17 @@
       <target file="uart.o" lastModified="157be79aacc">
          <source file="..\..\..\lm3slib\driverlib\uart.c" lastModified="157be47db42"/>
       </target>
-      <target file="printf.o" lastModified="157be79ac11">
-         <source file="..\..\..\stdio\printf.c" lastModified="157be58bc73"/>
+      <target file="printf.o" lastModified="157e20d92d8">
+         <source file="..\..\..\stdio\printf.c" lastModified="157e208db4e"/>
       </target>
       <target file="startup_lm3s.o" lastModified="157be79ad47">
          <source file="..\..\..\startup\startup_lm3s.c" lastModified="157be47b946"/>
       </target>
+      <target file="main.o" lastModified="157e210a8c2">
+         <source file="..\..\..\main.c" lastModified="157e2109d6e"/>
+      </target>
       <target file="interrupt.o" lastModified="157be79ad01">
          <source file="..\..\..\lm3slib\driverlib\interrupt.c" lastModified="157be47d3ae"/>
-      </target>
-      <target file="main.o" lastModified="157be79ab30">
-         <source file="..\..\..\main.c" lastModified="157be6eeaca"/>
       </target>
       <target file="sh_cmd.o" lastModified="157be79ad5b">
          <source file="..\..\..\semihosting\sh_cmd.s" lastModified="157be47c81e"/>
