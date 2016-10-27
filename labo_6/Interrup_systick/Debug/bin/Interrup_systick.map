@@ -1,0 +1,517 @@
+Archive member included because of file (symbol)
+
+..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(cpu.o)
+                              ..\obj\interrupt.o (CPUcpsid)
+..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+                              ..\obj\main.o (SysCtlPeripheralEnable)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 ..\obj\main.o
+ .data          0x00000000        0x0 ..\obj\main.o
+ .text          0x00000000        0x0 ..\obj\interrupt.o
+ .data          0x00000000        0x0 ..\obj\interrupt.o
+ .bss           0x00000000        0x0 ..\obj\interrupt.o
+ .rodata        0x00000000       0x68 ..\obj\interrupt.o
+ .text.IntDefaultHandler
+                0x00000000        0x8 ..\obj\interrupt.o
+ vtable         0x00000000      0x400 ..\obj\interrupt.o
+ .text.IntMasterEnable
+                0x00000000       0x10 ..\obj\interrupt.o
+ .text.IntMasterDisable
+                0x00000000       0x10 ..\obj\interrupt.o
+ .text.IntRegister
+                0x00000000       0x64 ..\obj\interrupt.o
+ .text.IntUnregister
+                0x00000000       0x24 ..\obj\interrupt.o
+ .text.IntPriorityGroupingSet
+                0x00000000       0x30 ..\obj\interrupt.o
+ .text.IntPriorityGroupingGet
+                0x00000000       0x48 ..\obj\interrupt.o
+ .text.IntPrioritySet
+                0x00000000       0x60 ..\obj\interrupt.o
+ .text.IntPriorityGet
+                0x00000000       0x34 ..\obj\interrupt.o
+ .text.IntEnable
+                0x00000000       0xa4 ..\obj\interrupt.o
+ .text.IntDisable
+                0x00000000       0xa4 ..\obj\interrupt.o
+ .text.IntPendSet
+                0x00000000       0x8c ..\obj\interrupt.o
+ .text.IntPendClear
+                0x00000000       0x78 ..\obj\interrupt.o
+ .text.IntPriorityMaskSet
+                0x00000000       0x14 ..\obj\interrupt.o
+ .text.IntPriorityMaskGet
+                0x00000000       0x10 ..\obj\interrupt.o
+ .debug_info    0x00000000      0x30b ..\obj\interrupt.o
+ .debug_abbrev  0x00000000      0x143 ..\obj\interrupt.o
+ .debug_aranges
+                0x00000000       0x90 ..\obj\interrupt.o
+ .debug_ranges  0x00000000       0x80 ..\obj\interrupt.o
+ .debug_line    0x00000000      0x24d ..\obj\interrupt.o
+ .debug_str     0x00000000      0x270 ..\obj\interrupt.o
+ .comment       0x00000000       0x71 ..\obj\interrupt.o
+ .ARM.attributes
+                0x00000000       0x33 ..\obj\interrupt.o
+ .debug_frame   0x00000000      0x1b4 ..\obj\interrupt.o
+ .text          0x00000000        0x0 ..\obj\startup_lm3s.o
+ .data          0x00000000        0x0 ..\obj\startup_lm3s.o
+ .bss           0x00000000        0x0 ..\obj\startup_lm3s.o
+ .text          0x00000000        0x0 ..\obj\syscalls.o
+ .data          0x00000000        0x0 ..\obj\syscalls.o
+ .bss           0x00000000        0x4 ..\obj\syscalls.o
+ .text._sbrk    0x00000000       0x40 ..\obj\syscalls.o
+ .text.link     0x00000000       0x1c ..\obj\syscalls.o
+ .text._close   0x00000000       0x18 ..\obj\syscalls.o
+ .text._fstat   0x00000000       0x20 ..\obj\syscalls.o
+ .text._isatty  0x00000000       0x18 ..\obj\syscalls.o
+ .text._lseek   0x00000000       0x1c ..\obj\syscalls.o
+ .text._read    0x00000000       0x1c ..\obj\syscalls.o
+ .text._write   0x00000000       0x1c ..\obj\syscalls.o
+ .text.abort    0x00000000        0x8 ..\obj\syscalls.o
+ .debug_info    0x00000000      0x3ee ..\obj\syscalls.o
+ .debug_abbrev  0x00000000       0xe2 ..\obj\syscalls.o
+ .debug_aranges
+                0x00000000       0x60 ..\obj\syscalls.o
+ .debug_ranges  0x00000000       0x50 ..\obj\syscalls.o
+ .debug_line    0x00000000      0x183 ..\obj\syscalls.o
+ .debug_str     0x00000000      0x2f1 ..\obj\syscalls.o
+ .comment       0x00000000       0x71 ..\obj\syscalls.o
+ .ARM.attributes
+                0x00000000       0x33 ..\obj\syscalls.o
+ .debug_frame   0x00000000      0x108 ..\obj\syscalls.o
+ .text          0x00000000        0x0 ..\obj\cpu.o
+ .data          0x00000000        0x0 ..\obj\cpu.o
+ .bss           0x00000000        0x0 ..\obj\cpu.o
+ .debug_line    0x00000000        0x0 ..\obj\cpu.o
+ .debug_str     0x00000000        0x0 ..\obj\cpu.o
+ .comment       0x00000000       0x71 ..\obj\cpu.o
+ .ARM.attributes
+                0x00000000       0x33 ..\obj\cpu.o
+ .text          0x00000000        0x0 ..\obj\systick.o
+ .data          0x00000000        0x0 ..\obj\systick.o
+ .bss           0x00000000        0x0 ..\obj\systick.o
+ .text.SysTickDisable
+                0x00000000       0x1c ..\obj\systick.o
+ .text.SysTickIntRegister
+                0x00000000       0x28 ..\obj\systick.o
+ .text.SysTickIntUnregister
+                0x00000000       0x1c ..\obj\systick.o
+ .text.SysTickIntDisable
+                0x00000000       0x1c ..\obj\systick.o
+ .text.SysTickPeriodGet
+                0x00000000       0x18 ..\obj\systick.o
+ .text.SysTickValueGet
+                0x00000000       0x18 ..\obj\systick.o
+ .text          0x00000000        0x0 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(cpu.o)
+ .data          0x00000000        0x0 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(cpu.o)
+ .bss           0x00000000        0x0 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(cpu.o)
+ .text.CPUcpsid
+                0x00000000        0x8 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(cpu.o)
+ .text.CPUprimask
+                0x00000000        0x6 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(cpu.o)
+ .text.CPUcpsie
+                0x00000000        0x8 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(cpu.o)
+ .text.CPUwfi   0x00000000        0x4 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(cpu.o)
+ .text.CPUbasepriSet
+                0x00000000        0x6 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(cpu.o)
+ .text.CPUbasepriGet
+                0x00000000        0x6 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(cpu.o)
+ .comment       0x00000000       0x2c ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(cpu.o)
+ .ARM.attributes
+                0x00000000       0x31 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(cpu.o)
+ .text          0x00000000        0x0 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .data          0x00000000        0x0 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .bss           0x00000000        0x0 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlPeripheralMapToNew
+                0x00000000       0x24 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlSRAMSizeGet
+                0x00000000       0x14 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlFlashSizeGet
+                0x00000000       0x14 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlPinPresent
+                0x00000000       0x14 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlPeripheralPresent
+                0x00000000       0x7c ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlPeripheralReady
+                0x00000000       0x38 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlPeripheralPowerOn
+                0x00000000       0x38 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlPeripheralPowerOff
+                0x00000000       0x38 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlPeripheralReset
+                0x00000000       0x8c ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlPeripheralDisable
+                0x00000000       0x5c ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlPeripheralSleepEnable
+                0x00000000       0x5c ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlPeripheralSleepDisable
+                0x00000000       0x5c ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlPeripheralDeepSleepEnable
+                0x00000000       0x5c ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlPeripheralDeepSleepDisable
+                0x00000000       0x5c ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlPeripheralClockGating
+                0x00000000       0x1c ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlIntRegister
+                0x00000000       0x14 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlIntUnregister
+                0x00000000       0x12 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlIntEnable
+                0x00000000       0x10 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlIntDisable
+                0x00000000       0x10 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlIntClear
+                0x00000000        0xc ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlIntStatus
+                0x00000000       0x18 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlLDOSet
+                0x00000000        0xc ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlLDOGet
+                0x00000000        0xc ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlLDOConfigSet
+                0x00000000        0xc ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlReset
+                0x00000000       0x10 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlSleep
+                0x00000000        0x4 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlDeepSleep
+                0x00000000       0x20 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlResetCauseGet
+                0x00000000        0xc ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlResetCauseClear
+                0x00000000       0x10 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlBrownOutConfigSet
+                0x00000000       0x10 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlMOSCConfigSet
+                0x00000000        0xc ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlPIOSCCalibrate
+                0x00000000       0x54 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlClockGet
+                0x00000000      0x22c ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlDeepSleepClockSet
+                0x00000000        0xc ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlPWMClockSet
+                0x00000000       0x14 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlPWMClockGet
+                0x00000000       0x18 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlADCSpeedSet
+                0x00000000       0x20 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlADCSpeedGet
+                0x00000000       0x10 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlIOSCVerificationSet
+                0x00000000       0x1c ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlMOSCVerificationSet
+                0x00000000       0x1c ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlPLLVerificationSet
+                0x00000000       0x1c ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlClkVerificationClear
+                0x00000000       0x10 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlGPIOAHBEnable
+                0x00000000       0x14 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlGPIOAHBDisable
+                0x00000000       0x14 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlUSBPLLEnable
+                0x00000000       0x10 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlUSBPLLDisable
+                0x00000000       0x10 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .text.SysCtlI2SMClkSet
+                0x00000000       0xe0 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .bss.ulOscSelect
+                0x00000000        0x4 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .bss.ulSysDiv  0x00000000        0x4 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .bss.ulOsc     0x00000000        0x4 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .rodata.g_pulDCRegs
+                0x00000000       0x10 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .rodata.g_pulXtals
+                0x00000000       0x6c ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .rodata.g_pulDCGCRegs
+                0x00000000        0xc ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .rodata.g_ppulPeripheralMap
+                0x00000000      0x120 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .rodata.g_pulSCGCRegs
+                0x00000000        0xc ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .rodata.g_pulSRCRRegs
+                0x00000000        0xc ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ .bss.bNewPLL   0x00000000        0x1 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+rom              0x00000000         0x00040000         xr
+ram              0x20000000         0x00010000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+                0x20010000                _eram = 0x20010000
+
+.text           0x00000000      0x458
+ *(.isr_vector)
+ .isr_vector    0x00000000      0x100 ..\obj\startup_lm3s.o
+                0x00000000                g_pfnVectors
+ *(.text*)
+ .text.sleep    0x00000100       0x30 ..\obj\main.o
+                0x00000100                sleep
+ .text.SysTick_Handler
+                0x00000130       0x1c ..\obj\main.o
+                0x00000130                SysTick_Handler
+ .text.init     0x0000014c       0x24 ..\obj\main.o
+                0x0000014c                init
+ .text.main     0x00000170       0x48 ..\obj\main.o
+                0x00000170                main
+ .text.Default_Reset_Handler
+                0x000001b8       0x5c ..\obj\startup_lm3s.o
+                0x000001b8                Default_Reset_Handler
+                0x000001b8                Reset_Handler
+ .text.Default_Handler
+                0x00000214        0x8 ..\obj\startup_lm3s.o
+                0x00000214                DebugMon_Handler
+                0x00000214                FlashCtrl_IRQHandler
+                0x00000214                Timer0B_IRQHandler
+                0x00000214                I2C0_IRQHandler
+                0x00000214                HardFault_Handler
+                0x00000214                PendSV_Handler
+                0x00000214                NMI_Handler
+                0x00000214                I2C1_IRQHandler
+                0x00000214                PWMGen0_IRQHandler
+                0x00000214                UART1_IRQHandler
+                0x00000214                CAN1_IRQHandler
+                0x00000214                Timer1B_IRQHandler
+                0x00000214                Watchdog_IRQHandler
+                0x00000214                UART0_IRQHandler
+                0x00000214                SSI0_IRQHandler
+                0x00000214                UsageFault_Handler
+                0x00000214                ADCSeq1_IRQHandler
+                0x00000214                PWMFault_IRQHandler
+                0x00000214                PWMGen1_IRQHandler
+                0x00000214                SSI1_IRQHandler
+                0x00000214                uDMA_IRQHandler
+                0x00000214                GPIOPortC_IRQHandler
+                0x00000214                ADCSeq2_IRQHandler
+                0x00000214                PWMGen2_IRQHandler
+                0x00000214                UART2_IRQHandler
+                0x00000214                uDMAErr_IRQHandler
+                0x00000214                QEI1_IRQHandler
+                0x00000214                QEI0_IRQHandler
+                0x00000214                PWMGen3_IRQHandler
+                0x00000214                GPIOPortD_IRQHandler
+                0x00000214                USB0_IRQHandler
+                0x00000214                MemManage_Handler
+                0x00000214                Ethernet_IRQHandler
+                0x00000214                SVC_Handler
+                0x00000214                Timer3B_IRQHandler
+                0x00000214                Timer3A_IRQHandler
+                0x00000214                GPIOPortA_IRQHandler
+                0x00000214                Timer0A_IRQHandler
+                0x00000214                ADCSeq0_IRQHandler
+                0x00000214                Timer1A_IRQHandler
+                0x00000214                GPIOPortG_IRQHandler
+                0x00000214                ADCSeq3_IRQHandler
+                0x00000214                GPIOPortE_IRQHandler
+                0x00000214                CAN0_IRQHandler
+                0x00000214                Comp0_IRQHandler
+                0x00000214                Comp1_IRQHandler
+                0x00000214                Comp2_IRQHandler
+                0x00000214                GPIOPortF_IRQHandler
+                0x00000214                GPIOPortB_IRQHandler
+                0x00000214                CAN2_IRQHandler
+                0x00000214                GPIOPortH_IRQHandler
+                0x00000214                BusFault_Handler
+                0x00000214                Timer2A_IRQHandler
+                0x00000214                Timer2B_IRQHandler
+                0x00000214                SysCtrl_IRQHandler
+                0x00000214                Hibernate_IRQHandler
+ .text.SysTickEnable
+                0x0000021c       0x1c ..\obj\systick.o
+                0x0000021c                SysTickEnable
+ .text.SysTickIntEnable
+                0x00000238       0x1c ..\obj\systick.o
+                0x00000238                SysTickIntEnable
+ .text.SysTickPeriodSet
+                0x00000254       0x20 ..\obj\systick.o
+                0x00000254                SysTickPeriodSet
+ .text.SysCtlPeripheralEnable
+                0x00000274       0x5c ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+                0x00000274                SysCtlPeripheralEnable
+ .text.SysCtlDelay
+                0x000002d0        0x6 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+                0x000002d0                SysCtlDelay
+ *fill*         0x000002d6        0x2 
+ .text.SysCtlClockSet
+                0x000002d8      0x174 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+                0x000002d8                SysCtlClockSet
+ *(.init)
+ *(.fini)
+ *crtbegin.o(.ctors)
+ *crtbegin?.o(.ctors)
+ *(EXCLUDE_FILE(*crtend.o *crtend?.o) .ctors)
+ *(SORT(.ctors.*))
+ *(.ctors)
+ *crtbegin.o(.dtors)
+ *crtbegin?.o(.dtors)
+ *(EXCLUDE_FILE(*crtend.o *crtend?.o) .dtors)
+ *(SORT(.dtors.*))
+ *(.dtors)
+ *(.rodata*)
+ .rodata.g_pulRCGCRegs
+                0x0000044c        0xc ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+ *(.eh_fram e*)
+
+.glue_7         0x00000458        0x0
+ .glue_7        0x00000000        0x0 linker stubs
+
+.glue_7t        0x00000458        0x0
+ .glue_7t       0x00000000        0x0 linker stubs
+
+.vfp11_veneer   0x00000458        0x0
+ .vfp11_veneer  0x00000000        0x0 linker stubs
+
+.v4_bx          0x00000458        0x0
+ .v4_bx         0x00000000        0x0 linker stubs
+
+.iplt           0x00000458        0x0
+ .iplt          0x00000000        0x0 ..\obj\main.o
+
+.rel.dyn        0x00000458        0x0
+ .rel.iplt      0x00000000        0x0 ..\obj\main.o
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+                0x00000458                __exidx_start = .
+
+.ARM.exidx
+ *(.ARM.exidx* .gnu.linkonce.armexidx.*)
+                0x00000458                __exidx_end = .
+                0x00000458                __etext = .
+                0x00000458                _sidata = __etext
+
+.data           0x20000000        0x0 load address 0x00000458
+                0x20000000                __data_start__ = .
+                0x20000000                _sdata = __data_start__
+ *(vtable)
+ *(.data*)
+                0x20000000                . = ALIGN (0x4)
+                0x20000000                PROVIDE (__preinit_array_start, .)
+ *(.preinit_array)
+                0x20000000                PROVIDE (__preinit_array_end, .)
+                0x20000000                . = ALIGN (0x4)
+                0x20000000                PROVIDE (__init_array_start, .)
+ *(SORT(.init_array.*))
+ *(.init_array)
+                0x20000000                PROVIDE (__init_array_end, .)
+                0x20000000                . = ALIGN (0x4)
+                0x20000000                PROVIDE (__fini_array_start, .)
+ *(SORT(.fini_array.*))
+ *(.fini_array)
+                0x20000000                PROVIDE (__fini_array_end, .)
+ *(.jcr*)
+                0x20000000                . = ALIGN (0x4)
+                0x20000000                __data_end__ = .
+                0x20000000                _edata = __data_end__
+
+.igot.plt       0x20000000        0x0
+ .igot.plt      0x00000000        0x0 ..\obj\main.o
+
+.bss            0x20000000        0x4
+                0x20000000                . = ALIGN (0x4)
+                0x20000000                __bss_start__ = .
+                0x20000000                _sbss = __bss_start__
+ *(.bss*)
+ .bss           0x20000000        0x4 ..\obj\main.o
+                0x20000000                counter
+ *(COMMON)
+                0x20000004                . = ALIGN (0x4)
+                0x20000004                __bss_end__ = .
+                0x20000004                _ebss = __bss_end__
+
+.heap           0x20000004        0x0
+                0x20000004                __end__ = .
+                0x20000004                _end = __end__
+                0x20000004                end = __end__
+ *(.heap*)
+                0x20000004                __HeapLimit = .
+
+.co_stack       0x20000004      0x404
+                0x20000008                . = ALIGN (0x8)
+ *fill*         0x20000004        0x4 
+ *(.co_stack .co_stack.*)
+ .co_stack      0x20000008      0x400 ..\obj\startup_lm3s.o
+                0x20000008                pulStack
+                0x20010000                __StackTop = (ORIGIN (ram) + 0x10000)
+                0x2000fbfc                __StackLimit = (__StackTop - SIZEOF (.co_stack))
+                0x20010000                PROVIDE (__stack, __StackTop)
+                0x00000001                ASSERT ((__StackLimit >= __HeapLimit), region ram  overflowed with stack)
+LOAD ..\obj\main.o
+LOAD ..\obj\interrupt.o
+LOAD ..\obj\startup_lm3s.o
+LOAD ..\obj\syscalls.o
+LOAD ..\obj\cpu.o
+LOAD ..\obj\systick.o
+LOAD ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a
+START GROUP
+LOAD c:/program files (x86)/gnu tools arm embedded/4.8 2014q2/bin/../lib/gcc/arm-none-eabi/4.8.4/armv7-m\libgcc.a
+LOAD c:/program files (x86)/gnu tools arm embedded/4.8 2014q2/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m\libg.a
+LOAD c:/program files (x86)/gnu tools arm embedded/4.8 2014q2/bin/../lib/gcc/arm-none-eabi/4.8.4/../../../../arm-none-eabi/lib/armv7-m\libc.a
+END GROUP
+OUTPUT(Interrup_systick.elf elf32-littlearm)
+
+.debug_info     0x00000000      0x2d1
+ .debug_info    0x00000000       0xea ..\obj\main.o
+ .debug_info    0x000000ea       0xe9 ..\obj\startup_lm3s.o
+ .debug_info    0x000001d3       0xfe ..\obj\systick.o
+
+.debug_abbrev   0x00000000      0x24c
+ .debug_abbrev  0x00000000       0xeb ..\obj\main.o
+ .debug_abbrev  0x000000eb       0xa7 ..\obj\startup_lm3s.o
+ .debug_abbrev  0x00000192       0xba ..\obj\systick.o
+
+.debug_aranges  0x00000000       0xc0
+ .debug_aranges
+                0x00000000       0x38 ..\obj\main.o
+ .debug_aranges
+                0x00000038       0x28 ..\obj\startup_lm3s.o
+ .debug_aranges
+                0x00000060       0x60 ..\obj\systick.o
+
+.debug_ranges   0x00000000       0x90
+ .debug_ranges  0x00000000       0x28 ..\obj\main.o
+ .debug_ranges  0x00000028       0x18 ..\obj\startup_lm3s.o
+ .debug_ranges  0x00000040       0x50 ..\obj\systick.o
+
+.debug_line     0x00000000      0x277
+ .debug_line    0x00000000       0xc7 ..\obj\main.o
+ .debug_line    0x000000c7       0x9c ..\obj\startup_lm3s.o
+ .debug_line    0x00000163      0x114 ..\obj\systick.o
+
+.debug_str      0x00000000      0x2bc
+ .debug_str     0x00000000      0x13b ..\obj\main.o
+ .debug_str     0x0000013b       0xb4 ..\obj\startup_lm3s.o
+                                0x142 (size before relaxing)
+ .debug_str     0x000001ef       0xcd ..\obj\systick.o
+                                0x199 (size before relaxing)
+
+.comment        0x00000000       0x9b
+ .comment       0x00000000       0x70 ..\obj\main.o
+                                 0x71 (size before relaxing)
+ .comment       0x00000000       0x71 ..\obj\startup_lm3s.o
+ .comment       0x00000000       0x71 ..\obj\systick.o
+ .comment       0x00000070       0x2b ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+                                 0x2c (size before relaxing)
+
+.ARM.attributes
+                0x00000000       0x33
+ .ARM.attributes
+                0x00000000       0x33 ..\obj\main.o
+ .ARM.attributes
+                0x00000033       0x33 ..\obj\startup_lm3s.o
+ .ARM.attributes
+                0x00000066       0x33 ..\obj\systick.o
+ .ARM.attributes
+                0x00000099       0x31 ..\..\..\..\..\..\..\..\StellarisWare\driverlib\gcc-cm3\libdriver-cm3.a(sysctl.o)
+
+.debug_frame    0x00000000      0x1bc
+ .debug_frame   0x00000000       0x7c ..\obj\main.o
+ .debug_frame   0x0000007c       0x48 ..\obj\startup_lm3s.o
+ .debug_frame   0x000000c4       0xf8 ..\obj\systick.o

@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dependencies>
+   <includePath signature="/I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_6\lm3slib\inc /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_6\lm3slib /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_6\cmsis /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_6\lm3slib\driverlib /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_6 /I..\..\..\..\..\StellarisWare\boards\ek-lm3s6965 /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems /I..\..\..\..\..\StellarisWare">
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\inc\hw_gpio.h" lastModified="157e239c0a3">
+      </source>
+      <source file="..\..\..\lm3slib\driverlib\systick.h" lastModified="15806424f11">
+      </source>
+      <source file="..\..\..\lm3slib\driverlib\debug.h" lastModified="15806424f1b">
+      </source>
+      <source file="..\..\..\lm3slib\inc\hw_types.h" lastModified="15806424f2f">
+      </source>
+      <source file="..\..\..\lm3slib\driverlib\cpu.h" lastModified="15806424f61">
+      </source>
+      <source file="..\..\..\lm3slib\driverlib\systick.c" lastModified="15806424f11">
+         <include file="..\..\..\lm3slib\inc\hw_ints.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_nvic.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_types.h"/>
+         <include file="..\..\..\lm3slib\driverlib\debug.h"/>
+         <include file="..\..\..\lm3slib\driverlib\interrupt.h"/>
+         <include file="..\..\..\lm3slib\driverlib\systick.h"/>
+      </source>
+      <source file="..\..\..\lm3slib\driverlib\cpu.c" lastModified="15806424f61">
+         <include file="..\..\..\lm3slib\driverlib\cpu.h"/>
+      </source>
+      <source file="..\..\..\syscalls\syscalls.c" lastModified="15806424cdf">
+      </source>
+      <source file="..\..\..\lm3slib\driverlib\interrupt.h" lastModified="15806424f4d">
+      </source>
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\gpio.h" lastModified="157e2399e01">
+         <include file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\pin_map.h"/>
+      </source>
+      <source file="..\..\..\lm3slib\driverlib\interrupt.c" lastModified="15806424f4d">
+         <include file="..\..\..\lm3slib\inc\hw_ints.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_nvic.h"/>
+         <include file="..\..\..\lm3slib\inc\hw_types.h"/>
+         <include file="..\..\..\lm3slib\driverlib\cpu.h"/>
+         <include file="..\..\..\lm3slib\driverlib\debug.h"/>
+         <include file="..\..\..\lm3slib\driverlib\interrupt.h"/>
+      </source>
+      <source file="..\..\..\lm3slib\inc\hw_ints.h" lastModified="15806424f57">
+      </source>
+      <source file="..\..\..\startup\startup_lm3s.c" lastModified="15805e4f05a">
+      </source>
+      <source file="..\..\..\lm3slib\inc\hw_nvic.h" lastModified="15806424f57">
+      </source>
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\pin_map.h" lastModified="157e2399ec8">
+      </source>
+   </includePath>
+   <includePath signature="/I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_6 /I..\..\..\..\..\StellarisWare\boards\ek-lm3s6965 /I..\..\..\..\..\StellarisWare">
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\inc\hw_gpio.h" lastModified="157e239c0a3">
+      </source>
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\inc\hw_memmap.h" lastModified="157e239c0d7">
+      </source>
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\debug.h" lastModified="157e2399d3b">
+      </source>
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\sysctl.h" lastModified="157e2399f07">
+      </source>
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\gpio.h" lastModified="157e2399e01">
+         <include file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\pin_map.h"/>
+      </source>
+      <source file="..\..\..\startup\startup_lm3s.c" lastModified="15805e4f05a">
+      </source>
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\driverlib\pin_map.h" lastModified="157e2399ec8">
+      </source>
+      <source file="..\..\..\..\..\..\..\..\StellarisWare\inc\hw_types.h" lastModified="157e239c103">
+      </source>
+   </includePath>
+   <includePath signature="/I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_6\cmsis /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_6 /I..\..\..\..\..\StellarisWare\boards\ek-lm3s6965 /I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems /I..\..\..\..\..\StellarisWare">
+      <source file="..\..\..\startup\startup_lm3s.c" lastModified="15805e4f05a">
+      </source>
+   </includePath>
+</dependencies>

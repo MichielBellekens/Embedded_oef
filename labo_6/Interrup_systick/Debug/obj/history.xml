@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc 4.9.3 mingw32 -mcpu=cortex-m3 -mthumb -Wall -ffunction-sections -g -O0 -c -DLM3S6965 -I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_6\lm3slib\inc -I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_6\lm3slib -I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_6\cmsis -I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_6\lm3slib\driverlib -I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems\labo_6 -I..\..\..\..\..\StellarisWare\boards\ek-lm3s6965 -I..\..\..\..\..\Users\Gebruiker\Desktop\Embedded_systems -I..\..\..\..\..\StellarisWare">
+      <target file="cpu.o" lastModified="1580642841c">
+         <source file="..\..\..\lm3slib\driverlib\cpu.c" lastModified="15806424f61"/>
+      </target>
+      <target file="startup_lm3s.o" lastModified="158064283a4">
+         <source file="..\..\..\startup\startup_lm3s.c" lastModified="15805e4f05a"/>
+      </target>
+      <target file="sysctl.o" lastModified="15806268dca">
+         <source file="..\..\..\lm3slib\driverlib\sysctl.c" lastModified="15806267f33"/>
+      </target>
+      <target file="gpio.o" lastModified="15806268e2e">
+         <source file="..\..\..\lm3slib\driverlib\gpio.c" lastModified="15806267ed9"/>
+      </target>
+      <target file="systick.o" lastModified="15806428458">
+         <source file="..\..\..\lm3slib\driverlib\systick.c" lastModified="15806424f11"/>
+      </target>
+      <target file="main.o" lastModified="158064b5e17">
+         <source file="..\..\..\main.c" lastModified="158064b57c8"/>
+      </target>
+      <target file="syscalls.o" lastModified="158064283ea">
+         <source file="..\..\..\syscalls\syscalls.c" lastModified="15806423d3f"/>
+      </target>
+      <target file="interrupt.o" lastModified="15806428368">
+         <source file="..\..\..\lm3slib\driverlib\interrupt.c" lastModified="15806424f4d"/>
+      </target>
+   </processor>
+</history>
