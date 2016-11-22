@@ -1,0 +1,43 @@
+12:48:54 **** Programing project LCD_test on chip ****
+"C:\\Ac6\\SystemWorkbench\\plugins\\fr.ac6.mcu.externaltools.openocd.win32_1.8.0.201603291052\\tools\\openocd\\bin\\openocd.exe" -f stm32f746g_disco.cfg -s "C:\\Ac6\\SystemWorkbench\\plugins\\fr.ac6.mcu.debug_1.8.0.201603291114\\resources\\openocd\\scripts\\st_board" -s "C:\\Ac6\\SystemWorkbench\\plugins\\fr.ac6.mcu.debug_1.8.0.201603291114\\resources\\openocd\\scripts" -c "program Debug/LCD_test.elf verify reset exit" 
+Open On-Chip Debugger 0.10.0-dev-00267-g884c33c (2016-03-16-12:22)
+Licensed under GNU GPL v2
+For bug reports, read
+	http://openocd.org/doc/doxygen/bugs.html
+Info : The selected transport took over low-level target control. The results might differ compared to plain JTAG/SWD
+adapter speed: 2000 kHz
+srst_only separate srst_nogate srst_open_drain connect_assert_srst
+adapter_nsrst_delay: 100
+Info : Unable to match requested speed 2000 kHz, using 1800 kHz
+Info : Unable to match requested speed 2000 kHz, using 1800 kHz
+Info : clock speed 1800 kHz
+Error: libusb_open() failed with LIBUSB_ERROR_NOT_SUPPORTED
+Info : STLINK v2 JTAG v25 API v2 SWIM v14 VID 0x0483 PID 0x374B
+Info : using stlink api v2
+Info : Target voltage: 3.207344
+Info : STM32F756.cpu: hardware has 8 breakpoints, 4 watchpoints
+STM32F756.cpu: target state: halted
+target halted due to debug-request, current mode: Thread 
+xPSR: 0x01000000 pc: 0x08000e48 msp: 0x20050000
+Info : Unable to match requested speed 8000 kHz, using 4000 kHz
+Info : Unable to match requested speed 8000 kHz, using 4000 kHz
+adapter speed: 4000 kHz
+** Programming Started **
+auto erase enabled
+Info : flash size probed value 1024
+STM32F756.cpu: target state: halted
+target halted due to breakpoint, current mode: Thread 
+xPSR: 0x61000000 pc: 0x20000084 msp: 0x20050000
+wrote 786432 bytes from file Debug/LCD_test.elf in 8.918540s (86.113 KiB/s)
+** Programming Finished **
+** Verify Started **
+STM32F756.cpu: target state: halted
+target halted due to breakpoint, current mode: Thread 
+xPSR: 0x61000000 pc: 0x2000002e msp: 0x20050000
+verified 747148 bytes in 0.757002s (963.850 KiB/s)
+** Verified OK **
+** Resetting Target **
+shutdown command invoked
+
+12:49:04 Build Finished (took 10s.119ms)
+

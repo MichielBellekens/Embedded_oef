@@ -1,0 +1,6 @@
+21:34:35 **** Build of configuration Debug for project STM32F7-DISCO ****
+make all 
+make: *** No rule to make target `C:/Users/Gebruiker/Desktop/Embedded_systems/Utilities/Log/lcd_log.c', needed by `Utilities/lcd_log.o'.  Stop.
+
+21:34:35 Build Finished (took 330ms)
+

@@ -1,0 +1,6 @@
+12:52:41 **** Incremental Build of configuration Debug for project LCD_TS ****
+make all 
+make: Nothing to be done for `all'.
+
+12:52:42 Build Finished (took 381ms)
+

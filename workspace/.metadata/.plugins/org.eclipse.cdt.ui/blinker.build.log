@@ -1,0 +1,168 @@
+20:23:34 **** Incremental Build of configuration Debug for project blinker ****
+make all 
+'Building file: ../Src/main.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/main.d" -MT"Src/main.o" -o "Src/main.o" "../Src/main.c"
+../Src/main.c: In function 'main':
+../Src/main.c:75:1: warning: implicit declaration of function 'BSP_LCD_Init' [-Wimplicit-function-declaration]
+ BSP_LCD_Init();
+ ^
+../Src/main.c:94:4: warning: implicit declaration of function 'BSP_LCD_DrawLine' [-Wimplicit-function-declaration]
+    BSP_LCD_DrawLine(x,x,y,y);
+    ^
+'Finished building: ../Src/main.c'
+' '
+'Building file: ../Src/stm32f7xx_hal_msp.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/stm32f7xx_hal_msp.d" -MT"Src/stm32f7xx_hal_msp.o" -o "Src/stm32f7xx_hal_msp.o" "../Src/stm32f7xx_hal_msp.c"
+'Finished building: ../Src/stm32f7xx_hal_msp.c'
+' '
+'Building file: ../Src/stm32f7xx_it.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/stm32f7xx_it.d" -MT"Src/stm32f7xx_it.o" -o "Src/stm32f7xx_it.o" "../Src/stm32f7xx_it.c"
+'Finished building: ../Src/stm32f7xx_it.c'
+' '
+'Building file: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o" -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.o" "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c"
+'Finished building: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c'
+' '
+'Building file: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.o" -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.o" "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.c"
+'Finished building: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.c'
+' '
+'Building file: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.o" -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.o" "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.c"
+'Finished building: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.c'
+' '
+'Building file: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma_ex.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma_ex.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma_ex.o" -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma_ex.o" "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma_ex.c"
+'Finished building: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma_ex.c'
+' '
+'Building file: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dsi.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dsi.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dsi.o" -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dsi.o" "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dsi.c"
+'Finished building: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dsi.c'
+' '
+'Building file: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash.o" -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash.o" "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash.c"
+'Finished building: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash.c'
+' '
+'Building file: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash_ex.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash_ex.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash_ex.o" -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash_ex.o" "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash_ex.c"
+'Finished building: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash_ex.c'
+' '
+'Building file: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.o" -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.o" "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.c"
+'Finished building: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.c'
+' '
+'Building file: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.o" -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.o" "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.c"
+'Finished building: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.c'
+' '
+'Building file: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.o" -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.o" "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.c"
+'Finished building: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.c'
+' '
+'Building file: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_ltdc.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_ltdc.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_ltdc.o" -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_ltdc.o" "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_ltdc.c"
+'Finished building: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_ltdc.c'
+' '
+'Building file: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_ltdc_ex.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_ltdc_ex.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_ltdc_ex.o" -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_ltdc_ex.o" "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_ltdc_ex.c"
+'Finished building: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_ltdc_ex.c'
+' '
+'Building file: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.o" -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.o" "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.c"
+'Finished building: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.c'
+' '
+'Building file: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.o" -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.o" "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.c"
+'Finished building: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.c'
+' '
+'Building file: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.o" -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.o" "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.c"
+'Finished building: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.c'
+' '
+'Building file: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.o" -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.o" "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.c"
+'Finished building: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.c'
+' '
+'Building file: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.o" -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.o" "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.c"
+'Finished building: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.c'
+' '
+'Building file: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.d" -MT"Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.o" -o "Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.o" "../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.c"
+'Finished building: ../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.c'
+' '
+'Building file: ../Drivers/CMSIS/Device/ST/STM32F7xx/Source/Templates/gcc/startup_stm32f746xx.s'
+'Invoking: MCU GCC Assembler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-as -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -g -o "Drivers/CMSIS/Device/ST/STM32F7xx/Source/Templates/gcc/startup_stm32f746xx.o" "../Drivers/CMSIS/Device/ST/STM32F7xx/Source/Templates/gcc/startup_stm32f746xx.s"
+'Finished building: ../Drivers/CMSIS/Device/ST/STM32F7xx/Source/Templates/gcc/startup_stm32f746xx.s'
+' '
+'Building file: ../Drivers/CMSIS/Device/ST/STM32F7xx/Source/Templates/system_stm32f7xx.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/CMSIS/Device/ST/STM32F7xx/Source/Templates/system_stm32f7xx.d" -MT"Drivers/CMSIS/Device/ST/STM32F7xx/Source/Templates/system_stm32f7xx.o" -o "Drivers/CMSIS/Device/ST/STM32F7xx/Source/Templates/system_stm32f7xx.o" "../Drivers/CMSIS/Device/ST/STM32F7xx/Source/Templates/system_stm32f7xx.c"
+'Finished building: ../Drivers/CMSIS/Device/ST/STM32F7xx/Source/Templates/system_stm32f7xx.c'
+' '
+'Building file: ../Drivers/BSP/stm32746g_discovery.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\blinker\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/blinker/Inc"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/BSP/stm32746g_discovery.d" -MT"Drivers/BSP/stm32746g_discovery.o" -o "Drivers/BSP/stm32746g_discovery.o" "../Drivers/BSP/stm32746g_discovery.c"
+In file included from ../Drivers/BSP/stm32746g_discovery.c:41:0:
+../Drivers/BSP/stm32746g_discovery.h:316:41: error: unknown type name 'UART_HandleTypeDef'
+ void      BSP_COM_Init(COM_TypeDef COM, UART_HandleTypeDef *husart);
+                                         ^
+../Drivers/BSP/stm32746g_discovery.h:317:43: error: unknown type name 'UART_HandleTypeDef'
+ void      BSP_COM_DeInit(COM_TypeDef COM, UART_HandleTypeDef *huart);
+                                           ^
+../Drivers/BSP/stm32746g_discovery.c:395:36: error: unknown type name 'UART_HandleTypeDef'
+ void BSP_COM_Init(COM_TypeDef COM, UART_HandleTypeDef *huart)
+                                    ^
+../Drivers/BSP/stm32746g_discovery.c:435:38: error: unknown type name 'UART_HandleTypeDef'
+ void BSP_COM_DeInit(COM_TypeDef COM, UART_HandleTypeDef *huart)
+                                      ^
+make: *** [Drivers/BSP/stm32746g_discovery.o] Error 1
+
+20:23:46 Build Finished (took 11s.915ms)
+

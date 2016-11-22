@@ -1,0 +1,13 @@
+21:31:15 **** Incremental Build of configuration Debug for project STM32746G_DISCOVERY ****
+make all 
+'Building file: ../Src/main.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\LTDC_Display_1Layer\SW4STM32\STM32746G_DISCOVERY\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -DUSE_HAL_DRIVER -DSTM32F756xx -DUSE_STM32746G_DISCOVERY -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/LTDC_Display_1Layer/Inc" -I../../../../../../../../Drivers/CMSIS/Device/ST/STM32F7xx/Include -I../../../../../../../../Drivers/STM32F7xx_HAL_Driver/Inc -I../../../../../../../../Drivers/BSP/STM32746G-Discovery -I../../../../../../../../Drivers/BSP/Components/Common -I../../../../../../../../Utilities/Log -I../../../../../../../../Utilities/Fonts -I../../../../../../../../Utilities/CPU -I../../../../../../../../Drivers/CMSIS/Include  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/main.d" -MT"Src/main.o" -o "Src/main.o" "../Src/main.c"
+In file included from ../Src/main.c:40:0:
+C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/LTDC_Display_1Layer/Inc/main.h:43:27: fatal error: stm32f7xx_hal.h: No such file or directory
+compilation terminated.
+make: *** [Src/main.o] Error 1
+
+21:31:16 Build Finished (took 629ms)
+
