@@ -32,12 +32,12 @@
   */
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f7xx_hal.h"
+
+/* USER CODE BEGIN Includes */
 #include "stm32746g_discovery.h"
 #include "stm32746g_discovery_lcd.h"
 #include "stm32746g_discovery_sdram.h"
 #include "stm32746g_discovery_ts.h"
-/* USER CODE BEGIN Includes */
-
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -62,8 +62,6 @@ SAI_HandleTypeDef hsai_BlockA2;
 SAI_HandleTypeDef hsai_BlockB2;
 
 SPDIFRX_HandleTypeDef hspdif;
-
-SPI_HandleTypeDef hspi2;
 
 TIM_HandleTypeDef htim1;
 TIM_HandleTypeDef htim2;
@@ -93,7 +91,6 @@ static void MX_QUADSPI_Init(void);
 static void MX_RTC_Init(void);
 static void MX_SAI2_Init(void);
 static void MX_SPDIFRX_Init(void);
-static void MX_SPI2_Init(void);
 static void MX_TIM1_Init(void);
 static void MX_TIM2_Init(void);
 static void MX_TIM3_Init(void);
@@ -104,7 +101,7 @@ static void MX_CRC_Init(void);
 static void MX_DMA2D_Init(void);
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
-
+                
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
@@ -113,12 +110,20 @@ void draw_menu_2(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+  /* Prevent unused argument(s) compilation warning */
+  //UNUSED(GPIO_Pin);
+  if(GPIO_Pin == GPIO_PIN_13){
+	  HAL_GPIO_TogglePin(LED1_GPIO_PORT,LED1_PIN);
+  }
 
+}
 /* USER CODE END 0 */
 
 int main(void)
 {
-	void (*draw_menu) (void);
+
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -143,7 +148,6 @@ int main(void)
   MX_RTC_Init();
   MX_SAI2_Init();
   MX_SPDIFRX_Init();
-  MX_SPI2_Init();
   MX_TIM1_Init();
   MX_TIM2_Init();
   MX_TIM3_Init();
@@ -171,45 +175,26 @@ int main(void)
   {
 	  BSP_LCD_Clear(LCD_COLOR_RED);
   }
+  BSP_TS_ITConfig();
 //  if(BSP_TS_ITConfig() != TS_OK)
 //  {
 //	  BSP_LCD_Clear(LCD_COLOR_RED);
 //  }
 
   /* USER CODE END 2 */
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
   /* USER CODE END WHILE */
-	  BSP_TS_GetState(&Buffer);
-	  BSP_LCD_Clear(LCD_COLOR_BLACK);
-	  if(Buffer.touchX[0] <= 240)
-	  {
-		  draw_menu = &draw_menu_1;
-	  }
-	  else
-	  {
-		  draw_menu = &draw_menu_2;
-	  }
-	  (*draw_menu)();
-	  HAL_Delay(200);
+
   /* USER CODE BEGIN 3 */
 
   }
   /* USER CODE END 3 */
 
 }
-
-void draw_menu_1(void)
-{
-	BSP_LCD_DrawCircle(200,100,40);
-}
-void draw_menu_2(void)
-{
-	BSP_LCD_DrawRect(60,60,30,30);
-}
-
 
 /** System Clock Configuration
 */
@@ -593,13 +578,6 @@ static void MX_RTC_Init(void)
     Error_Handler();
   }
 
-    /**Enable the TimeStamp 
-    */
-  if (HAL_RTCEx_SetTimeStamp(&hrtc, RTC_TIMESTAMPEDGE_RISING, RTC_TIMESTAMPPIN_POS1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
 }
 
 /* SAI2 init function */
@@ -680,31 +658,6 @@ static void MX_SPDIFRX_Init(void)
   hspdif.Init.ValidityBitMask = SPDIFRX_VALIDITYMASK_OFF;
   hspdif.Init.ParityErrorMask = SPDIFRX_PARITYERRORMASK_OFF;
   if (HAL_SPDIFRX_Init(&hspdif) != HAL_OK)
-  {
-    Error_Handler();
-  }
-
-}
-
-/* SPI2 init function */
-static void MX_SPI2_Init(void)
-{
-
-  hspi2.Instance = SPI2;
-  hspi2.Init.Mode = SPI_MODE_MASTER;
-  hspi2.Init.Direction = SPI_DIRECTION_2LINES;
-  hspi2.Init.DataSize = SPI_DATASIZE_4BIT;
-  hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
-  hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
-  hspi2.Init.NSS = SPI_NSS_SOFT;
-  hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_2;
-  hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
-  hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
-  hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
-  hspi2.Init.CRCPolynomial = 7;
-  hspi2.Init.CRCLength = SPI_CRC_LENGTH_DATASIZE;
-  hspi2.Init.NSSPMode = SPI_NSS_PULSE_ENABLE;
-  if (HAL_SPI_Init(&hspi2) != HAL_OK)
   {
     Error_Handler();
   }
@@ -1066,6 +1019,8 @@ static void MX_FMC_Init(void)
      PB1   ------> USB_OTG_HS_ULPI_D2
      PB0   ------> USB_OTG_HS_ULPI_D1
      PB11   ------> USB_OTG_HS_ULPI_D4
+     PB14   ------> SPI2_MISO
+     PB15   ------> SPI2_MOSI
 */
 static void MX_GPIO_Init(void)
 {
@@ -1154,8 +1109,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(OTG_FS_PowerSwitchOn_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : ARDUINO_D7_Pin ARDUINO_D8_Pin LCD_DISP_Pin */
-  GPIO_InitStruct.Pin = ARDUINO_D7_Pin|ARDUINO_D8_Pin|LCD_DISP_Pin;
+  /*Configure GPIO pins : ARDUINO_D7_Pin ARDUINO_D8_Pin led_Pin LCD_DISP_Pin */
+  GPIO_InitStruct.Pin = ARDUINO_D7_Pin|ARDUINO_D8_Pin|led_Pin|LCD_DISP_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -1211,7 +1166,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : LCD_INT_Pin */
   GPIO_InitStruct.Pin = LCD_INT_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(LCD_INT_GPIO_Port, &GPIO_InitStruct);
 
@@ -1276,11 +1231,19 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF10_OTG_HS;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
+  /*Configure GPIO pins : ARDUINO_MISO_D12_Pin ARDUINO_MOSI_PWM_D11_Pin */
+  GPIO_InitStruct.Pin = ARDUINO_MISO_D12_Pin|ARDUINO_MOSI_PWM_D11_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Alternate = GPIO_AF5_SPI2;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(OTG_FS_PowerSwitchOn_GPIO_Port, OTG_FS_PowerSwitchOn_Pin, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOI, ARDUINO_D7_Pin|ARDUINO_D8_Pin|LCD_DISP_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOI, ARDUINO_D7_Pin|ARDUINO_D8_Pin|led_Pin|LCD_DISP_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(LCD_BL_CTRL_GPIO_Port, LCD_BL_CTRL_Pin, GPIO_PIN_RESET);
@@ -1290,6 +1253,10 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOG, ARDUINO_D4_Pin|ARDUINO_D2_Pin|EXT_RST_Pin, GPIO_PIN_RESET);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 }
 
