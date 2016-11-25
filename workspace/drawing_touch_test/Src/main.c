@@ -39,6 +39,10 @@
 #include "stm32746g_discovery_lcd.h"
 #include "stm32746g_discovery_sdram.h"
 #include "stm32746g_discovery_ts.h"
+#include "Green_data.h"
+#include "red_data.h"
+#include "Blue_data.h"
+#include "clear_data.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -82,7 +86,8 @@ SDRAM_HandleTypeDef hsdram1;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
-
+uint32_t drawing_color = LCD_COLOR_RED;	//global variable to store the drawing color
+uint32_t background_color = LCD_COLOR_WHITE; //global variable om de background color in te stellen
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -111,28 +116,74 @@ static void MX_USART1_UART_Init(void);
 static void MX_USART6_UART_Init(void);
 static void MX_USB_OTG_HS_HCD_Init(void);
 static void MX_DMA2D_Init(void);
-void MX_USB_HOST_Process(void);
+//void MX_USB_HOST_Process(void);
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
                 
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
-
+void check_color(uint16_t, uint16_t);
+uint8_t draw_color_options(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
+//function to draw all the colors/clear buttons and the dividing line returns the position of the line as the available drawing area is to the right of this line
+uint8_t draw_color_options()
+{
+	uint8_t offset = 65;
+	uint8_t base = 10;
+	uint8_t button_size =51;
+	uint8_t padding = 5;
+	BSP_LCD_DrawBitmap(base,base,(uint8_t *)RED_DATA);
+	BSP_LCD_DrawBitmap(base,base + offset,(uint8_t*)GREEN_DATA );
+	BSP_LCD_DrawBitmap(base,base +(2*offset),(uint8_t*) BLUE_DATA);
+	BSP_LCD_DrawBitmap(base,base +(3*offset),(uint8_t*)CLEAR_DATA);
+	BSP_LCD_DrawLine(base+button_size+padding, 0,base+button_size+padding, BSP_LCD_GetYSize());
+	return base+button_size+padding;
+}
+//check if the coordinates touched is one of the buttons
+void check_color(uint16_t x_pos, uint16_t y_pos)
+{
+	uint8_t offset = 65;
+	uint8_t base = 15;
+	uint8_t button_size =51;
+	if(x_pos > 15 && x_pos < 15 + button_size)
+	{
+		if (y_pos > base && y_pos < base + button_size)
+		{
+			drawing_color = LCD_COLOR_RED;
+		}
+		else if (y_pos > base + offset && y_pos < base + offset + button_size)
+		{
+			drawing_color = LCD_COLOR_GREEN;
+		}
+		else if (y_pos > base + (2*offset) && y_pos < base + (2*offset) + button_size)
+		{
+			drawing_color = LCD_COLOR_BLUE;
+		}
+		else if (y_pos > base + (3*offset) && y_pos < base + (3*offset) + button_size)
+		{
+			BSP_LCD_Clear(background_color);
+			draw_color_options();
+		}
+		else
+		{
 
+		}
+	}
+}
 /* USER CODE END 0 */
 
 int main(void)
 {
 
   /* USER CODE BEGIN 1 */
-	typedef enum {False, True}bool;
-	TS_StateTypeDef buffer;
-	uint16_t prev_x_pos=0, prev_y_pos=0;
-	bool already_used = False;
+	typedef enum {False, True}bool;	//typedef for boolean type
+	TS_StateTypeDef buffer;			//buffer to read touchstates
+	uint16_t prev_x_pos=0, prev_y_pos=0;	//variables to store previous point touch on screen
+	bool already_used = False;				//bool to see if the detected touch was the first touch or continuing a swipe
+	uint8_t drawing_screen_offset = draw_color_options(); //a variable that stores the offset for the available draw area returned by the draw_options functions
   /* USER CODE END 1 */
 
   /* MCU Configuration----------------------------------------------------------*/
@@ -175,10 +226,10 @@ BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize());
 BSP_LCD_LayerDefaultInit(0, LCD_FB_START_ADDRESS);
 BSP_LCD_DisplayOn();
 BSP_LCD_SelectLayer(0);
-BSP_LCD_Clear(LCD_COLOR_WHITE);
-BSP_LCD_SetTextColor(LCD_COLOR_GREEN);
+BSP_LCD_Clear(background_color);
+BSP_LCD_SetTextColor(drawing_color);
 BSP_LCD_SetFont(&Font20);
-
+draw_color_options();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -193,24 +244,32 @@ BSP_LCD_SetFont(&Font20);
 //	  {
 //		  BSP_LCD_Clear(LCD_COLOR_GREEN);
 //	  }
-	  BSP_TS_GetState(&buffer);
-	  if (buffer.touchDetected)
+	  BSP_TS_GetState(&buffer);		//poll the touchscreen data and store it in the buffer variable
+	  if (buffer.touchDetected)		//if a touch was detected execute this code
 	  {
-		  if (already_used == True)
+		  if (buffer.touchX[0] > drawing_screen_offset)	//if the touch position is in the available drawing area execute this code
 		  {
-			  BSP_LCD_DrawLine(prev_x_pos, prev_y_pos, buffer.touchX[0], buffer.touchY[0]);
-			  prev_x_pos = buffer.touchX[0];
-			  prev_y_pos = buffer.touchY[0];
+			  if (already_used == True)	//if this is not the first touch with the touchscreen (swip movement) execute this code draw line between prev point and current read point
+			  {
+				  BSP_LCD_SetTextColor(drawing_color);
+				  BSP_LCD_DrawLine(prev_x_pos, prev_y_pos, buffer.touchX[0], buffer.touchY[0]);
+				  prev_x_pos = buffer.touchX[0];
+				  prev_y_pos = buffer.touchY[0];
 
+			  }
+			  else	//if this is the first contact with the screen store the current read values in the prev variables
+			  {
+				  prev_x_pos = buffer.touchX[0];
+				  prev_y_pos = buffer.touchY[0];
+				  already_used = True;		//set the bool to true so the next time we enter the main loop we will draw a line
+			  }
 		  }
-		  else
+		  else	//if the touch position is not in the available drawing area, we need to check if a buton was pressed
 		  {
-			  prev_x_pos = buffer.touchX[0];
-			  prev_y_pos = buffer.touchY[0];
-			  already_used = True;
+			  check_color(buffer.touchX[0],buffer.touchY[0]);
 		  }
 	  }
-	  else
+	  else	//if no touch was detected we set the already used bool to false since there has not been a new initial touch
 	  {
 		  already_used = False;
 	  }
