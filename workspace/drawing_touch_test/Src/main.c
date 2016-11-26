@@ -87,7 +87,7 @@ SDRAM_HandleTypeDef hsdram1;
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 uint32_t drawing_color = LCD_COLOR_RED;	//global variable to store the drawing color
-uint32_t background_color = LCD_COLOR_WHITE; //global variable om de background color in te stellen
+uint32_t background_color = LCD_COLOR_BLACK; //global variable om de background color in te stellen
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -229,6 +229,7 @@ BSP_LCD_SelectLayer(0);
 BSP_LCD_Clear(background_color);
 BSP_LCD_SetTextColor(drawing_color);
 BSP_LCD_SetFont(&Font20);
+BSP_LCD_SetColorKeying(0, LCD_COLOR_WHITE);	//all white pixels are set to transparent black = invisible
 draw_color_options();
   /* USER CODE END 2 */
 
