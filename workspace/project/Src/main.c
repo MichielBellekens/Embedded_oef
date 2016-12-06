@@ -51,6 +51,10 @@
 #include "stm32746g_discovery_lcd.h"
 #include "stm32746g_discovery_sdram.h"
 #include "stm32746g_discovery_ts.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include "red_data.h"
+#include "Green_data.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -97,6 +101,23 @@ SDRAM_HandleTypeDef hsdram1;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
+typedef struct button_list
+{
+	int x_pos;
+	int y_pos;
+	int width;
+	int height;
+	uint8_t * buttonimage;
+	void (*func)(void);
+	struct button_list * next;
+
+} button_list;
+
+button_list *buttons;
+TS_StateTypeDef TouchState;
+FIL fp;
+uint8_t bytesread;
+uint8_t buffer[25];
 FATFS FS;
 /* USER CODE END PV */
 
@@ -137,11 +158,92 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
-
+void create_buttons(void);
+void draw_buttons(void);
+void check_buttons(void);
+void Button1_Pressed(void);
+void Button2_Pressed(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
+void create_buttons(void)
+{
+	int width = 52;
+	int height = 52;
+	buttons = malloc(sizeof(button_list));
+	buttons->x_pos = 5;
+	buttons->y_pos = 5;
+	buttons->width = width;
+	buttons->height = height;
+	buttons->buttonimage = RED_DATA;
+	buttons->func = &Button1_Pressed;
+	buttons->next = malloc(sizeof(button_list));
+	buttons->next->x_pos = 5;
+	buttons->next->y_pos = 60;
+	buttons->next->width = width;
+	buttons->next->height = height;
+	buttons->next->buttonimage = GREEN_DATA;
+	buttons->next->func = &Button2_Pressed;
+	buttons->next->next = NULL;
+}
 
+void draw_buttons(void)
+{
+	button_list * temp = buttons;
+	while(temp != NULL)
+	{
+		BSP_LCD_DrawBitmap(temp->x_pos, temp->y_pos, (uint8_t*)temp->buttonimage);
+		//BSP_LCD_DrawRect(temp->x_pos, temp->y_pos, temp->width, temp->height);
+		temp = temp->next;
+	}
+}
+
+void check_buttons(void)
+{
+	button_list *temp = buttons;
+	while(temp != NULL)
+	{
+		if(TouchState.touchX[0] > temp->x_pos && TouchState.touchX[0] < (temp->x_pos + temp->width))
+		{
+			if(TouchState.touchY[0] > temp->y_pos && TouchState.touchY[0] < (temp->y_pos + temp->height))
+			{
+				temp->func();
+				break;
+			}
+		}
+		temp = temp->next;
+	}
+}
+
+void Button1_Pressed(void)
+{
+	BSP_LCD_Clear(LCD_COLOR_RED);
+	draw_buttons();
+	f_open(&fp, "Button1.txt", FA_READ);
+	f_read(&fp, buffer, sizeof(buffer), (UINT*)&bytesread);
+	while(bytesread > 0)
+	{
+		BSP_LCD_DisplayStringAt(80,0, buffer,LEFT_MODE);
+		f_read(&fp, buffer, sizeof(buffer), (UINT*)&bytesread);
+	}
+	f_close(&fp);
+	return;
+}
+
+void Button2_Pressed(void)
+{
+	BSP_LCD_Clear(LCD_COLOR_GREEN);
+	draw_buttons();
+	f_open(&fp, "Button2.txt", FA_READ);
+	f_read(&fp, buffer, sizeof(buffer), (UINT*)&bytesread);
+	while(bytesread > 0)
+	{
+		BSP_LCD_DisplayStringAt(80,0, buffer,LEFT_MODE);
+		f_read(&fp, buffer, sizeof(buffer), (UINT*)&bytesread);
+	}
+	f_close(&fp);
+	return;
+}
 /* USER CODE END 0 */
 
 int main(void)
@@ -195,51 +297,20 @@ int main(void)
   BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize());
   BSP_LCD_SetFont(&Font20);
   BSP_LCD_Clear(LCD_COLOR_GREEN);
-  if(BSP_SD_Init() != MSD_OK)
-  {
-	  BSP_LCD_Clear(LCD_COLOR_YELLOW);
-  }
+  BSP_LCD_SetTextColor(LCD_COLOR_BLUE);
   while(!BSP_SD_IsDetected())
   {
 	  BSP_LCD_DisplayStringAt(0,0,(uint8_t *)"no sd card found", LEFT_MODE);
   }
+  if(f_mount(&FS, SD_Path, 1) != FR_OK)
+  {
+	  BSP_LCD_DisplayStringAtLine(0, (uint8_t *)"Error while mounting");
+  }
+  BSP_LCD_Clear(LCD_COLOR_WHITE);
+  create_buttons(); //create the buttons
+  draw_buttons();	//draw all the buttons;
   //try to access microsd
-  FIL fp;
-  uint8_t readbuf[25];
-  UINT bytesread;
-  FRESULT res;
-  if((res = f_mount(&FS, "",1)) != FR_OK)
-  {
-	  BSP_LCD_Clear(LCD_COLOR_RED);
-  }
-  else
-  {
-	  if(f_open(&fp, "Quote.TXT",FA_READ) != FR_OK)
-	  {
-		  BSP_LCD_Clear(LCD_COLOR_BLUE);
-	  }
-	  else
-	  {
-		  f_read(&fp, readbuf,sizeof(readbuf), &bytesread);
-		  int yindex=0;
-		  while (bytesread > 0)
-		  {
-			  //To make sure the buffer is only read to the end of the valid text
-			  readbuf[bytesread] = '\0';//0
-			  BSP_LCD_DisplayStringAtLine(yindex,(uint8_t *)readbuf);
-			  f_read(&fp, readbuf,sizeof(readbuf), (uint*)&bytesread);
-			  yindex++;
-		  }
-		  /*if(f_read(&fp, readbuf,sizeof(readbuf), (uint*)&bytesread) != FR_OK)
-		  {
-			  BSP_LCD_Clear(LCD_COLOR_BROWN);
-		  }
-		  else
-		  {
-			  BSP_LCD_DisplayStringAt(0,0,(uint8_t *)readbuf, LEFT_MODE);
-		  }*/
-	  }
-  }
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -250,7 +321,12 @@ int main(void)
     MX_USB_HOST_Process();
 
   /* USER CODE BEGIN 3 */
-
+	  BSP_TS_GetState(&TouchState);
+	  if(TouchState.touchDetected)
+	  {
+		  check_buttons();
+		  HAL_Delay(200);
+	  }
   }
   /* USER CODE END 3 */
 
