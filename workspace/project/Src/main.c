@@ -55,6 +55,8 @@
 #include <stdio.h>
 #include "red_data.h"
 #include "Green_data.h"
+#include "Settings_data.h"
+#include "stdbool.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -101,24 +103,29 @@ SDRAM_HandleTypeDef hsdram1;
 
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
+//linked list that stores all the variables needed for 1 button
 typedef struct button_list
 {
 	int x_pos;
 	int y_pos;
 	int width;
 	int height;
-	uint8_t * buttonimage;
+	bool isactive;
+	const uint8_t * buttonimage;
 	void (*func)(void);
 	struct button_list * next;
 
 } button_list;
 
-button_list *buttons;
-TS_StateTypeDef TouchState;
-FIL fp;
-uint8_t bytesread;
-uint8_t buffer[25];
-FATFS FS;
+button_list *buttons;		//linked list for the main gui
+button_list * Menu1;		//linked list for the buttons of the settings menu
+button_list * screens[2];	//array for all the linked buttonlists --> iterate through them
+TS_StateTypeDef TouchState;	//variables that stores the touchstate
+FIL fp;						//file pointer to acces files from SD card
+uint8_t bytesread;			//uint8_t for bytesread value from f_read()
+uint8_t buffer[25]; 		// buffer to use in f_read
+FATFS FS;					//FATFS variable to use in f_mount
+uint32_t BackGroundColor = LCD_COLOR_RED; //variable that stores the needed background color
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -158,25 +165,60 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
-void create_buttons(void);
-void draw_buttons(void);
-void check_buttons(void);
-void Button1_Pressed(void);
-void Button2_Pressed(void);
+void create_buttons(void);			//create the all the buttons and add them to the array
+void draw_buttons(button_list *);	//Draw all the buttons from the given linked list
+void CustomClear(uint32_t);			//clear the screen to the given color and set all buttons inactive
+void ClearButtonStates(void);		//set all button states to inactive
+void check_buttons(void);			//check which button was clicked
+void Button1_Pressed(void);			//function called when pressed on button1
+void Button2_Pressed(void);			//function called when pressed on button2
+void Button3_Pressed(void);			//function called when pressed on button3
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
+
+//Clears the screen to the given color and sets all buttons to inactive
+void CustomClear(uint32_t color)
+{
+	BSP_LCD_Clear(color);
+	ClearButtonStates();
+	return;
+}
+
+//Set all the buttons to inactive
+void ClearButtonStates(void)
+{
+	//Loop over all linked lists in the screens array
+	for(int i=0; i < sizeof(screens)/sizeof(screens[0]); i++)
+	{
+		button_list * temp = screens[i];	//Make a temp pointer (otherwise pointer to first node lost) to the first node of the selected linked list
+		while(temp != NULL)
+		{
+			temp->isactive = false;		//Set the isactive varaible of the current node to false
+			temp = temp->next;	//Select the next node
+		}
+	}
+	return;
+}
+
+//Fill the linked lists with the needed buttons
 void create_buttons(void)
 {
-	int width = 52;
-	int height = 52;
-	buttons = malloc(sizeof(button_list));
+	//create main buttons
+	int width = 52;		//the width off the buttons
+	int height = 52;	//Height of the button
+
+	buttons = malloc(sizeof(button_list));	//allocate memory for the 1st linked list and store the returned pointer in buttons
 	buttons->x_pos = 5;
 	buttons->y_pos = 5;
 	buttons->width = width;
 	buttons->height = height;
-	buttons->buttonimage = RED_DATA;
-	buttons->func = &Button1_Pressed;
+	buttons->isactive = false;
+	buttons->buttonimage = SETTINGS_DATA;
+	buttons->func = &Button1_Pressed;	//Set the function that needs to be called when this button is pressed
+	buttons->next = NULL;
+	screens[0] = buttons;
+	/*
 	buttons->next = malloc(sizeof(button_list));
 	buttons->next->x_pos = 5;
 	buttons->next->y_pos = 60;
@@ -184,66 +226,122 @@ void create_buttons(void)
 	buttons->next->height = height;
 	buttons->next->buttonimage = GREEN_DATA;
 	buttons->next->func = &Button2_Pressed;
-	buttons->next->next = NULL;
+	buttons->next->next = NULL;*/
+
+	//create menu1 buttons --> width is the same as first strucbuttons
+
+	Menu1 = malloc(sizeof(button_list));	//Create the linked list for the menu1 buttons
+	Menu1->x_pos = 5;
+	Menu1->y_pos = 60;
+	Menu1->width = width;
+	Menu1->height = height;
+	Menu1->isactive = false;
+	Menu1->buttonimage = RED_DATA;
+	Menu1->func = &Button2_Pressed;
+	Menu1->next = malloc(sizeof(button_list));
+	Menu1->next->x_pos = 5;
+	Menu1->next->y_pos = 120;
+	Menu1->next->width = width;
+	Menu1->next->height = height;
+	Menu1->isactive = false;
+	Menu1->next->buttonimage = GREEN_DATA;
+	Menu1->next->func = &Button3_Pressed;
+	Menu1->next->next = NULL;
+
+	screens[1] = Menu1;
+	return;
 }
 
-void draw_buttons(void)
+//Draw the buttons in the linked list passed to the function
+void draw_buttons(button_list * but_lis)
 {
-	button_list * temp = buttons;
+	button_list * temp = but_lis;	//temp pointer (otherwise pointer to 1st node gets lost)
 	while(temp != NULL)
 	{
 		BSP_LCD_DrawBitmap(temp->x_pos, temp->y_pos, (uint8_t*)temp->buttonimage);
-		//BSP_LCD_DrawRect(temp->x_pos, temp->y_pos, temp->width, temp->height);
+		temp->isactive = true;	//When the button is drawn, it means it is active
 		temp = temp->next;
 	}
+	return;
 }
 
+//check if any of the buttons was active and pressed --> position, size used to see which one
 void check_buttons(void)
 {
-	button_list *temp = buttons;
-	while(temp != NULL)
+	for(int i=0; i< sizeof(screens)/sizeof(screens[0]); i++)
 	{
-		if(TouchState.touchX[0] > temp->x_pos && TouchState.touchX[0] < (temp->x_pos + temp->width))
+		button_list *temp = screens[i];
+		while(temp != NULL)
 		{
-			if(TouchState.touchY[0] > temp->y_pos && TouchState.touchY[0] < (temp->y_pos + temp->height))
+			if(temp->isactive)
 			{
-				temp->func();
-				break;
+				if(TouchState.touchX[0] > temp->x_pos && TouchState.touchX[0] < (temp->x_pos + temp->width))
+				{
+					if(TouchState.touchY[0] > temp->y_pos && TouchState.touchY[0] < (temp->y_pos + temp->height))
+					{
+						temp->func();	//Call the function from the nodes functionpointer
+						break;
+					}
+				}
 			}
+			temp = temp->next;
 		}
-		temp = temp->next;
 	}
+	return;
 }
 
+//function called when the first button is pressed --> option button
 void Button1_Pressed(void)
 {
-	BSP_LCD_Clear(LCD_COLOR_RED);
-	draw_buttons();
-	f_open(&fp, "Button1.txt", FA_READ);
-	f_read(&fp, buffer, sizeof(buffer), (UINT*)&bytesread);
-	while(bytesread > 0)
+	if(Menu1->isactive)	//If the menu1 is active
 	{
-		BSP_LCD_DisplayStringAt(80,0, buffer,LEFT_MODE);
-		f_read(&fp, buffer, sizeof(buffer), (UINT*)&bytesread);
+		CustomClear(BackGroundColor);	//clear the screen and all the buttons
+		draw_buttons(buttons);	//Draw the buttons from buttons linked list
 	}
-	f_close(&fp);
+	else
+	{
+		CustomClear(BackGroundColor);	//clear the screen and all the button states
+		draw_buttons(buttons);			//Draw the buttons from the linked list buttons
+		draw_buttons(Menu1);			//Draw the buttons from the linked list Menu1
+	}
 	return;
 }
 
+//Function callled when button 2 is pressed --> red option
 void Button2_Pressed(void)
 {
-	BSP_LCD_Clear(LCD_COLOR_GREEN);
-	draw_buttons();
-	f_open(&fp, "Button2.txt", FA_READ);
-	f_read(&fp, buffer, sizeof(buffer), (UINT*)&bytesread);
+	BackGroundColor = LCD_COLOR_RED;	//set the background color to red
+	CustomClear(BackGroundColor);		//Clear the display and buttons
+	draw_buttons(buttons);				//draw the buttons from the linked list buttons
+	f_open(&fp, "Button1.txt", FA_READ);	//Open the file Button1.txt from the SD card in read mode
+	f_read(&fp, buffer, sizeof(buffer), (UINT*)&bytesread);		//As long as there the bytes read isn't 0, keep reading
 	while(bytesread > 0)
 	{
-		BSP_LCD_DisplayStringAt(80,0, buffer,LEFT_MODE);
-		f_read(&fp, buffer, sizeof(buffer), (UINT*)&bytesread);
+		BSP_LCD_DisplayStringAt(80,0, buffer,LEFT_MODE);	//Display the read text a the top of the screen
+		f_read(&fp, buffer, sizeof(buffer), (UINT*)&bytesread);	//Try to read the remaining text
 	}
-	f_close(&fp);
+	f_close(&fp);	//Close the file connection
 	return;
 }
+
+//Function called when the 3d button is pressed
+void Button3_Pressed(void)
+{
+	BackGroundColor = LCD_COLOR_GREEN;	//change the background color to green
+	CustomClear(BackGroundColor);	//Clear the display and the button states
+	draw_buttons(buttons);		//draw the buttons from the buttons linked list
+	f_open(&fp, "Button2.txt", FA_READ);	//open the file Button2.txt in read mode
+	f_read(&fp, buffer, sizeof(buffer), (UINT*)&bytesread);	//read the first values into the buffer
+	while(bytesread > 0)	//as long as the number of bytes read isn't zero, there can still be bytes left
+	{
+		BSP_LCD_DisplayStringAt(80,0, buffer,LEFT_MODE);	//Display the text read at the top of the display
+		f_read(&fp, buffer, sizeof(buffer), (UINT*)&bytesread);
+	}
+	f_close(&fp);	//close the file connection
+	return;
+}
+
+
 /* USER CODE END 0 */
 
 int main(void)
@@ -290,26 +388,24 @@ int main(void)
   MX_DMA2D_Init();
 
   /* USER CODE BEGIN 2 */
-  BSP_LCD_Init();
-  BSP_LCD_LayerDefaultInit(0,LCD_FB_START_ADDRESS);
-  BSP_LCD_DisplayOn();
-  BSP_LCD_SelectLayer(0);
-  BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize());
-  BSP_LCD_SetFont(&Font20);
-  BSP_LCD_Clear(LCD_COLOR_GREEN);
-  BSP_LCD_SetTextColor(LCD_COLOR_BLUE);
-  while(!BSP_SD_IsDetected())
+  BSP_LCD_Init();				//init the lcd
+  BSP_LCD_LayerDefaultInit(0,LCD_FB_START_ADDRESS);	//init layer 0
+  BSP_LCD_DisplayOn();			//turn the display on
+  BSP_LCD_SelectLayer(0);		//select layer 0
+  BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize());	//init the touchscreen
+  BSP_LCD_SetFont(&Font20);		//select a font
+  BSP_LCD_SetTextColor(LCD_COLOR_BLUE);	//Set the text color to blue
+  while(!BSP_SD_IsDetected())	//check if there is an SD card inserted
   {
-	  BSP_LCD_DisplayStringAt(0,0,(uint8_t *)"no sd card found", LEFT_MODE);
+	  BSP_LCD_DisplayStringAt(0,0,(uint8_t *)"no sd card found", LEFT_MODE);	//while not print a message
   }
-  if(f_mount(&FS, SD_Path, 1) != FR_OK)
+  if(f_mount(&FS, SD_Path, 1) != FR_OK)		//try to mount the SD card
   {
-	  BSP_LCD_DisplayStringAtLine(0, (uint8_t *)"Error while mounting");
+	  BSP_LCD_DisplayStringAtLine(0, (uint8_t *)"Error while mounting");	//if failed print message
   }
-  BSP_LCD_Clear(LCD_COLOR_WHITE);
-  create_buttons(); //create the buttons
-  draw_buttons();	//draw all the buttons;
-  //try to access microsd
+  BSP_LCD_Clear(BackGroundColor);	//clears the screen but not the button states
+  create_buttons(); 		//create the linked lists, arrays of buttons
+  draw_buttons(buttons);	//draw all the buttons from the buttons linked list;
 
   /* USER CODE END 2 */
 
@@ -321,12 +417,17 @@ int main(void)
     MX_USB_HOST_Process();
 
   /* USER CODE BEGIN 3 */
-	  BSP_TS_GetState(&TouchState);
-	  if(TouchState.touchDetected)
-	  {
-		  check_buttons();
-		  HAL_Delay(200);
-	  }
+	/*if(!BSP_SD_IsDetected())
+    {
+    	BSP_LCD_Clear(LCD_COLOR_WHITE);
+    	BSP_LCD_DisplayStringAtLine(2, (uint8_t*) "Please re-enter the SD card");
+    }*/
+	BSP_TS_GetState(&TouchState);	//get the state of the touchscreen and store these values in de TouchState variable
+	if(TouchState.touchDetected)	//if a touch was detected
+	{
+		check_buttons();	//check if an active button was pressed
+	}
+	HAL_Delay(130);		//wait for 200ms to repeat the while loop
   }
   /* USER CODE END 3 */
 
