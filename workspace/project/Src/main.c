@@ -53,9 +53,6 @@
 #include "stm32746g_discovery_ts.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include "red_data.h"
-#include "Green_data.h"
-#include "Settings_data.h"
 #include "stdbool.h"
 /* USER CODE END Includes */
 
@@ -111,7 +108,7 @@ typedef struct button_list
 	int width;
 	int height;
 	bool isactive;
-	const uint8_t * buttonimage;
+	char* buttonimage;
 	void (*func)(void);
 	struct button_list * next;
 
@@ -124,6 +121,7 @@ TS_StateTypeDef TouchState;	//variables that stores the touchstate
 FIL fp;						//file pointer to acces files from SD card
 uint8_t bytesread;			//uint8_t for bytesread value from f_read()
 uint8_t buffer[25]; 		// buffer to use in f_read
+uint8_t ImgBuffer[250000]; 		// buffer to use in f_read of image
 FATFS FS;					//FATFS variable to use in f_mount
 uint32_t BackGroundColor = LCD_COLOR_RED; //variable that stores the needed background color
 /* USER CODE END PV */
@@ -173,11 +171,23 @@ void check_buttons(void);			//check which button was clicked
 void Button1_Pressed(void);			//function called when pressed on button1
 void Button2_Pressed(void);			//function called when pressed on button2
 void Button3_Pressed(void);			//function called when pressed on button3
+void Button4_Pressed(void);
+void ReadBmpIntoBuffer(char*);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
 
 //Clears the screen to the given color and sets all buttons to inactive
+void ReadBmpIntoBuffer(char* filename)
+{
+	f_open(&fp, filename, FA_READ);
+	for(int i =0; i < sizeof(ImgBuffer); i++)
+	{
+		ImgBuffer[i]=0;
+	}
+	f_read(&fp, ImgBuffer, sizeof(ImgBuffer), (UINT*)&bytesread);
+	f_close(&fp);
+}
 void CustomClear(uint32_t color)
 {
 	BSP_LCD_Clear(color);
@@ -214,7 +224,7 @@ void create_buttons(void)
 	buttons->width = width;
 	buttons->height = height;
 	buttons->isactive = false;
-	buttons->buttonimage = SETTINGS_DATA;
+	buttons->buttonimage = "Settings.bmp";
 	buttons->func = &Button1_Pressed;	//Set the function that needs to be called when this button is pressed
 	buttons->next = NULL;
 	screens[0] = buttons;
@@ -236,17 +246,25 @@ void create_buttons(void)
 	Menu1->width = width;
 	Menu1->height = height;
 	Menu1->isactive = false;
-	Menu1->buttonimage = RED_DATA;
+	Menu1->buttonimage = "red.bmp";
 	Menu1->func = &Button2_Pressed;
 	Menu1->next = malloc(sizeof(button_list));
 	Menu1->next->x_pos = 5;
 	Menu1->next->y_pos = 120;
 	Menu1->next->width = width;
 	Menu1->next->height = height;
-	Menu1->isactive = false;
-	Menu1->next->buttonimage = GREEN_DATA;
+	Menu1->next->isactive = false;
+	Menu1->next->buttonimage = "Green.bmp";
 	Menu1->next->func = &Button3_Pressed;
-	Menu1->next->next = NULL;
+	Menu1->next->next = malloc(sizeof(button_list));
+	Menu1->next->next->x_pos = 5;
+	Menu1->next->next->y_pos = 180;
+	Menu1->next->next->width = width;
+	Menu1->next->next->height = height;
+	Menu1->next->next->isactive = false;
+	Menu1->next->next->buttonimage = "load.bmp";
+	Menu1->next->next->func = &Button4_Pressed;
+	Menu1->next->next->next = NULL;
 
 	screens[1] = Menu1;
 	return;
@@ -258,7 +276,8 @@ void draw_buttons(button_list * but_lis)
 	button_list * temp = but_lis;	//temp pointer (otherwise pointer to 1st node gets lost)
 	while(temp != NULL)
 	{
-		BSP_LCD_DrawBitmap(temp->x_pos, temp->y_pos, (uint8_t*)temp->buttonimage);
+		ReadBmpIntoBuffer(temp->buttonimage);
+		BSP_LCD_DrawBitmap(temp->x_pos, temp->y_pos, (uint8_t*)ImgBuffer);
 		temp->isactive = true;	//When the button is drawn, it means it is active
 		temp = temp->next;
 	}
@@ -341,7 +360,25 @@ void Button3_Pressed(void)
 	return;
 }
 
-
+void Button4_Pressed(void)
+{
+	f_open(&fp, "Button4.txt", FA_READ);	//open the file Button2.txt in read mode
+	f_read(&fp, buffer, sizeof(buffer), (UINT*)&bytesread);	//read the first values into the buffer
+	while(bytesread > 0)	//as long as the number of bytes read isn't zero, there can still be bytes left
+	{
+		BSP_LCD_DisplayStringAt(80,0, buffer,LEFT_MODE);	//Display the text read at the top of the display
+		f_read(&fp, buffer, sizeof(buffer), (UINT*)&bytesread);
+	}
+	f_close(&fp);
+	ReadBmpIntoBuffer("deadpool.bmp");
+	BSP_LCD_DrawBitmap(120,60, (uint8_t*)ImgBuffer);
+	HAL_Delay(2000);
+	BSP_LCD_Clear(BackGroundColor);
+	ReadBmpIntoBuffer("Settings.bmp");
+	BSP_LCD_DrawBitmap(120,60, (uint8_t*)ImgBuffer);
+	draw_buttons(buttons);
+	draw_buttons(Menu1);
+}
 /* USER CODE END 0 */
 
 int main(void)
@@ -395,6 +432,7 @@ int main(void)
   BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize());	//init the touchscreen
   BSP_LCD_SetFont(&Font20);		//select a font
   BSP_LCD_SetTextColor(LCD_COLOR_BLUE);	//Set the text color to blue
+  BSP_LCD_Clear(LCD_COLOR_BLACK);
   while(!BSP_SD_IsDetected())	//check if there is an SD card inserted
   {
 	  BSP_LCD_DisplayStringAt(0,0,(uint8_t *)"no sd card found", LEFT_MODE);	//while not print a message
