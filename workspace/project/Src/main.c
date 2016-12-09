@@ -130,7 +130,7 @@ typedef struct RadioButtons
 } RadioButtons;
 
 RadioButtons* speed;
-int Picture_delay = 30000;
+int Picture_delay = 5000;
 
 
 button_list *buttons;		//linked list for the main gui
@@ -215,7 +215,7 @@ void create_radiobuttons(void)
 	speed->height = height;
 	speed->width = width;
 	speed->isvisible = false;
-	speed->buttonimage = "Config/Radiouns.bmp";
+	speed->buttonimage = "Config/Radiosel.bmp";
 	speed->func = &Button5_Pressed;
 	speed->next = malloc(sizeof(RadioButtons));
 	speed->next->label = "10x";
@@ -235,7 +235,7 @@ void create_radiobuttons(void)
 	speed->next->next->height = height;
 	speed->next->next->width = width;
 	speed->next->next->isvisible = false;
-	speed->next->next->buttonimage = "Config/Radiosel.bmp";
+	speed->next->next->buttonimage = "Config/Radiouns.bmp";
 	speed->next->next->func = &Button5_Pressed;
 	speed->next->next->next = NULL;
 }
@@ -512,7 +512,7 @@ int main(void)
   SystemClock_Config();
 
   /* Initialize all configured peripherals */
-  MX_GPIO_Init();
+  //MX_GPIO_Init();
   MX_ADC3_Init();
   MX_DCMI_Init();
   //MX_ETH_Init();
@@ -548,6 +548,10 @@ int main(void)
   BSP_LCD_SetFont(&Font12);		//select a font
   BSP_LCD_SetTextColor(LCD_COLOR_BLUE);	//Set the text color to blue
   BSP_LCD_Clear(LCD_COLOR_BLACK);
+  if(BSP_TS_ITConfig() != TS_OK)
+  {
+	  BSP_LCD_Clear(LCD_COLOR_RED);
+  }
   while(!BSP_SD_IsDetected())	//check if there is an SD card inserted
   {
 	  BSP_LCD_DisplayStringAt(0,0,(uint8_t *)"no sd card found", LEFT_MODE);	//while not print a message
@@ -562,7 +566,7 @@ int main(void)
 
 
   create_radiobuttons();
-  draw_radios();
+  //draw_radios();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -578,17 +582,39 @@ int main(void)
     	BSP_LCD_Clear(LCD_COLOR_WHITE);
     	BSP_LCD_DisplayStringAtLine(2, (uint8_t*) "Please re-enter the SD card");
     }*/
-	BSP_TS_GetState(&TouchState);	//get the state of the touchscreen and store these values in de TouchState variable
+	/*BSP_TS_GetState(&TouchState);	//get the state of the touchscreen and store these values in de TouchState variable
 	if(TouchState.touchDetected)	//if a touch was detected
 	{
 		check_buttons();	//check if an active button was pressed
-	}
-	HAL_Delay(130);		//wait for 200ms to repeat the while loop
+	}*/
+	BSP_LCD_Clear(BackGroundColor);
+	ReadBmpIntoBuffer("Images/deadpool.bmp");
+	BSP_LCD_DrawBitmap(120,60, (uint8_t*)ImgBuffer);
+	draw_radios();
+	HAL_Delay(Picture_delay);
+	BSP_LCD_Clear(BackGroundColor);
+	ReadBmpIntoBuffer("Images/udpmeme.bmp");
+	BSP_LCD_DrawBitmap(100,0, (uint8_t*)ImgBuffer);
+	draw_radios();
+	HAL_Delay(Picture_delay);
+	//draw_buttons(buttons);
+	//draw_buttons(Menu1);
+	//HAL_Delay(Picture_delay);		//wait for 200ms to repeat the while loop
   }
   /* USER CODE END 3 */
 
 }
 
+//interrupt callbackfunction for the touchscreen
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+	if(GPIO_Pin == GPIO_PIN_13)
+	{
+		BSP_TS_GetState(&TouchState);
+		check_buttons();
+		BSP_TS_ITClear();
+	}
+}
 /** System Clock Configuration
 */
 void SystemClock_Config(void)
@@ -1605,7 +1631,7 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin : LCD_INT_Pin */
   GPIO_InitStruct.Pin = LCD_INT_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(LCD_INT_GPIO_Port, &GPIO_InitStruct);
 
@@ -1636,6 +1662,10 @@ static void MX_GPIO_Init(void)
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOG, ARDUINO_D4_Pin|ARDUINO_D2_Pin|EXT_RST_Pin, GPIO_PIN_RESET);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI15_10_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI15_10_IRQn);
 
 }
 
