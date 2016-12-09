@@ -114,6 +114,25 @@ typedef struct button_list
 
 } button_list;
 
+typedef struct RadioButtons
+{
+	char * label;
+	int delay_value;
+	int x_pos;
+	int y_pos;
+	int width;
+	int height;
+	bool isvisible;
+	char* buttonimage;
+	void (*func)(void);
+	struct RadioButtons * next;
+
+} RadioButtons;
+
+RadioButtons* speed;
+int Picture_delay = 30000;
+
+
 button_list *buttons;		//linked list for the main gui
 button_list * Menu1;		//linked list for the buttons of the settings menu
 button_list * screens[2];	//array for all the linked buttonlists --> iterate through them
@@ -173,11 +192,107 @@ void Button2_Pressed(void);			//function called when pressed on button2
 void Button3_Pressed(void);			//function called when pressed on button3
 void Button4_Pressed(void);
 void ReadBmpIntoBuffer(char*);
+
+void create_radiobuttons(void);
+void Button5_Pressed(void);
+void draw_radios(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
 
 //Clears the screen to the given color and sets all buttons to inactive
+
+void create_radiobuttons(void)
+{
+	int width = 32;
+	int height = 32;
+	int padding = 5;
+	speed = malloc(sizeof(RadioButtons));
+	speed->label = " 5x";
+	speed->delay_value = 5000;
+	speed->x_pos = padding;
+	speed->y_pos=padding;
+	speed->height = height;
+	speed->width = width;
+	speed->isvisible = false;
+	speed->buttonimage = "Config/Radiouns.bmp";
+	speed->func = &Button5_Pressed;
+	speed->next = malloc(sizeof(RadioButtons));
+	speed->next->label = "10x";
+	speed->next->delay_value = 10000;
+	speed->next->x_pos = padding;
+	speed->next->y_pos=height+padding + padding;
+	speed->next->height = height;
+	speed->next->width = width;
+	speed->next->isvisible = false;
+	speed->next->buttonimage = "Config/Radiouns.bmp";
+	speed->next->func = &Button5_Pressed;
+	speed->next->next = malloc(sizeof(RadioButtons));
+	speed->next->next->label = "30x";
+	speed->next->next->delay_value = 30000;
+	speed->next->next->x_pos = padding;
+	speed->next->next->y_pos=2*(height+padding)+padding;
+	speed->next->next->height = height;
+	speed->next->next->width = width;
+	speed->next->next->isvisible = false;
+	speed->next->next->buttonimage = "Config/Radiosel.bmp";
+	speed->next->next->func = &Button5_Pressed;
+	speed->next->next->next = NULL;
+}
+
+void Button5_Pressed(void)
+{
+	RadioButtons* temp = speed;
+	while (temp != NULL)
+	{
+		temp->buttonimage = "Config/Radiouns.bmp";
+		temp = temp->next;
+
+	}
+	return;
+}
+
+void check_buttons(void)
+{
+	RadioButtons *temp = speed;
+	while(temp != NULL)
+	{
+		if(temp->isvisible)
+		{
+			if(TouchState.touchX[0] > temp->x_pos && TouchState.touchX[0] < (temp->x_pos + temp->width))
+			{
+				if(TouchState.touchY[0] > temp->y_pos && TouchState.touchY[0] < (temp->y_pos + temp->height))
+				{
+					temp->func();	//Call the function from the nodes functionpointer
+					Picture_delay = temp->delay_value;
+					temp->buttonimage = "Config/Radiosel.bmp";
+					draw_radios();
+					break;
+				}
+			}
+		}
+		temp = temp->next;
+	}
+	return;
+}
+
+void draw_radios(void)
+{
+	int padding = 3;
+	RadioButtons * temp = speed;	//temp pointer (otherwise pointer to 1st node gets lost)
+	while(temp != NULL)
+	{
+		ReadBmpIntoBuffer(temp->buttonimage);
+		BSP_LCD_DrawBitmap(temp->x_pos, temp->y_pos, (uint8_t*)ImgBuffer);
+		BSP_LCD_DisplayStringAt(temp->x_pos+temp->width+padding, temp->y_pos, (uint8_t*)temp->label,LEFT_MODE);
+		temp->isvisible = true;	//When the button is drawn, it means it is active
+		temp = temp->next;
+	}
+	return;
+}
+
+
+
 void ReadBmpIntoBuffer(char* filename)
 {
 	f_open(&fp, filename, FA_READ);
@@ -224,7 +339,7 @@ void create_buttons(void)
 	buttons->width = width;
 	buttons->height = height;
 	buttons->isactive = false;
-	buttons->buttonimage = "Settings.bmp";
+	buttons->buttonimage = "Config/Settings.bmp";
 	buttons->func = &Button1_Pressed;	//Set the function that needs to be called when this button is pressed
 	buttons->next = NULL;
 	screens[0] = buttons;
@@ -246,7 +361,7 @@ void create_buttons(void)
 	Menu1->width = width;
 	Menu1->height = height;
 	Menu1->isactive = false;
-	Menu1->buttonimage = "red.bmp";
+	Menu1->buttonimage = "Config/red.bmp";
 	Menu1->func = &Button2_Pressed;
 	Menu1->next = malloc(sizeof(button_list));
 	Menu1->next->x_pos = 5;
@@ -254,7 +369,7 @@ void create_buttons(void)
 	Menu1->next->width = width;
 	Menu1->next->height = height;
 	Menu1->next->isactive = false;
-	Menu1->next->buttonimage = "Green.bmp";
+	Menu1->next->buttonimage = "Config/Green.bmp";
 	Menu1->next->func = &Button3_Pressed;
 	Menu1->next->next = malloc(sizeof(button_list));
 	Menu1->next->next->x_pos = 5;
@@ -262,7 +377,7 @@ void create_buttons(void)
 	Menu1->next->next->width = width;
 	Menu1->next->next->height = height;
 	Menu1->next->next->isactive = false;
-	Menu1->next->next->buttonimage = "load.bmp";
+	Menu1->next->next->buttonimage = "Config/load.bmp";
 	Menu1->next->next->func = &Button4_Pressed;
 	Menu1->next->next->next = NULL;
 
@@ -285,7 +400,7 @@ void draw_buttons(button_list * but_lis)
 }
 
 //check if any of the buttons was active and pressed --> position, size used to see which one
-void check_buttons(void)
+/*void check_buttons(void)
 {
 	for(int i=0; i< sizeof(screens)/sizeof(screens[0]); i++)
 	{
@@ -307,7 +422,7 @@ void check_buttons(void)
 		}
 	}
 	return;
-}
+}*/
 
 //function called when the first button is pressed --> option button
 void Button1_Pressed(void)
@@ -370,11 +485,11 @@ void Button4_Pressed(void)
 		f_read(&fp, buffer, sizeof(buffer), (UINT*)&bytesread);
 	}
 	f_close(&fp);
-	ReadBmpIntoBuffer("deadpool.bmp");
+	ReadBmpIntoBuffer("Config/Radiouns.bmp");
 	BSP_LCD_DrawBitmap(120,60, (uint8_t*)ImgBuffer);
 	HAL_Delay(2000);
 	BSP_LCD_Clear(BackGroundColor);
-	ReadBmpIntoBuffer("Settings.bmp");
+	ReadBmpIntoBuffer("Config/Radiosel.bmp");
 	BSP_LCD_DrawBitmap(120,60, (uint8_t*)ImgBuffer);
 	draw_buttons(buttons);
 	draw_buttons(Menu1);
@@ -430,7 +545,7 @@ int main(void)
   BSP_LCD_DisplayOn();			//turn the display on
   BSP_LCD_SelectLayer(0);		//select layer 0
   BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize());	//init the touchscreen
-  BSP_LCD_SetFont(&Font20);		//select a font
+  BSP_LCD_SetFont(&Font12);		//select a font
   BSP_LCD_SetTextColor(LCD_COLOR_BLUE);	//Set the text color to blue
   BSP_LCD_Clear(LCD_COLOR_BLACK);
   while(!BSP_SD_IsDetected())	//check if there is an SD card inserted
@@ -442,9 +557,12 @@ int main(void)
 	  BSP_LCD_DisplayStringAtLine(0, (uint8_t *)"Error while mounting");	//if failed print message
   }
   BSP_LCD_Clear(BackGroundColor);	//clears the screen but not the button states
-  create_buttons(); 		//create the linked lists, arrays of buttons
-  draw_buttons(buttons);	//draw all the buttons from the buttons linked list;
+  //create_buttons(); 		//create the linked lists, arrays of buttons
+  //draw_buttons(buttons);	//draw all the buttons from the buttons linked list;
 
+
+  create_radiobuttons();
+  draw_radios();
   /* USER CODE END 2 */
 
   /* Infinite loop */
