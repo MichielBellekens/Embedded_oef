@@ -53,7 +53,8 @@
 #include "stm32746g_discovery_ts.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include "stdbool.h"
+#include <string.h>
+#include <stdbool.h>
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -126,9 +127,14 @@ TS_StateTypeDef TouchState;	//variables that stores the touchstate
 FIL fp;						//file pointer to acces files from SD card
 uint8_t bytesread;			//uint8_t for bytesread value from f_read()
 uint8_t buffer[25]; 		// buffer to use in f_read
-uint8_t ImgBuffer[300000]; 		// buffer to use in f_read of image
+uint8_t ImgBuffer[310000]; 		// buffer to use in f_read of image
+uint8_t Radiobuff[3100];
 FATFS FS;					//FATFS variable to use in f_mount
 uint32_t BackGroundColor = LCD_COLOR_RED; //variable that stores the needed background color
+uint8_t x_offset[4];
+uint8_t y_offset[4];
+DIR Imagedir;
+FILINFO fileinf;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -170,16 +176,17 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 /* Private function prototypes -----------------------------------------------*/
 void check_buttons(void);			//check which button was clicked
 void ReadBmpIntoBuffer(char*);
-
+void ReadRadioIntoBuffer(char*);
+void Draw_Buffer(void);
 void create_radiobuttons(void);
 void Unselect_radios(RadioButtons*);
 void draw_radios(void);
+void ToggleMenu(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
 
 //Clears the screen to the given color and sets all buttons to inactive
-
 void create_radiobuttons(void)
 {
 	int width = 32;
@@ -259,6 +266,17 @@ void create_radiobuttons(void)
 
 }
 
+void Draw_Buffer(void)
+{
+	BSP_LCD_Clear(BackGroundColor);
+	uint32_t imgwidth = x_offset[3]<<24 | x_offset[2]<<16 | x_offset[1]<<8 | x_offset[0];
+	uint32_t imgheight = y_offset[3]<<24 | y_offset[2]<<16 | y_offset[1]<<8 | y_offset[0];
+	uint32_t x_offset  = (BSP_LCD_GetXSize()-imgwidth)/2;
+	uint32_t y_offset  = (BSP_LCD_GetYSize()-imgheight)/2;
+	BSP_LCD_DrawBitmap(x_offset,y_offset, (uint8_t*)ImgBuffer);
+	draw_radios();
+}
+
 void Unselect_radios(RadioButtons* clearing)
 {
 	RadioButtons* temp = clearing;
@@ -273,23 +291,28 @@ void Unselect_radios(RadioButtons* clearing)
 
 void check_buttons(void)
 {
-	for(int i=0; i < sizeof(options)/sizeof(options[0]); i++)
+	if(!options[0]->isvisible || TouchState.touchX[0] > 100)
 	{
-		RadioButtons *temp = options[i];
-		while(temp != NULL)
+		ToggleMenu();
+		//BSP_TS_ResetTouchData(&TouchState);
+	}
+	else
+	{
+		for(int i=0; i < sizeof(options)/sizeof(options[0]); i++)
 		{
-			if(temp->isvisible)
+			RadioButtons *temp = options[i];
+			while(temp != NULL)
 			{
 				if(TouchState.touchX[0] > temp->x_pos && TouchState.touchX[0] < (temp->x_pos + temp->width))
 				{
 					if(TouchState.touchY[0] > temp->y_pos && TouchState.touchY[0] < (temp->y_pos + temp->height))
 					{
 						temp->func(options[i]);	//Call the function from the nodes functionpointer
-						if(options[i]->category == "Speed")
+						if(strcmp(options[i]->category,"Speed")==0)	//options[i]->category == "Speed"
 						{
 							Picture_delay = temp->delay_value;
 						}
-						else if(options[i]->category == "Color")
+						else if(strcmp(options[i]->category,"Color")==0)	//options[i]->category == "Color"
 						{
 							BackGroundColor = (uint32_t)temp->delay_value;
 						}
@@ -304,8 +327,8 @@ void check_buttons(void)
 						break;
 					}
 				}
+				temp = temp->next;
 			}
-			temp = temp->next;
 		}
 	}
 	return;
@@ -313,24 +336,57 @@ void check_buttons(void)
 
 void draw_radios(void)
 {
-	int padding = 3;
-	for(int i=0; i < sizeof(options)/sizeof(options[0]); i++)
+	if(options[0]->isvisible)
 	{
-		BSP_LCD_DisplayStringAt(0,i*130,(uint8_t*)options[i]->category,LEFT_MODE);
-		RadioButtons * temp = options[i];	//temp pointer (otherwise pointer to 1st node gets lost)
-		while(temp != NULL)
+		int padding = 3;
+		for(int i=0; i < sizeof(options)/sizeof(options[0]); i++)
 		{
-			ReadBmpIntoBuffer(temp->buttonimage);
-			BSP_LCD_DrawBitmap(temp->x_pos, temp->y_pos, (uint8_t*)ImgBuffer);
-			BSP_LCD_DisplayStringAt(temp->x_pos+temp->width+padding, temp->y_pos, (uint8_t*)temp->label,LEFT_MODE);
-			temp->isvisible = true;	//When the button is drawn, it means it is active
-			temp = temp->next;
+			BSP_LCD_DisplayStringAt(0,i*130,(uint8_t*)options[i]->category,LEFT_MODE);
+			RadioButtons * temp = options[i];	//temp pointer (otherwise pointer to 1st node gets lost)
+			while(temp != NULL)
+			{
+				ReadRadioIntoBuffer(temp->buttonimage);
+				BSP_LCD_DrawBitmap(temp->x_pos, temp->y_pos, (uint8_t*)Radiobuff);
+				BSP_LCD_DisplayStringAt(temp->x_pos+temp->width+padding, temp->y_pos, (uint8_t*)temp->label,LEFT_MODE);
+				temp = temp->next;
+			}
 		}
 	}
 	return;
 }
 
-
+void ToggleMenu()
+{
+	for(int i=0; i < sizeof(options)/sizeof(options[0]); i++)
+	{
+		RadioButtons * temp = options[i];	//temp pointer (otherwise pointer to 1st node gets lost)
+		while(temp != NULL)
+		{
+			if(temp->isvisible)
+			{
+				temp->isvisible = false;
+			}
+			else
+			{
+				temp->isvisible = true;
+			}
+				//set the isvisible field to false
+			temp = temp->next;
+		}
+	}
+	Draw_Buffer();
+	return;
+}
+void ReadRadioIntoBuffer(char* filename)
+{
+	f_open(&fp, filename, FA_READ);
+	for(int i =0; i < sizeof(Radiobuff); i++)
+	{
+		Radiobuff[i]=0;
+	}
+	f_read(&fp, Radiobuff, sizeof(Radiobuff), (UINT*)&bytesread);
+	f_close(&fp);
+}
 
 void ReadBmpIntoBuffer(char* filename)
 {
@@ -340,6 +396,10 @@ void ReadBmpIntoBuffer(char* filename)
 		ImgBuffer[i]=0;
 	}
 	f_read(&fp, ImgBuffer, sizeof(ImgBuffer), (UINT*)&bytesread);
+	f_lseek(&fp,18);
+	f_read(&fp,x_offset, sizeof(x_offset), (UINT*)&bytesread);
+	f_lseek(&fp,22);
+	f_read(&fp, y_offset, sizeof(y_offset), (UINT*)&bytesread);
 	f_close(&fp);
 }
 
@@ -463,16 +523,25 @@ int main(void)
 	{
 		check_buttons();	//check if an active button was pressed
 	}*/
-	BSP_LCD_Clear(BackGroundColor);
-	ReadBmpIntoBuffer("Images/deadpool.bmp");
-	BSP_LCD_DrawBitmap(80,0, (uint8_t*)ImgBuffer);
-	draw_radios();
+    //f_findfirst(&Imagedir, &fileinf,(const TCHAR*)"Images",(const TCHAR*)"*.bmp");
+    f_findfirst(&Imagedir, &fileinf, "Images", "*.bmp");
+	ReadBmpIntoBuffer((char*)fileinf.fname);
 	HAL_Delay(Picture_delay);
-	BSP_LCD_Clear(BackGroundColor);
+    /*ReadBmpIntoBuffer("Images/Cat.bmp");
+	Draw_Buffer();
+	HAL_Delay(Picture_delay);
+	ReadBmpIntoBuffer("Images/class.bmp");
+	Draw_Buffer();
+	HAL_Delay(Picture_delay);
+	ReadBmpIntoBuffer("Images/Feature.bmp");
+	Draw_Buffer();
+	HAL_Delay(Picture_delay);
+    ReadBmpIntoBuffer("Images/deadpool.bmp");
+	Draw_Buffer();
+	HAL_Delay(Picture_delay);
 	ReadBmpIntoBuffer("Images/udpmeme.bmp");
-	BSP_LCD_DrawBitmap(100,0, (uint8_t*)ImgBuffer);
-	draw_radios();
-	HAL_Delay(Picture_delay);
+	Draw_Buffer();
+	HAL_Delay(Picture_delay);*/
 	//draw_buttons(buttons);
 	//draw_buttons(Menu1);
 	//HAL_Delay(Picture_delay);		//wait for 200ms to repeat the while loop
