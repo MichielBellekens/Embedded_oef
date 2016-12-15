@@ -119,9 +119,9 @@ typedef struct RadioButtons
 
 } RadioButtons;
 
-RadioButtons* speed;	//linked radiobuttons list  for the speed
-RadioButtons* background;	//linked radiobuttons list for the backgroundcolor
-RadioButtons* options[2];	//array of linked radiobuttons list --> easier to iterate through
+RadioButtons* speed = NULL;			//linked radiobuttons list  for the speed
+RadioButtons* background = NULL;	//linked radiobuttons list for the backgroundcolor
+RadioButtons* options[2];			//array of linked radiobuttons list --> easier to iterate through
 uint32_t Picture_delay = 5000;	//Variable for the delay between pictures --> default to 5000;
 
 TS_StateTypeDef TouchState;	//variables that stores the touchstate
@@ -183,28 +183,29 @@ void create_radiobuttons(void);		//fill the needed linked lists and the arrat of
 void Unselect_radios(RadioButtons*);	//Set all the radiobuttons int he linked list pointed at by the given pointer to unselected
 void Draw_Menu(void);				//draw the radiobuttons on the screen
 void ToggleMenu(void);				//Toggle the menu between visible and invisible
-void Saveoptions(void);
-void ReadOptions(void);
-void SetRadioButtons(void);
+void Saveoptions(void);				//write the settings options into a file in the Config folder
+void ReadOptions(void);				//read the settings options from the file
+void SetRadioButtons(void);			//set the radiobuttons in accordance to the settings
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
+//set the radiobuttons in accordance to the settings
 void SetRadioButtons(void)
 {
-	for(uint32_t i =0; i < sizeof(options)/sizeof(options[0]);i++)
+	for(uint32_t i =0; i < sizeof(options)/sizeof(options[0]);i++)	//iterate over the array of options
 	{
-		Unselect_radios(options[i]);
-		RadioButtons * temp = options[i];
-		while(temp != NULL)
+		Unselect_radios(options[i]);	//unselect all the radiobuttons in the selected radiobuttons linked list
+		RadioButtons * temp = options[i];	//store the pointer to first element in a temp value
+		while(temp != NULL)	//as long as temp isn't zero
 		{
-			if(strcmp(options[i]->category,"Color")  == 0)
+			if(strcmp(options[i]->category,"Color")  == 0)	//if the category of the currently select list is color --> use option[] and not temp beacause only the first node has a value for category
 			{
-				if(BackGroundColor == temp->value)
+				if(BackGroundColor == temp->value)	//if the currently set backgroundcolor is the same as the value in the current node
 				{
-					temp->buttonimage = "Config/Radiosel.bmp";
+					temp->buttonimage = "Config/Radiosel.bmp";	//set this node's image to the selected radiobutton
 				}
 			}
-			else if(strcmp(options[i]->category,"Speed") == 0)
+			else if(strcmp(options[i]->category,"Speed") == 0)	//same as aboce but with speed category
 			{
 				if(Picture_delay == temp->value)
 				{
@@ -215,39 +216,39 @@ void SetRadioButtons(void)
 			{
 				//In normal operation not accesible
 			}
-			temp = temp->next;
+			temp = temp->next;		//change the radiobuttons pointer to the next node
 		}
 	}
 }
 
+//save the currently set options to a file in the Config folder
 void Saveoptions(void)
 {
-	f_open(&fp, "Config/Options.txt", FA_CREATE_ALWAYS | FA_WRITE);
-	//f_write(&fp, buf, sizeof(buf), &bytesread);
-	f_printf(&fp, "%x,",BackGroundColor);
-	f_printf(&fp, "%x",Picture_delay);
-	f_close(&fp);
+	f_open(&fp, "Config/Options.txt", FA_CREATE_ALWAYS | FA_WRITE);	//open the settings file --> create new file (if exist overwrite) & write access
+	f_printf(&fp, "%x,%x",BackGroundColor, Picture_delay);		//write the setting values to the file
+	f_close(&fp);	//close the file
 	return;
 }
 
+//read the option from the file
 void ReadOptions(void)
 {
-	uint8_t readbuffer[50];
-	if(f_open(&fp, "Config/OPTIONS.txt", FA_READ) == FR_OK)
+	uint8_t readbuffer[50];		//create a buffer to store the read values
+	if(f_open(&fp, "Config/Options.txt", FA_READ) == FR_OK)		//open the config file in read mode
 	{
-		f_read(&fp, readbuffer, sizeof(readbuffer), (UINT*)&bytesread);
-		sscanf(readbuffer, "%x,%x", &BackGroundColor,&Picture_delay);
+		f_read(&fp, readbuffer, sizeof(readbuffer), (UINT*)&bytesread);		//read the file into the buffer
+		sscanf(readbuffer, "%x,%x", (unsigned int*)&BackGroundColor,(unsigned int*)&Picture_delay);	//read the formatted data from the buffer
 	}
-	f_close(&fp);
+	f_close(&fp);	//close the file
 	return;
 }
 //Fills the linked lists values and adds them to the Options array
 void create_radiobuttons(void)
 {
-	int width = 32;
-	int height = 32;
-	int padding = 5;
-	int titleoffset=16;
+	uint32_t width = 32;
+	uint32_t height = 32;
+	uint32_t padding = 5;
+	uint32_t titleoffset=16;
 	speed = malloc(sizeof(RadioButtons));
 	speed->category = "Speed";
 	speed->label = "5s";
@@ -537,10 +538,12 @@ int main(void)
   BSP_LCD_SetFont(&Font16);		//select a font
   BSP_LCD_SetTextColor(LCD_COLOR_BLUE);	//Set the text color to blue
   create_radiobuttons();		//fill all the linked lists and the options array
+
   if(BSP_TS_ITConfig() != TS_OK)	//config the interrupt of the touchscreen
   {
 	  BSP_LCD_Clear(LCD_COLOR_RED);	//if interrupt config failed lcd red and infinite loop
   }
+  BSP_LCD_Clear(BackGroundColor);	//clears the screen to the background color
   while(!BSP_SD_IsDetected())	//check if there is an SD card inserted
   {
 	  BSP_LCD_DisplayStringAt(0,0,(uint8_t *)"no sd card found", CENTER_MODE);	//while not print a message
@@ -549,8 +552,8 @@ int main(void)
   {
 	  BSP_LCD_DisplayStringAtLine(0, (uint8_t *)"Error while mounting");	//if failed print message
   }
-  ReadOptions();
-  SetRadioButtons();
+  ReadOptions();	//call this function to read the settings from the SD card
+  SetRadioButtons();	//set the radiobuttons to match the read options
   BSP_LCD_Clear(BackGroundColor);	//clears the screen to the background color
   /* USER CODE END 2 */
 
@@ -564,7 +567,7 @@ int main(void)
   /* USER CODE BEGIN 3 */
     f_findfirst(&Imagedir, &fileinf, "Images", "*.bmp");	//find the first bmp element in the Images dir --> TO WORK: _USE_FIND == 1 and _FS_MINIMIZE <= 1 in ffconf.h
 
-	while(strcmp(fileinf.fname[0], '\0') != 0)	//first element of the array contains \0 when there aren't any next files
+	while(strcmp(&fileinf.fname[0], "\0") != 0)	//first element of the array contains \0 when there aren't any next files
 	{
 	    ReadBmpIntoBuffer(fileinf.fname);	//pass the filename to the ReadBmpIntoBuffer function
 		Draw_Buffer();	//Update the screen
