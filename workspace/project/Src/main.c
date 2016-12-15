@@ -122,12 +122,13 @@ typedef struct RadioButtons
 RadioButtons* speed;	//linked radiobuttons list  for the speed
 RadioButtons* background;	//linked radiobuttons list for the backgroundcolor
 RadioButtons* options[2];	//array of linked radiobuttons list --> easier to iterate through
-int Picture_delay = 5000;	//Variable for the delay between pictures --> default to 5000;
+uint32_t Picture_delay = 5000;	//Variable for the delay between pictures --> default to 5000;
 
 TS_StateTypeDef TouchState;	//variables that stores the touchstate
 FIL fp;						//file pointer to acces files from SD card
 uint8_t bytesread;			//uint8_t for bytesread value from f_read()
 uint8_t ImgBuffer[310000]; 		// buffer to store the image read
+//uint8_t * ImgBuffer = (uint8_t*)0xC007F800;
 uint8_t Radiobuff[3100];		//buffer to store the radiobuttons image read
 FATFS FS;						//FATFS variable to use in f_mount
 uint32_t BackGroundColor = LCD_COLOR_RED; //variable that stores the currently selected background color
@@ -182,10 +183,64 @@ void create_radiobuttons(void);		//fill the needed linked lists and the arrat of
 void Unselect_radios(RadioButtons*);	//Set all the radiobuttons int he linked list pointed at by the given pointer to unselected
 void Draw_Menu(void);				//draw the radiobuttons on the screen
 void ToggleMenu(void);				//Toggle the menu between visible and invisible
+void Saveoptions(void);
+void ReadOptions(void);
+void SetRadioButtons(void);
 /* USER CODE END PFP */
 
 /* USER CODE BEGIN 0 */
+void SetRadioButtons(void)
+{
+	for(uint32_t i =0; i < sizeof(options)/sizeof(options[0]);i++)
+	{
+		Unselect_radios(options[i]);
+		RadioButtons * temp = options[i];
+		while(temp != NULL)
+		{
+			if(strcmp(options[i]->category,"Color")  == 0)
+			{
+				if(BackGroundColor == temp->value)
+				{
+					temp->buttonimage = "Config/Radiosel.bmp";
+				}
+			}
+			else if(strcmp(options[i]->category,"Speed") == 0)
+			{
+				if(Picture_delay == temp->value)
+				{
+					temp->buttonimage = "Config/Radiosel.bmp";
+				}
+			}
+			else
+			{
+				//In normal operation not accesible
+			}
+			temp = temp->next;
+		}
+	}
+}
 
+void Saveoptions(void)
+{
+	f_open(&fp, "Config/Options.txt", FA_CREATE_ALWAYS | FA_WRITE);
+	//f_write(&fp, buf, sizeof(buf), &bytesread);
+	f_printf(&fp, "%x,",BackGroundColor);
+	f_printf(&fp, "%x",Picture_delay);
+	f_close(&fp);
+	return;
+}
+
+void ReadOptions(void)
+{
+	uint8_t readbuffer[50];
+	if(f_open(&fp, "Config/OPTIONS.txt", FA_READ) == FR_OK)
+	{
+		f_read(&fp, readbuffer, sizeof(readbuffer), (UINT*)&bytesread);
+		sscanf(readbuffer, "%x,%x", &BackGroundColor,&Picture_delay);
+	}
+	f_close(&fp);
+	return;
+}
 //Fills the linked lists values and adds them to the Options array
 void create_radiobuttons(void)
 {
@@ -376,6 +431,7 @@ void ToggleMenu()
 			temp = temp->next;		//Select the next node
 		}
 	}
+	Saveoptions();
 	Draw_Buffer();	//update the screen
 	return;
 }
@@ -493,6 +549,8 @@ int main(void)
   {
 	  BSP_LCD_DisplayStringAtLine(0, (uint8_t *)"Error while mounting");	//if failed print message
   }
+  ReadOptions();
+  SetRadioButtons();
   BSP_LCD_Clear(BackGroundColor);	//clears the screen to the background color
   /* USER CODE END 2 */
 
@@ -515,6 +573,7 @@ int main(void)
 	}
 	f_closedir(&Imagedir);		//Close the Images dir
 
+	//manually read the files from the Image directory
     /*ReadBmpIntoBuffer("Images/Cat.bmp");
 	Draw_Buffer();
 	HAL_Delay(Picture_delay);
