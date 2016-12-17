@@ -147,7 +147,7 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 	if(GPIO_Pin == GPIO_PIN_13)	//if the interrupt comes from the touch interrupt pin
 	{
 		BSP_TS_GetState(&TouchState);	//update the touchstate
-		check_buttons();	//call the check_buttons function to see what needs to be done
+		vEigFunCheckButtons();	//call the check_buttons function to see what needs to be done
 		//BSP_TS_ITClear();
 	}
 }
@@ -197,24 +197,8 @@ int main(void)
   MX_DMA2D_Init();
 
   /* USER CODE BEGIN 2 */
-  BSP_LCD_Init();				//init the lcd
-  BSP_LCD_LayerDefaultInit(0,LCD_FB_START_ADDRESS);	//init layer 0
-  BSP_LCD_DisplayOn();			//turn the display on
-  BSP_LCD_SelectLayer(0);		//select layer 0
-  BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize());	//init the touchscreen
-  BSP_LCD_SetFont(&Font16);		//select a font
-  BSP_LCD_SetTextColor(LCD_COLOR_BLUE);	//Set the text color to blue
-  create_radiobuttons();		//fill all the linked lists and the options array
 
-  if(BSP_TS_ITConfig() != TS_OK)	//config the interrupt of the touchscreen
-  {
-	  BSP_LCD_Clear(LCD_COLOR_RED);	//if interrupt config failed lcd red and infinite loop
-  }
-  CheckAndMountSD();
-  BSP_LCD_Clear(BackGroundColor);	//clears the screen to the background color
-  ReadOptions();	//call this function to read the settings from the SD card
-  SetRadioButtons();	//set the radiobuttons to match the read options
-  BSP_LCD_Clear(BackGroundColor);	//clears the screen to the background color
+  vEigFunInitProg();
 
   /* USER CODE END 2 */
 
@@ -228,21 +212,21 @@ int main(void)
   /* USER CODE BEGIN 3 */
     if(f_findfirst(&Imagedir, &fileinf, "Images", "*.bmp") != FR_OK)	//find the first bmp element in the Images dir --> TO WORK: _USE_FIND == 1 and _FS_MINIMIZE <= 1 in ffconf.h
     {
-    	ErrorMsg("find first error from main");
+    	vEigFunErrorMsg("find first error from main");
     }
 	while(strcmp(&fileinf.fname[0], "\0") != 0)	//first element of the array contains \0 when there aren't any next files
 	{
-	    ReadBmpIntoBuffer(fileinf.fname);	//pass the filename to the ReadBmpIntoBuffer function
-		Draw_Buffer();	//Update the screen
+	    vEigFunReadBmpIntoBuffer(fileinf.fname);	//pass the filename to the ReadBmpIntoBuffer function
+		vEigFunDrawBuffer();	//Update the screen
 		if(f_findnext(&Imagedir, &fileinf) != FR_OK)	//Try to find the next bmp file in the dir
 		{
-			ErrorMsg("find_next error from main");
+			vEigFunErrorMsg("find_next error from main");
 		}
-		HAL_Delay(Picture_delay);		//Wait to get next image for the period set by the user
+		HAL_Delay(ulPictureDelay);		//Wait to get next image for the period set by the user
 	}
 	if(f_closedir(&Imagedir) != FR_OK)		//Close the Images dir
 	{
-		ErrorMsg("close dir error from main");
+		vEigFunErrorMsg("close dir error from main");
 	}
 
 	//manually read the files from the Image directory
