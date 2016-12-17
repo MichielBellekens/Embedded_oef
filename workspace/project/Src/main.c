@@ -95,6 +95,7 @@ SDRAM_HandleTypeDef hsdram1;
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 //ALL THE GLOBAL VARIABLES ARE DECLARED IN HEADER FILE
+bool test = false;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -146,8 +147,12 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
  {
 	if(GPIO_Pin == GPIO_PIN_13)	//if the interrupt comes from the touch interrupt pin
 	{
-		BSP_TS_GetState(&TouchState);	//update the touchstate
-		vEigFunCheckButtons();	//call the check_buttons function to see what needs to be done
+		if(InterruptActive == true)	//only execute this code when the active bool is true
+		{
+			BSP_TS_GetState(&TouchState);	//update the touchstate
+			vEigFunCheckButtons();	//call the check_buttons function to see what needs to be done
+			InterruptActive = false;	//Set the active bool to false --> we set it back to true in the main loop so it doesn't execute the code above multiple times ("debounce")
+		}
 		//BSP_TS_ITClear();
 	}
 }
@@ -222,7 +227,17 @@ int main(void)
 		{
 			vEigFunErrorMsg("find_next error from main");
 		}
-		HAL_Delay(ulPictureDelay);		//Wait to get next image for the period set by the user
+		while(ulMainIterator < ulPictureDelay)	//we delay for a set amount of time in intervals of 10 ms
+		{
+			if(ulMainIterator%ulInterruptDebounce == 0)	//if the modulo of ulMainIterator and the InterruptDebounce value is 0 the interrupt is disabled long enugh
+			{
+				InterruptActive = true;		//set the InterruptActive bool to true again
+			}
+			HAL_Delay(10);		//Delay for 10ms
+			ulMainIterator++;	//increment the ulMainIterator for the while loop
+		}
+		ulMainIterator = 0;		//after we break the while loop we reset the ulMainIterator to 0
+		//HAL_Delay(ulPictureDelay);		//Wait to get next image for the period set by the user
 	}
 	if(f_closedir(&Imagedir) != FR_OK)		//Close the Images dir
 	{
@@ -1270,7 +1285,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin : LCD_INT_Pin */
   GPIO_InitStruct.Pin = LCD_INT_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(LCD_INT_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : ARDUINO_D4_Pin ARDUINO_D2_Pin EXT_RST_Pin */

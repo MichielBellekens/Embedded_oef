@@ -10,18 +10,21 @@
 RadioButtons* pSpeed = NULL;			//linked radiobuttons list  for the speed
 RadioButtons* pBackground = NULL;	//linked radiobuttons list for the backgroundcolor
 RadioButtons* pOptions[2];			//array of linked radiobuttons list --> easier to iterate through
-uint32_t ulPictureDelay = 5000;	//Variable for the delay between pictures --> default to 5000;
+uint32_t ulPictureDelay = 5000;		//Variable for the delay between pictures --> default to 5000;
 
-TS_StateTypeDef TouchState;	//variables that stores the touchstate
-FIL fp;						//file pointer to acces files from SD card
+TS_StateTypeDef TouchState;		//variables that stores the touchstate
+FIL fp;							//file pointer to acces files from SD card
+bool InterruptActive = true;				//bool to see if interrupt functionalitie has to be executed
+uint32_t ulMainIterator = 0;				//iterator to loop in delay while loop
+const uint32_t ulInterruptDebounce = 25;	//const value (can not be changed at runtime) to see when to re-activate the interrupt functionalities
 FIL imagefp;
 FIL radiofp;
 FIL optionsfp;
-uint8_t ucBytesRead;			//uint8_t for bytesread value from f_read()
+uint8_t ucBytesRead;				//uint8_t for bytesread value from f_read()
 uint8_t ucImgBuffer[310000]; 		// buffer to store the image read
 //uint8_t * ImgBuffer = (uint8_t*)0xC007F800;
-uint8_t ucRadiobuff[3100];		//buffer to store the radiobuttons image read
-FATFS FS;						//FATFS variable to use in f_mount
+uint8_t ucRadiobuff[3100];			//buffer to store the radiobuttons image read
+FATFS FS;							//FATFS variable to use in f_mount
 uint32_t ulBackGroundColor = LCD_COLOR_RED; //variable that stores the currently selected background color
 uint8_t ucXOffset[4];			//variabled to store the width of the read image --> needed to center image on screen
 uint8_t ulYOffset[4];			//variabled to store the height of the read image --> needed to center image on screen
@@ -44,11 +47,11 @@ void vEigFunInitProg(void)
 	  {
 		  BSP_LCD_Clear(LCD_COLOR_RED);	//if interrupt config failed lcd red and infinite loop
 	  }
-	  //BSP_LCD_Clear(ulBackGroundColor);	//clears the screen to the background color
+	  BSP_LCD_Clear(ulBackGroundColor);	//clears the screen to the background color
 	  vEigFunCheckAndMountSD();
 	  vEigFunReadOptions();	//call this function to read the settings from the SD card
 	  vEigFunSetRadioButtons();	//set the radiobuttons to match the read options
-	  BSP_LCD_Clear(ulBackGroundColor);	//clears the screen to the background color
+	  //BSP_LCD_Clear(ulBackGroundColor);	//clears the screen to the background color
 	  return;
 }
 
@@ -129,7 +132,7 @@ void vEigFunCreateRadioButtons(void)
 	pSpeed = malloc(sizeof(RadioButtons));
 	pSpeed->pCategory = "Speed";
 	pSpeed->pLabel = "5s";
-	pSpeed->ulValue = 5000;
+	pSpeed->ulValue = 500;
 	pSpeed->ulXpos = ulStdPadding;
 	pSpeed->ulYpos=ulStdPadding+ulStdTitleoffset;
 	pSpeed->ulHeight = ulStdHeight;
@@ -139,7 +142,7 @@ void vEigFunCreateRadioButtons(void)
 	pSpeed->func = &vEigFunUnselectRadios;
 	pSpeed->next = malloc(sizeof(RadioButtons));
 	pSpeed->next->pLabel = "10s";
-	pSpeed->next->ulValue = 10000;
+	pSpeed->next->ulValue = 1000;
 	pSpeed->next->ulXpos = ulStdPadding;
 	pSpeed->next->ulYpos=ulStdHeight+ulStdPadding + ulStdPadding+ulStdTitleoffset;
 	pSpeed->next->ulHeight = ulStdHeight;
@@ -149,7 +152,7 @@ void vEigFunCreateRadioButtons(void)
 	pSpeed->next->func = &vEigFunUnselectRadios;
 	pSpeed->next->next = malloc(sizeof(RadioButtons));
 	pSpeed->next->next->pLabel = "30s";
-	pSpeed->next->next->ulValue = 30000;
+	pSpeed->next->next->ulValue = 3000;
 	pSpeed->next->next->ulXpos = ulStdPadding;
 	pSpeed->next->next->ulYpos=2*(ulStdHeight+ulStdPadding)+ulStdPadding+ulStdTitleoffset;
 	pSpeed->next->next->ulHeight = ulStdHeight;
@@ -228,11 +231,7 @@ void vEigFunUnselectRadios(RadioButtons* clearing)
 //function called from the interrupt if touch detected --> checks what needs to be done
 void vEigFunCheckButtons(void)
 {
-	if(!pOptions[0]->isvisible || TouchState.touchX[0] > 100)	//if the options menu isn't visible or the touch was not near the positions of the radio buttons
-	{
-		vEigFunToggleMenu();		//toggle the options menu visible to invisible and invisible to visible
-	}
-	else	//Else check if one of the radiobuttons was pressed
+	if(pOptions[0]->isvisible && TouchState.touchX[0] < 2 * pOptions[0]->ulWidth)
 	{
 		for(int i=0; i < sizeof(pOptions)/sizeof(pOptions[0]); i++)	//loop over all linked lists contained in the options array
 		{
@@ -251,12 +250,14 @@ void vEigFunCheckButtons(void)
 						else if(strcmp(pOptions[i]->pCategory,"Color")==0)	//if the category of the current linked list is Color
 						{
 							ulBackGroundColor = (uint32_t)temp->ulValue;		//set the backgroundcolor to the value of the current node
+							vEigFunDrawBuffer();
 						}
 						else	//if this loop is entered something went wrong
 						{
 							vEigFunErrorMsg("Something went wrong");
 						}
 						temp->pButtonimage = "Config/Radiosel.bmp";	//set the current node to active --> only one radiobutton per linked list can be active (rest is cleared by functionpointer function see above)
+						vEigFunSaveOptions();
 						vEigFunDrawMenu();	//call the draw menu function
 						break;	//break from while since the touch was found, don't check the rest of the buttons
 					}
@@ -265,6 +266,18 @@ void vEigFunCheckButtons(void)
 			}
 		}
 	}
+	else
+	{
+		vEigFunToggleMenu();
+	}
+	/*if(TouchState.touchX[0] > 100)	//if the options menu isn't visible or the touch was not near the positions of the radio buttons
+	{
+		vEigFunToggleMenu();		//toggle the options menu visible to invisible and invisible to visible
+	}
+	else	//Else check if one of the radiobuttons was pressed
+	{
+
+	}*/
 	return;
 }
 
@@ -309,7 +322,7 @@ void vEigFunToggleMenu()
 			temp = temp->next;		//Select the next node
 		}
 	}
-	vEigFunSaveOptions();
+	//vEigFunSaveOptions();
 	vEigFunDrawBuffer();	//update the screen
 	return;
 }

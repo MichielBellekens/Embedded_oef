@@ -42,6 +42,9 @@ extern RadioButtons* pOptions[2];			//array of linked radiobuttons list --> easi
 extern uint32_t ulPictureDelay;	//Variable for the delay between pictures --> default to 5000;
 
 extern TS_StateTypeDef TouchState;	//variables that stores the touchstate
+extern bool InterruptActive;		//bool to see if interupt functionalitie has to be executed
+extern uint32_t ulMainIterator;		//iterator to loop in delay while loop
+extern const uint32_t ulInterruptDebounce;	//const value (can not be changed at runtime) to see when to re-activate the interrupt functionalities
 extern FIL fp;						//file pointer to acces files from SD card
 extern FIL imagefp;
 extern FIL radiofp;
