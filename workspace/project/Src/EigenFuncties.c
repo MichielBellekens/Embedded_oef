@@ -10,11 +10,11 @@
 RadioButtons* pSpeed = NULL;			//linked radiobuttons list  for the speed
 RadioButtons* pBackground = NULL;	//linked radiobuttons list for the backgroundcolor
 RadioButtons* pOptions[2];			//array of linked radiobuttons list --> easier to iterate through
-uint32_t ulPictureDelay = 5000;		//Variable for the delay between pictures --> default to 5000;
+volatile uint32_t ulPictureDelay = 5000;		//Variable for the delay between pictures --> default to 5000;
 
 TS_StateTypeDef TouchState;		//variables that stores the touchstate
 FIL fp;							//file pointer to acces files from SD card
-bool InterruptActive = true;				//bool to see if interrupt functionalitie has to be executed
+volatile bool InterruptActive = true;				//bool to see if interrupt functionalitie has to be executed
 uint32_t ulMainIterator = 0;				//iterator to loop in delay while loop
 const uint32_t ulInterruptDebounce = 25;	//const value (can not be changed at runtime) to see when to re-activate the interrupt functionalities
 FIL imagefp;
@@ -25,7 +25,7 @@ uint8_t ucImgBuffer[310000]; 		// buffer to store the image read
 //uint8_t * ImgBuffer = (uint8_t*)0xC007F800;
 uint8_t ucRadiobuff[3100];			//buffer to store the radiobuttons image read
 FATFS FS;							//FATFS variable to use in f_mount
-uint32_t ulBackGroundColor = LCD_COLOR_RED; //variable that stores the currently selected background color
+volatile uint32_t ulBackGroundColor = LCD_COLOR_RED; //variable that stores the currently selected background color
 uint8_t ucXOffset[4];			//variabled to store the width of the read image --> needed to center image on screen
 uint8_t ulYOffset[4];			//variabled to store the height of the read image --> needed to center image on screen
 DIR Imagedir;					//Directory object --> needed for reading files from SD card directory

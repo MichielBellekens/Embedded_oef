@@ -39,10 +39,10 @@ typedef struct RadioButtons
 extern RadioButtons* pSpeed;			//linked radiobuttons list  for the pSpeed
 extern RadioButtons* pBackground;	//linked radiobuttons list for the backgroundcolor
 extern RadioButtons* pOptions[2];			//array of linked radiobuttons list --> easier to iterate through
-extern uint32_t ulPictureDelay;	//Variable for the delay between pictures --> default to 5000;
+extern volatile uint32_t ulPictureDelay;	//Variable for the delay between pictures --> default to 5000;
 
 extern TS_StateTypeDef TouchState;	//variables that stores the touchstate
-extern bool InterruptActive;		//bool to see if interupt functionalitie has to be executed
+extern volatile bool InterruptActive;		//bool to see if interupt functionalitie has to be executed
 extern uint32_t ulMainIterator;		//iterator to loop in delay while loop
 extern const uint32_t ulInterruptDebounce;	//const value (can not be changed at runtime) to see when to re-activate the interrupt functionalities
 extern FIL fp;						//file pointer to acces files from SD card
@@ -54,7 +54,7 @@ extern uint8_t ucImgBuffer[310000]; 		// buffer to store the image read
 //uint8_t * ImgBuffer = (uint8_t*)0xC007F800;
 extern uint8_t ucRadiobuff[3100];		//buffer to store the radiobuttons image read
 extern FATFS FS;						//FATFS variable to use in f_mount
-extern uint32_t ulBackGroundColor; //variable that stores the currently selected background color
+extern volatile uint32_t ulBackGroundColor; //variable that stores the currently selected background color
 extern uint8_t ucXOffset[4];			//variabled to store the width of the read image --> needed to center image on screen
 extern uint8_t ulYOffset[4];			//variabled to store the height of the read image --> needed to center image on screen
 extern DIR Imagedir;					//Directory object --> needed for reading files from SD card directory
