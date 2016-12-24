@@ -10,7 +10,7 @@
 RadioButtons* pSpeed = NULL;			//linked radiobuttons list  for the speed
 RadioButtons* pBackground = NULL;	//linked radiobuttons list for the backgroundcolor
 RadioButtons* pOptions[2];			//array of linked radiobuttons list --> easier to iterate through
-volatile uint32_t ulPictureDelay = 5000;		//Variable for the delay between pictures --> default to 5000;
+volatile uint32_t ulPictureDelay = 500;		//Variable for the delay between pictures --> default to 5000;
 
 TS_StateTypeDef TouchState;		//variables that stores the touchstate
 FIL fp;							//file pointer to acces files from SD card
@@ -109,13 +109,17 @@ void vEigFunReadOptions(void)
 	uint8_t readbuffer[50];		//create a buffer to store the read values
 	if(f_open(&fp, "Config/Options.txt", FA_READ) != FR_OK)		//open the config file in read mode
 	{
-		vEigFunErrorMsg("Open error readoptions");
+		vEigFunSaveOptions();	//if the open fails its possible that the file doesn't exist yet --> save the default values to the file
+		if(f_open(&fp, "Config/Options.txt", FA_READ) != FR_OK)		//try to read from the recently created file
+		{
+			vEigFunErrorMsg("Open error readoptions");
+		}
 	}
 	if(f_read(&fp, readbuffer, sizeof(readbuffer), (UINT*)&ucBytesRead) != FR_OK)		//read the file into the buffer
 	{
 		vEigFunErrorMsg("Read error readoptions");
 	}
-	sscanf((const char*)readbuffer, "%x,%x", (unsigned int*)&ulBackGroundColor,(unsigned int*)&ulPictureDelay);	//read the formatted data from the buffer
+	sscanf((const char*)readbuffer, "%x,%x", &ulBackGroundColor,&ulPictureDelay);	//read the formatted data from the buffer (cast to (unsigned int*) to get rid of warnings
 	if(f_close(&fp) != FR_OK)	//close the file
 	{
 		vEigFunErrorMsg("Close error readoptions");
@@ -270,14 +274,6 @@ void vEigFunCheckButtons(void)
 	{
 		vEigFunToggleMenu();
 	}
-	/*if(TouchState.touchX[0] > 100)	//if the options menu isn't visible or the touch was not near the positions of the radio buttons
-	{
-		vEigFunToggleMenu();		//toggle the options menu visible to invisible and invisible to visible
-	}
-	else	//Else check if one of the radiobuttons was pressed
-	{
-
-	}*/
 	return;
 }
 
@@ -327,7 +323,7 @@ void vEigFunToggleMenu()
 	return;
 }
 
-//read the needed bitmap for a radiobutton.
+//read the needed bitmap for the radiobuttons.
 void vEigFunReadRadioIntoBuffer(const char* filename)
 {
 	if(f_open(&radiofp, filename, FA_READ) != FR_OK)		//open the file with the given name in read mode
@@ -409,6 +405,7 @@ void vEigFunErrorMsg(const char * message)
 {
 	BSP_LCD_Clear(LCD_COLOR_YELLOW);
 	BSP_LCD_DisplayStringAtLine(0, (uint8_t*) message);
+	BSP_LCD_DrawBitmap(50, 12,(uint8_t*)ERRORMESSAGE_DATA);
 	while(1)
 	{
 		//hanging since an error occured

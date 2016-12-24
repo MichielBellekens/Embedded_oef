@@ -17,6 +17,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "fatfs.h"
+#include "ErrorMessage_data.h"
 
 //linked list struct with the properties of a radiobutton
 typedef struct RadioButtons
