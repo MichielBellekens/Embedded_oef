@@ -114,9 +114,30 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
   /* Prevent unused argument(s) compilation warning */
   //UNUSED(GPIO_Pin);
-  if(GPIO_Pin == GPIO_PIN_13){
+	if(GPIO_Pin == GPIO_PIN_13){
+		BSP_TS_GetState(&Buffer);
+		uint32_t col = BSP_LCD_GetBackColor();
+		if (Buffer.touchX[0] < 240)
+		{
+			BSP_LCD_Clear(LCD_COLOR_GRAY);
+			/*if(col != LCD_COLOR_GRAY)
+			{
+				BSP_LCD_Clear(LCD_COLOR_GRAY);
+			}*/
+		}
+		else if (Buffer.touchX[0] > 240)
+		{
+			BSP_LCD_Clear(LCD_COLOR_ORANGE);
+		}
+		else
+		{
+			BSP_LCD_Clear(LCD_COLOR_BLUE);
+		}
+		BSP_TS_ITClear();
+	}
+  /*if(GPIO_Pin == GPIO_PIN_13){
 	  HAL_GPIO_TogglePin(LED1_GPIO_PORT,LED1_PIN);
-  }
+  }*/
 
 }
 /* USER CODE END 0 */
@@ -137,7 +158,7 @@ int main(void)
   SystemClock_Config();
 
   /* Initialize all configured peripherals */
-  MX_GPIO_Init();
+  //MX_GPIO_Init();
   MX_ADC3_Init();
   MX_DCMI_Init();
   MX_FMC_Init();
@@ -175,7 +196,10 @@ int main(void)
   {
 	  BSP_LCD_Clear(LCD_COLOR_RED);
   }
-  BSP_TS_ITConfig();
+  if(BSP_TS_ITConfig() != TS_OK)
+  {
+	  BSP_LCD_Clear(LCD_COLOR_RED);
+  }
 //  if(BSP_TS_ITConfig() != TS_OK)
 //  {
 //	  BSP_LCD_Clear(LCD_COLOR_RED);

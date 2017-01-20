@@ -143,19 +143,19 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 //THE OWN FUNCTIONS CAN BE FOUND IN THE EigenFuncties.c
 
 //callback function for the touch interrupt
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+void HAL_GPIO_EXTI_Callback( uint16_t GPIO_Pin )
  {
-	if(GPIO_Pin == GPIO_PIN_13)	//if the interrupt comes from the touch interrupt pin
+	if( GPIO_Pin == GPIO_PIN_13 )	//if the interrupt comes from the touch interrupt pin
 	{
-		if(InterruptActive == true)	//only execute this code when the active bool is true
+		if( InterruptActive == true )	//only execute this code when the active bool is true
 		{
 			BSP_TS_GetState(&TouchState);	//update the touchstate
 			vEigFunCheckButtons();	//call the check_buttons function to see what needs to be done
 			InterruptActive = false;	//Set the active bool to false --> we set it back to true in the main loop so it doesn't execute the code above multiple times ("debounce")
 		}
-		//BSP_TS_ITClear();
 	}
 }
+/*----------------------------------------------------------------------------------------*/
 /* USER CODE END 0 */
 
 int main(void)
@@ -209,27 +209,27 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
+  while( 1 )
   {
   /* USER CODE END WHILE */
     MX_USB_HOST_Process();
 
   /* USER CODE BEGIN 3 */
-    if(f_findfirst(&Imagedir, &fileinf, "Images", "*.bmp") != FR_OK)	//find the first bmp element in the Images dir --> TO WORK: _USE_FIND == 1 and _FS_MINIMIZE <= 1 in ffconf.h
+    if( f_findfirst(&Imagedir, &fileinf, "Images", "*.bmp") != FR_OK )	//find the first bmp element in the Images dir --> TO WORK: _USE_FIND == 1 and _FS_MINIMIZE <= 1 in ffconf.h
     {
     	vEigFunErrorMsg("find first error from main");
     }
-	while(strcmp(&fileinf.fname[0], "\0") != 0)	//first element of the array contains \0 when there aren't any next files
+	while( strcmp(&fileinf.fname[0], "\0") != 0 )	//first element of the array contains \0 when there aren't any next files
 	{
 	    vEigFunReadBmpIntoBuffer(fileinf.fname);	//pass the filename to the ReadBmpIntoBuffer function
 		vEigFunDrawBuffer();	//Update the screen
-		if(f_findnext(&Imagedir, &fileinf) != FR_OK)	//Try to find the next bmp file in the dir
+		if( f_findnext(&Imagedir, &fileinf) != FR_OK )	//Try to find the next bmp file in the dir
 		{
 			vEigFunErrorMsg("find_next error from main");
 		}
-		while(ulMainIterator < ulPictureDelay)	//we delay for a set amount of time in intervals of 10 ms
+		while( ulMainIterator < ulPictureDelay )	//we delay for a set amount of time in intervals of 10 ms
 		{
-			if(ulMainIterator%ulInterruptDebounce == 0)	//if the modulo of ulMainIterator and the InterruptDebounce value is 0 the interrupt is disabled long enugh
+			if( ulMainIterator%ulInterruptDebounce == 0 )	//if the modulo of ulMainIterator and the InterruptDebounce value is 0 the interrupt is disabled long enugh
 			{
 				InterruptActive = true;		//set the InterruptActive bool to true again
 			}
@@ -239,30 +239,10 @@ int main(void)
 		ulMainIterator = 0;		//after we break the while loop we reset the ulMainIterator to 0
 		//HAL_Delay(ulPictureDelay);		//Wait to get next image for the period set by the user
 	}
-	if(f_closedir(&Imagedir) != FR_OK)		//Close the Images dir
+	if( f_closedir(&Imagedir) != FR_OK )		//Close the Images dir
 	{
 		vEigFunErrorMsg("close dir error from main");
 	}
-
-	//manually read the files from the Image directory
-    /*ReadBmpIntoBuffer("Images/Cat.bmp");
-	Draw_Buffer();
-	HAL_Delay(Picture_delay);
-	ReadBmpIntoBuffer("Images/class.bmp");
-	Draw_Buffer();
-	HAL_Delay(Picture_delay);
-	ReadBmpIntoBuffer("Images/Feature.bmp");
-	Draw_Buffer();
-	HAL_Delay(Picture_delay);
-    ReadBmpIntoBuffer("Images/deadpool.bmp");
-	Draw_Buffer();
-	HAL_Delay(Picture_delay);
-	ReadBmpIntoBuffer("Images/udpmeme.bmp");
-	Draw_Buffer();
-	HAL_Delay(Picture_delay);*/
-	//draw_buttons(buttons);
-	//draw_buttons(Menu1);
-	//HAL_Delay(Picture_delay);		//wait for 200ms to repeat the while loop
   }
   /* USER CODE END 3 */
 

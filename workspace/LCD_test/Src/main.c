@@ -32,14 +32,12 @@
   */
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f7xx_hal.h"
+
+/* USER CODE BEGIN Includes */
 #include "stm32746g_discovery.h"
 #include "stm32746g_discovery_lcd.h"
 #include "stm32746g_discovery_sdram.h"
 #include "stm32746g_discovery_ts.h"
-#include "House_data.h"
-#include "deadpool_data.h"
-/* USER CODE BEGIN Includes */
-
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -65,6 +63,7 @@ static void MX_DMA2D_Init(void);
 static void MX_FMC_Init(void);
 static void MX_I2C3_Init(void);
 static void MX_LTDC_Init(void);
+//static void SystemClock_Config(void);
 
 /* USER CODE BEGIN PFP */
 /* Private function prototypes -----------------------------------------------*/
@@ -96,6 +95,7 @@ int main(void)
   MX_FMC_Init();
   MX_I2C3_Init();
   MX_LTDC_Init();
+  //SystemClock_Config();
 
   /* USER CODE BEGIN 2 */
     /* LCD Initialization */
@@ -110,23 +110,25 @@ int main(void)
     /* Some sign */
     BSP_LCD_SetTextColor(LCD_COLOR_RED);
     BSP_LCD_SetFont(&Font12);
-    if(BSP_TS_Init(480,272)== TS_OK){
+    if(BSP_TS_Init(480,272) == TS_OK){
   	  BSP_LCD_DisplayStringAt(0, 0, (uint8_t*) "Display & TS is working", CENTER_MODE);
-    }else{
+    }
+    else
+    {
   	  BSP_LCD_DisplayStringAt(0, 0, (uint8_t*) "TS is not working", CENTER_MODE);
     }
 
 
 
-    /* USER CODE END 2 */
+  /* USER CODE END 2 */
 
-    /* Infinite loop */
-    /* USER CODE BEGIN WHILE */
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
     while (1)
     {
-    /* USER CODE END WHILE */
+  /* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
+  /* USER CODE BEGIN 3 */
   	  BSP_TS_GetState(&buffer);
   	  if(buffer.touchDetected > 0){
   		  BSP_LCD_DisplayStringAt(0, 16, (uint8_t*) "Haal uw vinger weg", CENTER_MODE);
@@ -134,72 +136,6 @@ int main(void)
   		  BSP_LCD_DisplayStringAt(0, 16, (uint8_t*) "plaats uw vinger op het scherm", CENTER_MODE);
   	  }
     }
-    /* USER CODE END 3 */
-
-//  /* USER CODE BEGIN 2 */
-//  /* LCD Initialization */
-//  BSP_LCD_Init();
-//  uint16_t retval = BSP_TS_Init(480,272);
-//  BSP_LCD_LayerDefaultInit(0, LCD_FB_START_ADDRESS);
-////  /* Enable the LCD */
-//  BSP_LCD_DisplayOn();
-//  /* Select the LCD Background Layer  */
-//  BSP_LCD_SelectLayer(0);
-//  BSP_LCD_Clear(LCD_COLOR_WHITE);
-//  BSP_LCD_DrawBitmap(0,0,(uint8_t*)DEADPOOL_DATA);
-//  //BSP_TS_Init(BSP_LCD_GetXSize(), BSP_LCD_GetYSize());
-
-//  BSP_LCD_Init();
-  //uint16_t retval = BSP_TS_Init(480,272);
-//uint16_t retval = BSP_TS_Init(480,272);
-//  BSP_LCD_LayerDefaultInit(0, LCD_FB_START_ADDRESS);
-//  /* Enable the LCD */
-//  BSP_LCD_DisplayOn();
-  /* Select the LCD Background Layer  */
-//  BSP_LCD_SelectLayer(0);
-//  BSP_LCD_Clear(LCD_COLOR_WHITE);
-//  if(retval == TS_OK)
-//  {
-//	  BSP_LCD_Clear(LCD_COLOR_GREEN);
-//  }
-//  else if (retval == TS_DEVICE_NOT_FOUND)
-//  {
-//	  BSP_LCD_Clear(LCD_COLOR_BLUE);
-//  }
-//  else if (retval == TS_ERROR)
-//  {
-//	  BSP_LCD_Clear(LCD_COLOR_RED);
-//  }
-//  else
-//  {
-//	  BSP_LCD_Clear(LCD_COLOR_BROWN);
-//  }
-//  BSP_TS_DeInit();
-//  TS_StateTypeDef test;
-
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-//  while (1)
-//  {
-////	  //uint16_t x_pos, Y_pos;
-////	  //x_pos = 0;
-////	  //Y_pos = 0;
-////	  BSP_TS_ResetTouchData(&test);
-////	  BSP_TS_GetState(&test);
-////	  if(test.touchDetected)
-////	  {
-////		  //x_pos = test.touchX[0];
-////		  //Y_pos = test.touchY[0];
-////		  BSP_LCD_Clear(LCD_COLOR_BLACK);
-////
-////	  }
-////	  //BSP_LCD_DrawRect(x_pos,Y_pos,300,300);
-////	  //BSP_LCD_DisplayStringAt(x_pos,Y_pos, (uint8_t*)"GO to",LEFT_MODE);
-////	  HAL_Delay(500);
-//
-//  }
   /* USER CODE END 3 */
 
 }

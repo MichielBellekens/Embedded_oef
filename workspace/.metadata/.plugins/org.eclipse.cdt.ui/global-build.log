@@ -1,23 +1,295 @@
-19:18:13 **** Incremental Build of configuration Debug for project Interrupt_touch ****
+16:43:47 **** Incremental Build of configuration Debug for project project ****
 make all 
 'Building file: ../Src/main.c'
 'Invoking: MCU GCC Compiler'
-C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\Interrupt_touch\Debug
-arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/Interrupt_touch/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/Interrupt_touch/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/Interrupt_touch/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/Interrupt_touch/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/Interrupt_touch/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/Interrupt_touch/Drivers/BSP" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/Interrupt_touch/Drivers/BSP/inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/Interrupt_touch/Drivers/BSP/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/Interrupt_touch/Drivers/Common" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/Interrupt_touch/Drivers/Components" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/Interrupt_touch/Drivers/Components/ft5336" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/Interrupt_touch/Drivers/Components/rk043fn48h" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/Interrupt_touch/Drivers/Utilities" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/Interrupt_touch/Drivers/Utilities/Fonts"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/main.d" -MT"Src/main.o" -o "Src/main.o" "../Src/main.c"
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\project\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak=__attribute__((weak)) -D__packed=__attribute__((__packed__)) -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src/drivers" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Core/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Common" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/ft5336" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/rk043fn48h" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities/Fonts"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/main.d" -MT"Src/main.o" -o "Src/main.o" "../Src/main.c"
+../Src/main.c:1182:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+ static void MX_GPIO_Init(void)
+             ^
+../Src/main.c:421:13: warning: 'MX_ETH_Init' defined but not used [-Wunused-function]
+ static void MX_ETH_Init(void)
+             ^
 'Finished building: ../Src/main.c'
 ' '
-'Building target: Interrupt_touch.elf'
+'Building target: project.elf'
 'Invoking: MCU GCC Linker'
-arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F746NGHx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "Interrupt_touch.elf" @"objects.list"  
-'Finished building target: Interrupt_touch.elf'
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F746NGHx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "project.elf" @"objects.list"  
+'Finished building target: project.elf'
 ' '
 make --no-print-directory post-build
 'Generating binary and Printing size information:'
-arm-none-eabi-objcopy -O binary "Interrupt_touch.elf" "Interrupt_touch.bin"
-arm-none-eabi-size "Interrupt_touch.elf"
+arm-none-eabi-objcopy -O binary "project.elf" "project.bin"
+arm-none-eabi-size "project.elf"
    text	   data	    bss	    dec	    hex	filename
-  32964	     72	   4040	  37076	   90d4	Interrupt_touch.elf
+ 383112	    224	 323336	 706672	  ac870	project.elf
 ' '
-19:18:20 **** Incremental Build of configuration Debug for project Interrupt_touch ****
+18:01:16 **** Incremental Build of configuration Debug for project project ****
 make all 
 make: Nothing to be done for `all'.
+19:59:30 **** Incremental Build of configuration Debug for project project ****
+make all 
+'Building file: ../Src/EigenFuncties.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\project\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak=__attribute__((weak)) -D__packed=__attribute__((__packed__)) -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src/drivers" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Core/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Common" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/ft5336" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/rk043fn48h" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities/Fonts"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/EigenFuncties.d" -MT"Src/EigenFuncties.o" -o "Src/EigenFuncties.o" "../Src/EigenFuncties.c"
+../Src/EigenFuncties.c: In function 'vEigFunReadOptions':
+../Src/EigenFuncties.c:119:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 3 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+  sscanf((const char*)readbuffer, "%x,%x", &ulBackGroundColor,&ulPictureDelay); //read the formatted data from the buffer (cast to (unsigned int*) to get rid of warnings
+                                  ^
+../Src/EigenFuncties.c:119:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 4 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+../Src/EigenFuncties.c:119:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 3 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+../Src/EigenFuncties.c:119:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 4 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+'Finished building: ../Src/EigenFuncties.c'
+' '
+'Building file: ../Src/main.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\project\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak=__attribute__((weak)) -D__packed=__attribute__((__packed__)) -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src/drivers" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Core/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Common" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/ft5336" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/rk043fn48h" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities/Fonts"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/main.d" -MT"Src/main.o" -o "Src/main.o" "../Src/main.c"
+../Src/main.c:1182:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+ static void MX_GPIO_Init(void)
+             ^
+../Src/main.c:421:13: warning: 'MX_ETH_Init' defined but not used [-Wunused-function]
+ static void MX_ETH_Init(void)
+             ^
+'Finished building: ../Src/main.c'
+' '
+'Building target: project.elf'
+'Invoking: MCU GCC Linker'
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F746NGHx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "project.elf" @"objects.list"  
+'Finished building target: project.elf'
+' '
+make --no-print-directory post-build
+'Generating binary and Printing size information:'
+arm-none-eabi-objcopy -O binary "project.elf" "project.bin"
+arm-none-eabi-size "project.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 383196	    224	 321672	 705092	  ac244	project.elf
+' '
+20:00:52 **** Incremental Build of configuration Debug for project project ****
+make all 
+'Building file: ../Src/EigenFuncties.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\project\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak=__attribute__((weak)) -D__packed=__attribute__((__packed__)) -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src/drivers" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Core/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Common" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/ft5336" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/rk043fn48h" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities/Fonts"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/EigenFuncties.d" -MT"Src/EigenFuncties.o" -o "Src/EigenFuncties.o" "../Src/EigenFuncties.c"
+../Src/EigenFuncties.c: In function 'vEigFunReadOptions':
+../Src/EigenFuncties.c:120:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 3 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+  sscanf((const char*)readbuffer, "%x,%x", &ulBackGroundColor,&ulPictureDelay); //read the formatted data from the buffer (cast to (unsigned int*) to get rid of warnings
+                                  ^
+../Src/EigenFuncties.c:120:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 4 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+../Src/EigenFuncties.c:120:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 3 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+../Src/EigenFuncties.c:120:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 4 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+'Finished building: ../Src/EigenFuncties.c'
+' '
+'Building file: ../Src/main.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\project\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak=__attribute__((weak)) -D__packed=__attribute__((__packed__)) -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src/drivers" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Core/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Common" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/ft5336" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/rk043fn48h" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities/Fonts"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/main.d" -MT"Src/main.o" -o "Src/main.o" "../Src/main.c"
+../Src/main.c:1182:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+ static void MX_GPIO_Init(void)
+             ^
+../Src/main.c:421:13: warning: 'MX_ETH_Init' defined but not used [-Wunused-function]
+ static void MX_ETH_Init(void)
+             ^
+'Finished building: ../Src/main.c'
+' '
+'Building target: project.elf'
+'Invoking: MCU GCC Linker'
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F746NGHx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "project.elf" @"objects.list"  
+'Finished building target: project.elf'
+' '
+make --no-print-directory post-build
+'Generating binary and Printing size information:'
+arm-none-eabi-objcopy -O binary "project.elf" "project.bin"
+arm-none-eabi-size "project.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 383212	    224	 321112	 704548	  ac024	project.elf
+' '
+20:01:48 **** Incremental Build of configuration Debug for project project ****
+make all 
+'Building file: ../Src/EigenFuncties.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\project\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak=__attribute__((weak)) -D__packed=__attribute__((__packed__)) -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src/drivers" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Core/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Common" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/ft5336" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/rk043fn48h" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities/Fonts"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/EigenFuncties.d" -MT"Src/EigenFuncties.o" -o "Src/EigenFuncties.o" "../Src/EigenFuncties.c"
+../Src/EigenFuncties.c: In function 'vEigFunReadOptions':
+../Src/EigenFuncties.c:119:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 3 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+  sscanf((const char*)readbuffer, "%x,%x", &ulBackGroundColor,&ulPictureDelay); //read the formatted data from the buffer (cast to (unsigned int*) to get rid of warnings
+                                  ^
+../Src/EigenFuncties.c:119:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 4 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+../Src/EigenFuncties.c:119:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 3 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+../Src/EigenFuncties.c:119:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 4 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+'Finished building: ../Src/EigenFuncties.c'
+' '
+'Building target: project.elf'
+'Invoking: MCU GCC Linker'
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F746NGHx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "project.elf" @"objects.list"  
+'Finished building target: project.elf'
+' '
+make --no-print-directory post-build
+'Generating binary and Printing size information:'
+arm-none-eabi-objcopy -O binary "project.elf" "project.bin"
+arm-none-eabi-size "project.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 383212	    224	 321112	 704548	  ac024	project.elf
+' '
+20:30:30 **** Incremental Build of configuration Debug for project project ****
+make all 
+'Building file: ../Src/EigenFuncties.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\project\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak=__attribute__((weak)) -D__packed=__attribute__((__packed__)) -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src/drivers" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Core/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Common" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/ft5336" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/rk043fn48h" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities/Fonts"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/EigenFuncties.d" -MT"Src/EigenFuncties.o" -o "Src/EigenFuncties.o" "../Src/EigenFuncties.c"
+../Src/EigenFuncties.c: In function 'vEigFunReadOptions':
+../Src/EigenFuncties.c:123:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 3 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+  sscanf((const char*)readbuffer, "%x,%x", &ulBackGroundColor,&ulPictureDelay); //read the formatted data from the buffer (cast to (unsigned int*) to get rid of warnings
+                                  ^
+../Src/EigenFuncties.c:123:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 4 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+../Src/EigenFuncties.c:123:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 3 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+../Src/EigenFuncties.c:123:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 4 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+'Finished building: ../Src/EigenFuncties.c'
+' '
+'Building target: project.elf'
+'Invoking: MCU GCC Linker'
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F746NGHx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "project.elf" @"objects.list"  
+'Finished building target: project.elf'
+' '
+make --no-print-directory post-build
+'Generating binary and Printing size information:'
+arm-none-eabi-objcopy -O binary "project.elf" "project.bin"
+arm-none-eabi-size "project.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 383212	    224	 321112	 704548	  ac024	project.elf
+' '
+20:30:58 **** Incremental Build of configuration Debug for project project ****
+make all 
+'Building file: ../Src/main.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\project\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak=__attribute__((weak)) -D__packed=__attribute__((__packed__)) -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src/drivers" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Core/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Common" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/ft5336" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/rk043fn48h" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities/Fonts"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/main.d" -MT"Src/main.o" -o "Src/main.o" "../Src/main.c"
+../Src/main.c:1183:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+ static void MX_GPIO_Init(void)
+             ^
+../Src/main.c:422:13: warning: 'MX_ETH_Init' defined but not used [-Wunused-function]
+ static void MX_ETH_Init(void)
+             ^
+'Finished building: ../Src/main.c'
+' '
+'Building target: project.elf'
+'Invoking: MCU GCC Linker'
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F746NGHx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "project.elf" @"objects.list"  
+'Finished building target: project.elf'
+' '
+make --no-print-directory post-build
+'Generating binary and Printing size information:'
+arm-none-eabi-objcopy -O binary "project.elf" "project.bin"
+arm-none-eabi-size "project.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 383212	    224	 321112	 704548	  ac024	project.elf
+' '
+20:48:42 **** Incremental Build of configuration Debug for project project ****
+make all 
+'Building file: ../Src/EigenFuncties.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\project\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak=__attribute__((weak)) -D__packed=__attribute__((__packed__)) -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src/drivers" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Core/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Common" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/ft5336" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/rk043fn48h" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities/Fonts"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/EigenFuncties.d" -MT"Src/EigenFuncties.o" -o "Src/EigenFuncties.o" "../Src/EigenFuncties.c"
+../Src/EigenFuncties.c: In function 'vEigFunReadOptions':
+../Src/EigenFuncties.c:123:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 3 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+  sscanf((const char*)readbuffer, "%x,%x", &ulBackGroundColor, &ulPictureDelay); //read the formatted data from the buffer (cast to (unsigned int*) to get rid of warnings
+                                  ^
+../Src/EigenFuncties.c:123:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 4 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+../Src/EigenFuncties.c:123:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 3 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+../Src/EigenFuncties.c:123:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 4 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+'Finished building: ../Src/EigenFuncties.c'
+' '
+'Building target: project.elf'
+'Invoking: MCU GCC Linker'
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F746NGHx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "project.elf" @"objects.list"  
+'Finished building target: project.elf'
+' '
+make --no-print-directory post-build
+'Generating binary and Printing size information:'
+arm-none-eabi-objcopy -O binary "project.elf" "project.bin"
+arm-none-eabi-size "project.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 383212	    224	 321112	 704548	  ac024	project.elf
+' '
+20:50:15 **** Incremental Build of configuration Debug for project project ****
+make all 
+make: Nothing to be done for `all'.
+22:24:15 **** Incremental Build of configuration Debug for project project ****
+make all 
+'Building file: ../Src/EigenFuncties.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\project\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak=__attribute__((weak)) -D__packed=__attribute__((__packed__)) -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src/drivers" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Core/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Common" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/ft5336" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/rk043fn48h" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities/Fonts"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/EigenFuncties.d" -MT"Src/EigenFuncties.o" -o "Src/EigenFuncties.o" "../Src/EigenFuncties.c"
+../Src/EigenFuncties.c: In function 'vEigFunReadOptions':
+../Src/EigenFuncties.c:123:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 3 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+  sscanf((const char*)readbuffer, "%x,%x", &ulBackGroundColor, &ulPictureDelay); //read the formatted data from the buffer (cast to (unsigned int*) to get rid of warnings
+                                  ^
+../Src/EigenFuncties.c:123:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 4 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+../Src/EigenFuncties.c:123:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 3 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+../Src/EigenFuncties.c:123:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 4 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+'Finished building: ../Src/EigenFuncties.c'
+' '
+'Building file: ../Src/main.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\project\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak=__attribute__((weak)) -D__packed=__attribute__((__packed__)) -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src/drivers" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Core/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Common" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/ft5336" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/rk043fn48h" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities/Fonts"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/main.d" -MT"Src/main.o" -o "Src/main.o" "../Src/main.c"
+../Src/main.c:1183:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+ static void MX_GPIO_Init(void)
+             ^
+../Src/main.c:422:13: warning: 'MX_ETH_Init' defined but not used [-Wunused-function]
+ static void MX_ETH_Init(void)
+             ^
+'Finished building: ../Src/main.c'
+' '
+'Building target: project.elf'
+'Invoking: MCU GCC Linker'
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F746NGHx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "project.elf" @"objects.list"  
+'Finished building target: project.elf'
+' '
+make --no-print-directory post-build
+'Generating binary and Printing size information:'
+arm-none-eabi-objcopy -O binary "project.elf" "project.bin"
+arm-none-eabi-size "project.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 383212	    224	 321112	 704548	  ac024	project.elf
+' '
+22:44:37 **** Incremental Build of configuration Debug for project project ****
+make all 
+'Building file: ../Src/EigenFuncties.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\project\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak=__attribute__((weak)) -D__packed=__attribute__((__packed__)) -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src/drivers" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Core/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Common" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/ft5336" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/rk043fn48h" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities/Fonts"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/EigenFuncties.d" -MT"Src/EigenFuncties.o" -o "Src/EigenFuncties.o" "../Src/EigenFuncties.c"
+../Src/EigenFuncties.c: In function 'vEigFunReadOptions':
+../Src/EigenFuncties.c:122:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 3 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+  sscanf((const char*)readbuffer, "%x,%x", &ulBackGroundColor, &ulPictureDelay); //read the formatted data from the buffer (cast to (unsigned int*) to get rid of warnings
+                                  ^
+../Src/EigenFuncties.c:122:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 4 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+../Src/EigenFuncties.c:122:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 3 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+../Src/EigenFuncties.c:122:34: warning: format '%x' expects argument of type 'unsigned int *', but argument 4 has type 'volatile uint32_t * {aka volatile long unsigned int *}' [-Wformat=]
+'Finished building: ../Src/EigenFuncties.c'
+' '
+'Building file: ../Src/main.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\Gebruiker\Desktop\Embedded_systems\workspace\project\Debug
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -D__weak=__attribute__((weak)) -D__packed=__attribute__((__packed__)) -DUSE_HAL_DRIVER -DSTM32F746xx -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/STM32F7xx_HAL_Driver/Inc/Legacy" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src/drivers" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Core/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/ST/STM32_USB_Host_Library/Class/CDC/Inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Device/ST/STM32F7xx/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Middlewares/Third_Party/FatFs/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/CMSIS/Include" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/inc" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/BSP/src" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Common" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/ft5336" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Components/rk043fn48h" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities" -I"C:/Users/Gebruiker/Desktop/Embedded_systems/workspace/project/Drivers/Utilities/Fonts"  -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/main.d" -MT"Src/main.o" -o "Src/main.o" "../Src/main.c"
+../Src/main.c:1183:13: warning: 'MX_GPIO_Init' defined but not used [-Wunused-function]
+ static void MX_GPIO_Init(void)
+             ^
+../Src/main.c:422:13: warning: 'MX_ETH_Init' defined but not used [-Wunused-function]
+ static void MX_ETH_Init(void)
+             ^
+'Finished building: ../Src/main.c'
+' '
+'Building target: project.elf'
+'Invoking: MCU GCC Linker'
+arm-none-eabi-gcc -mcpu=cortex-m7 -mthumb -mfloat-abi=hard -mfpu=fpv5-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F746NGHx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "project.elf" @"objects.list"  
+'Finished building target: project.elf'
+' '
+make --no-print-directory post-build
+'Generating binary and Printing size information:'
+arm-none-eabi-objcopy -O binary "project.elf" "project.bin"
+arm-none-eabi-size "project.elf"
+   text	   data	    bss	    dec	    hex	filename
+ 383212	    224	 321112	 704548	  ac024	project.elf
+' '
